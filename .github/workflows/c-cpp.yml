@@ -81,6 +81,6 @@ jobs:
         name: ${{ matrix.os }}-${{ matrix.arch }}-artifacts 
         path: |
           box2d/build/bin/Release/*.dll
-          box2d/build/bin/*.so
-          box2d/build/bin/*.dylib
+          box2d/build/src/*.so
+          box2d/build/src/*.dylib
         if-no-files-found: ignore # 'warn' or 'ignore' or 'error'
