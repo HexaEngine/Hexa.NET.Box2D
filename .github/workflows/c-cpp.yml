@@ -1,4 +1,4 @@
-name: Build box2d Libraries
+name: Build Box2D Libraries
 
 on: [workflow_dispatch]
 
@@ -21,11 +21,6 @@ jobs:
             cmake-arch: x64
             avx2: ON
             smid: ON
-          - os: windows-latest
-            arch: x86
-            cmake-arch: Win32
-            avx2: OFF
-            smid: OFF
           - os: windows-latest
             arch: arm64
             cmake-arch: ARM64
@@ -58,24 +53,24 @@ jobs:
       run: |
         sudo apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
 
-    - name: Configure box2d with CMake for Windows
+    - name: Configure Box2D with CMake for Windows
       if: matrix.os == 'windows-latest'
       run: cmake -S box2d -B box2d/build -A ${{ matrix.cmake-arch }} -DBOX2D_SAMPLES=OFF -DBOX2D_UNIT_TESTS=OFF -DBOX2D_VALIDATE=OFF -DBUILD_SHARED_LIBS=ON -DBOX2D_AVX2=${{ matrix.avx2 }} -DBOX2D_ENABLE_SIMD=${{ matrix.smid }}
 
-    - name: Configure box2d with CMake for Ubuntu x86_64
+    - name: Configure Box2D with CMake for Ubuntu x86_64
       if: matrix.os == 'ubuntu-latest' && matrix.arch == 'x86_64'
       run: cmake -S box2d -B box2d/build -DCMAKE_C_FLAGS="${{ matrix.cmake-arch }}" -DCMAKE_CXX_FLAGS="${{ matrix.cmake-arch }}" -DBOX2D_SAMPLES=OFF -DBOX2D_UNIT_TESTS=OFF -DBOX2D_VALIDATE=OFF -DBUILD_SHARED_LIBS=ON -DBOX2D_AVX2=${{ matrix.avx2 }}
 
-    - name: Configure box2d with CMake for Ubuntu ARM64
+    - name: Configure Box2D with CMake for Ubuntu ARM64
       if: matrix.os == 'ubuntu-latest' && matrix.arch == 'arm64'
       run: cmake -S box2d -B box2d/build -DCMAKE_C_COMPILER=aarch64-linux-gnu-gcc -DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++ -DCMAKE_C_FLAGS="${{ matrix.cmake-arch }}" -DCMAKE_CXX_FLAGS="${{ matrix.cmake-arch }}" -DBOX2D_SAMPLES=OFF -DBOX2D_UNIT_TESTS=OFF -DBOX2D_VALIDATE=OFF -DBUILD_SHARED_LIBS=ON -DBOX2D_AVX2=${{ matrix.avx2 }}
 
-    - name: Configure box2d with CMake for macOS
+    - name: Configure Box2D with CMake for macOS
       if: matrix.os == 'macos-latest'
       run: cmake -S box2d -B box2d/build -DCMAKE_OSX_ARCHITECTURES=${{ matrix.cmake-arch }} -DBOX2D_SAMPLES=OFF -DBOX2D_UNIT_TESTS=OFF -DBOX2D_VALIDATE=OFF -DBUILD_SHARED_LIBS=ON -DBOX2D_AVX2=${{ matrix.avx2 }}
 
 
-    - name: Build box2d
+    - name: Build Box2D
       run: cmake --build box2d/build --config Release
 
     - name: Upload Artifacts
