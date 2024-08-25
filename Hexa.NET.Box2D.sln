@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexa.NET.Box2D", "Hexa.NET.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generator", "Generator\Generator.csproj", "{D9B201E9-A63F-4D65-B740-4694DD170248}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Example\Example.csproj", "{93557EFD-92BA-4E2D-ABAE-E1D4BAE5DB9D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D9B201E9-A63F-4D65-B740-4694DD170248}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9B201E9-A63F-4D65-B740-4694DD170248}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9B201E9-A63F-4D65-B740-4694DD170248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93557EFD-92BA-4E2D-ABAE-E1D4BAE5DB9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93557EFD-92BA-4E2D-ABAE-E1D4BAE5DB9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93557EFD-92BA-4E2D-ABAE-E1D4BAE5DB9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93557EFD-92BA-4E2D-ABAE-E1D4BAE5DB9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
