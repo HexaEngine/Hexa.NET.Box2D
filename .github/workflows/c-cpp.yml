@@ -20,14 +20,17 @@ jobs:
             arch: x86_64
             cmake-arch: x64
             avx2: ON
+            smid: ON
           - os: windows-latest
             arch: x86
             cmake-arch: Win32
             avx2: OFF
+            smid: OFF
           - os: windows-latest
             arch: arm64
             cmake-arch: ARM64
             avx2: OFF
+            smid: OFF
           - os: macos-latest
             arch: x86_64
             cmake-arch: x86_64
@@ -57,7 +60,7 @@ jobs:
 
     - name: Configure box2d with CMake for Windows
       if: matrix.os == 'windows-latest'
-      run: cmake -S box2d -B box2d/build -A ${{ matrix.cmake-arch }} -DBOX2D_SAMPLES=OFF -DBOX2D_UNIT_TESTS=OFF -DBOX2D_VALIDATE=OFF -DBUILD_SHARED_LIBS=ON -DBOX2D_AVX2=${{ matrix.avx2 }}
+      run: cmake -S box2d -B box2d/build -A ${{ matrix.cmake-arch }} -DBOX2D_SAMPLES=OFF -DBOX2D_UNIT_TESTS=OFF -DBOX2D_VALIDATE=OFF -DBUILD_SHARED_LIBS=ON -DBOX2D_AVX2=${{ matrix.avx2 }} -DBOX2D_ENABLE_SIMD=${{ matrix.smid }}
 
     - name: Configure box2d with CMake for Ubuntu x86_64
       if: matrix.os == 'ubuntu-latest' && matrix.arch == 'x86_64'
