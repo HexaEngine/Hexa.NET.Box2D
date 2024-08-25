@@ -1,0 +1,77 @@
+name: Build Box2D Libraries
+
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            arch: x86_64
+            cmake-arch: -m64
+            avx2: ON
+          - os: ubuntu-latest
+            arch: arm64
+            cmake-arch: -march=armv8-a
+            avx2: OFF
+          - os: windows-latest
+            arch: x86_64
+            cmake-arch: x64
+          - os: macos-latest
+            arch: x86_64
+            cmake-arch: x86_64
+            avx2: ON
+          - os: macos-latest
+            arch: arm64
+            cmake-arch: arm64
+            avx2: OFF
+    steps:
+    - uses: actions/checkout@v4.1.7
+      with:
+        repository: 'erincatto/box2d'
+        path: 'box2d'
+        submodules: true
+        ref: 'v3.0.0'
+
+    - name: Install dependencies on Ubuntu
+      if: matrix.os == 'ubuntu-latest'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential cmake
+
+    - name: Install cross-compilation toolchain for ARM64 on Ubuntu
+      if: matrix.os == 'ubuntu-latest' && matrix.arch == 'arm64'
+      run: |
+        sudo apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+
+    - name: Configure Box2D with CMake for Windows
+      if: matrix.os == 'windows-latest'
+      run: cmake -S box2d -B box2d/build -A ${{ matrix.cmake-arch }} -DBOX2D_SAMPLES=OFF -DBOX2D_UNIT_TESTS=OFF -DBOX2D_VALIDATE=OFF -DBUILD_SHARED_LIBS=ON
+
+    - name: Configure Box2D with CMake for Ubuntu x86_64
+      if: matrix.os == 'ubuntu-latest' && matrix.arch == 'x86_64'
+      run: cmake -S box2d -B box2d/build -DCMAKE_C_FLAGS="${{ matrix.cmake-arch }}" -DCMAKE_CXX_FLAGS="${{ matrix.cmake-arch }}" -DBOX2D_SAMPLES=OFF -DBOX2D_UNIT_TESTS=OFF -DBOX2D_VALIDATE=OFF -DBUILD_SHARED_LIBS=ON -DBOX2D_AVX2=${{ matrix.avx2 }}
+
+    - name: Configure Box2D with CMake for Ubuntu ARM64
+      if: matrix.os == 'ubuntu-latest' && matrix.arch == 'arm64'
+      run: cmake -S box2d -B box2d/build -DCMAKE_C_COMPILER=aarch64-linux-gnu-gcc -DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++ -DCMAKE_C_FLAGS="${{ matrix.cmake-arch }}" -DCMAKE_CXX_FLAGS="${{ matrix.cmake-arch }}" -DBOX2D_SAMPLES=OFF -DBOX2D_UNIT_TESTS=OFF -DBOX2D_VALIDATE=OFF -DBUILD_SHARED_LIBS=ON -DBOX2D_AVX2=${{ matrix.avx2 }}
+
+    - name: Configure Box2D with CMake for macOS
+      if: matrix.os == 'macos-latest'
+      run: cmake -S box2d -B box2d/build -DCMAKE_OSX_ARCHITECTURES=${{ matrix.cmake-arch }} -DBOX2D_SAMPLES=OFF -DBOX2D_UNIT_TESTS=OFF -DBOX2D_VALIDATE=OFF -DBUILD_SHARED_LIBS=ON -DBOX2D_AVX2=${{ matrix.avx2 }}
+
+
+    - name: Build Box2D
+      run: cmake --build box2d/build --config Release
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v4.3.4
+      with:
+        name: ${{ matrix.os }}-${{ matrix.arch }}-artifacts 
+        path: |
+          box2d/build/bin/Release/*.dll
+          box2d/build/src/*.so
+          box2d/build/src/*.dylib
+        if-no-files-found: ignore # 'warn' or 'ignore' or 'error'
