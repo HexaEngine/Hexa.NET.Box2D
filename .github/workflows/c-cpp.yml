@@ -42,7 +42,7 @@ jobs:
 
     - name: Configure box2d with CMake
       if: matrix.arch != 'arm64' || matrix.os != 'macos-latest'
-      run: cmake -S box2d -B box2d/build
+      run: cmake -S box2d -B box2d/build  -DBOX2D_SAMPLES=OFF -DBOX2D_UNIT_TESTS=OFF -DBOX2D_VALIDATE=OFF -DBUILD_SHARED_LIBS=ON
 
     - name: Build box2d
       run: cmake --build box2d/build --config Release
