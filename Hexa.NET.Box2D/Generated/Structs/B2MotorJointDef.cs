@@ -85,7 +85,7 @@ namespace Hexa.NET.Box2D
 		/// User data pointer<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "userData")]
-		[NativeName(NativeNameType.Type, "void*")]
+		[NativeName(NativeNameType.Type, "void *")]
 		public unsafe void* UserData;
 
 		/// <summary>

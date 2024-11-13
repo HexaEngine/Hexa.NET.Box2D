@@ -29,21 +29,21 @@ namespace Hexa.NET.Box2D
 		/// Array of begin touch events<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "beginEvents")]
-		[NativeName(NativeNameType.Type, "b2ContactBeginTouchEvent*")]
+		[NativeName(NativeNameType.Type, "b2ContactBeginTouchEvent *")]
 		public unsafe B2ContactBeginTouchEvent* BeginEvents;
 
 		/// <summary>
 		/// Array of end touch events<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "endEvents")]
-		[NativeName(NativeNameType.Type, "b2ContactEndTouchEvent*")]
+		[NativeName(NativeNameType.Type, "b2ContactEndTouchEvent *")]
 		public unsafe B2ContactEndTouchEvent* EndEvents;
 
 		/// <summary>
 		/// Array of hit events<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "hitEvents")]
-		[NativeName(NativeNameType.Type, "b2ContactHitEvent*")]
+		[NativeName(NativeNameType.Type, "b2ContactHitEvent *")]
 		public unsafe B2ContactHitEvent* HitEvents;
 
 		/// <summary>

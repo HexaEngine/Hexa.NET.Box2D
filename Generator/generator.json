@@ -6,7 +6,6 @@
   "GenerateConstructorsForStructs": true,
   "GeneratePlaceholderComments": false,
   "GenerateMetadata": true,
-  "ImportType": "VTable",
   "ConstantNamingConvention": "Unknown",
   "TypeMappings": {
     "b2Vec2": "Vector2"

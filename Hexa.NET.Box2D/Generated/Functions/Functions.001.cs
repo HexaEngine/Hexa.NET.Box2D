@@ -19,6 +19,114 @@ namespace Hexa.NET.Box2D
 	{
 
 		/// <summary>
+		/// Adjust the restitution threshold. It is recommended not to make this value very small<br/>
+		/// because it will prevent bodies from sleeping. Typically in meters per second.<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2World_SetRestitutionThreshold")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void WorldSetRestitutionThreshold([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "float")] float value)
+		{
+			WorldSetRestitutionThresholdNative(worldId, value);
+		}
+
+		/// <summary>
+		/// Adjust the hit event threshold. This controls the collision velocity needed to generate a b2ContactHitEvent.<br/>
+		/// Typically in meters per second.<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2World_SetHitEventThreshold")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void WorldSetHitEventThresholdNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "float")] float value)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<B2WorldId, float, void>)funcTable[116])(worldId, value);
+			#else
+			((delegate* unmanaged[Cdecl]<B2WorldId, float, void>)funcTable[116])(worldId, value);
+			#endif
+		}
+
+		/// <summary>
+		/// Adjust the hit event threshold. This controls the collision velocity needed to generate a b2ContactHitEvent.<br/>
+		/// Typically in meters per second.<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2World_SetHitEventThreshold")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void WorldSetHitEventThreshold([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "float")] float value)
+		{
+			WorldSetHitEventThresholdNative(worldId, value);
+		}
+
+		/// <summary>
+		/// Register the custom filter callback. This is optional.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2World_SetCustomFilterCallback")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void WorldSetCustomFilterCallbackNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CustomFilterFcn *")] delegate*<B2ShapeId, B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<B2WorldId, delegate*<B2ShapeId, B2ShapeId, void*, bool>*, void*, void>)funcTable[117])(worldId, fcn, context);
+			#else
+			((delegate* unmanaged[Cdecl]<B2WorldId, nint, nint, void>)funcTable[117])(worldId, (nint)fcn, (nint)context);
+			#endif
+		}
+
+		/// <summary>
+		/// Register the custom filter callback. This is optional.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2World_SetCustomFilterCallback")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void WorldSetCustomFilterCallback([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CustomFilterFcn *")] delegate*<B2ShapeId, B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
+		{
+			WorldSetCustomFilterCallbackNative(worldId, fcn, context);
+		}
+
+		/// <summary>
+		/// Register the pre-solve callback. This is optional.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2World_SetPreSolveCallback")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void WorldSetPreSolveCallbackNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2PreSolveFcn *")] delegate*<B2ShapeId, B2ShapeId, B2Manifold*, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<B2WorldId, delegate*<B2ShapeId, B2ShapeId, B2Manifold*, void*, bool>*, void*, void>)funcTable[118])(worldId, fcn, context);
+			#else
+			((delegate* unmanaged[Cdecl]<B2WorldId, nint, nint, void>)funcTable[118])(worldId, (nint)fcn, (nint)context);
+			#endif
+		}
+
+		/// <summary>
+		/// Register the pre-solve callback. This is optional.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2World_SetPreSolveCallback")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void WorldSetPreSolveCallback([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2PreSolveFcn *")] delegate*<B2ShapeId, B2ShapeId, B2Manifold*, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
+		{
+			WorldSetPreSolveCallbackNative(worldId, fcn, context);
+		}
+
+		/// <summary>
+		/// Set the gravity vector for the entire world. Box2D has no concept of an up direction and this<br/>
+		/// is left as a decision for the application. Typically in m/s^2.<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2World_SetGravity")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void WorldSetGravityNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "gravity")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 gravity)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<B2WorldId, Vector2, void>)funcTable[119])(worldId, gravity);
+			#else
+			((delegate* unmanaged[Cdecl]<B2WorldId, Vector2, void>)funcTable[119])(worldId, gravity);
+			#endif
+		}
+
+		/// <summary>
 		/// Set the gravity vector for the entire world. Box2D has no concept of an up direction and this<br/>
 		/// is left as a decision for the application. Typically in m/s^2.<br/>
 		/// <br/>
@@ -35,12 +143,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_GetGravity")]
 		[return: NativeName(NativeNameType.Type, "b2Vec2")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static Vector2 WorldGetGravityNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2WorldId, Vector2>)vt[120])(worldId);
+			return ((delegate* unmanaged[Cdecl]<B2WorldId, Vector2>)funcTable[120])(worldId);
 			#else
-			return (Vector2)((delegate* unmanaged[Cdecl]<B2WorldId, Vector2>)vt[120])(worldId);
+			return (Vector2)((delegate* unmanaged[Cdecl]<B2WorldId, Vector2>)funcTable[120])(worldId);
 			#endif
 		}
 
@@ -61,12 +170,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_Explode")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void WorldExplodeNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "position")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 position, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "impulse")] [NativeName(NativeNameType.Type, "float")] float impulse)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2WorldId, Vector2, float, float, void>)vt[121])(worldId, position, radius, impulse);
+			((delegate* unmanaged[Cdecl]<B2WorldId, Vector2, float, float, void>)funcTable[121])(worldId, position, radius, impulse);
 			#else
-			((delegate* unmanaged[Cdecl]<B2WorldId, Vector2, float, float, void>)vt[121])(worldId, position, radius, impulse);
+			((delegate* unmanaged[Cdecl]<B2WorldId, Vector2, float, float, void>)funcTable[121])(worldId, position, radius, impulse);
 			#endif
 		}
 
@@ -87,12 +197,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_SetContactTuning")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void WorldSetContactTuningNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "hertz")] [NativeName(NativeNameType.Type, "float")] float hertz, [NativeName(NativeNameType.Param, "dampingRatio")] [NativeName(NativeNameType.Type, "float")] float dampingRatio, [NativeName(NativeNameType.Param, "pushVelocity")] [NativeName(NativeNameType.Type, "float")] float pushVelocity)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2WorldId, float, float, float, void>)vt[122])(worldId, hertz, dampingRatio, pushVelocity);
+			((delegate* unmanaged[Cdecl]<B2WorldId, float, float, float, void>)funcTable[122])(worldId, hertz, dampingRatio, pushVelocity);
 			#else
-			((delegate* unmanaged[Cdecl]<B2WorldId, float, float, float, void>)vt[122])(worldId, hertz, dampingRatio, pushVelocity);
+			((delegate* unmanaged[Cdecl]<B2WorldId, float, float, float, void>)funcTable[122])(worldId, hertz, dampingRatio, pushVelocity);
 			#endif
 		}
 
@@ -113,12 +224,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_EnableWarmStarting")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void WorldEnableWarmStartingNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "flag")] [NativeName(NativeNameType.Type, "bool")] byte flag)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2WorldId, byte, void>)vt[123])(worldId, flag);
+			((delegate* unmanaged[Cdecl]<B2WorldId, byte, void>)funcTable[123])(worldId, flag);
 			#else
-			((delegate* unmanaged[Cdecl]<B2WorldId, byte, void>)vt[123])(worldId, flag);
+			((delegate* unmanaged[Cdecl]<B2WorldId, byte, void>)funcTable[123])(worldId, flag);
 			#endif
 		}
 
@@ -138,12 +250,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_GetProfile")]
 		[return: NativeName(NativeNameType.Type, "b2Profile")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2Profile WorldGetProfileNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2Profile>)vt[124])(worldId);
+			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2Profile>)funcTable[124])(worldId);
 			#else
-			return (B2Profile)((delegate* unmanaged[Cdecl]<B2WorldId, B2Profile>)vt[124])(worldId);
+			return (B2Profile)((delegate* unmanaged[Cdecl]<B2WorldId, B2Profile>)funcTable[124])(worldId);
 			#endif
 		}
 
@@ -163,12 +276,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_GetCounters")]
 		[return: NativeName(NativeNameType.Type, "b2Counters")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2Counters WorldGetCountersNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2Counters>)vt[125])(worldId);
+			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2Counters>)funcTable[125])(worldId);
 			#else
-			return (B2Counters)((delegate* unmanaged[Cdecl]<B2WorldId, B2Counters>)vt[125])(worldId);
+			return (B2Counters)((delegate* unmanaged[Cdecl]<B2WorldId, B2Counters>)funcTable[125])(worldId);
 			#endif
 		}
 
@@ -188,12 +302,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_DumpMemoryStats")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void WorldDumpMemoryStatsNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2WorldId, void>)vt[126])(worldId);
+			((delegate* unmanaged[Cdecl]<B2WorldId, void>)funcTable[126])(worldId);
 			#else
-			((delegate* unmanaged[Cdecl]<B2WorldId, void>)vt[126])(worldId);
+			((delegate* unmanaged[Cdecl]<B2WorldId, void>)funcTable[126])(worldId);
 			#endif
 		}
 
@@ -215,12 +330,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateBody")]
 		[return: NativeName(NativeNameType.Type, "b2BodyId")]
-		internal static B2BodyId CreateBodyNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2BodyDef*")] B2BodyDef* def)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2BodyId CreateBodyNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2BodyDef const *")] B2BodyDef* def)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2BodyDef*, B2BodyId>)vt[127])(worldId, def);
+			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2BodyDef*, B2BodyId>)funcTable[127])(worldId, def);
 			#else
-			return (B2BodyId)((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2BodyId>)vt[127])(worldId, (nint)def);
+			return (B2BodyId)((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2BodyId>)funcTable[127])(worldId, (nint)def);
 			#endif
 		}
 
@@ -232,7 +348,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateBody")]
 		[return: NativeName(NativeNameType.Type, "b2BodyId")]
-		public static B2BodyId CreateBody([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2BodyDef*")] B2BodyDef* def)
+		public static B2BodyId CreateBody([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2BodyDef const *")] B2BodyDef* def)
 		{
 			B2BodyId ret = CreateBodyNative(worldId, def);
 			return ret;
@@ -246,7 +362,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateBody")]
 		[return: NativeName(NativeNameType.Type, "b2BodyId")]
-		public static B2BodyId CreateBody([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2BodyDef*")] ref B2BodyDef def)
+		public static B2BodyId CreateBody([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2BodyDef const *")] ref B2BodyDef def)
 		{
 			fixed (B2BodyDef* pdef = &def)
 			{
@@ -261,12 +377,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DestroyBody")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void DestroyBodyNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, void>)vt[128])(bodyId);
+			((delegate* unmanaged[Cdecl]<B2BodyId, void>)funcTable[128])(bodyId);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, void>)vt[128])(bodyId);
+			((delegate* unmanaged[Cdecl]<B2BodyId, void>)funcTable[128])(bodyId);
 			#endif
 		}
 
@@ -286,12 +403,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_IsValid")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte BodyIsValidNative([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId id)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, byte>)vt[129])(id);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, byte>)funcTable[129])(id);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2BodyId, byte>)vt[129])(id);
+			return (byte)((delegate* unmanaged[Cdecl]<B2BodyId, byte>)funcTable[129])(id);
 			#endif
 		}
 
@@ -311,12 +429,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetType")]
 		[return: NativeName(NativeNameType.Type, "b2BodyType")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2BodyType BodyGetTypeNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2BodyType>)vt[130])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2BodyType>)funcTable[130])(bodyId);
 			#else
-			return (B2BodyType)((delegate* unmanaged[Cdecl]<B2BodyId, B2BodyType>)vt[130])(bodyId);
+			return (B2BodyType)((delegate* unmanaged[Cdecl]<B2BodyId, B2BodyType>)funcTable[130])(bodyId);
 			#endif
 		}
 
@@ -337,12 +456,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_SetType")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodySetTypeNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "b2BodyType")] B2BodyType type)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, B2BodyType, void>)vt[131])(bodyId, type);
+			((delegate* unmanaged[Cdecl]<B2BodyId, B2BodyType, void>)funcTable[131])(bodyId, type);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, B2BodyType, void>)vt[131])(bodyId, type);
+			((delegate* unmanaged[Cdecl]<B2BodyId, B2BodyType, void>)funcTable[131])(bodyId, type);
 			#endif
 		}
 
@@ -362,12 +482,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_SetUserData")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void BodySetUserDataNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "userData")] [NativeName(NativeNameType.Type, "void*")] void* userData)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void BodySetUserDataNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "userData")] [NativeName(NativeNameType.Type, "void *")] void* userData)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, void*, void>)vt[132])(bodyId, userData);
+			((delegate* unmanaged[Cdecl]<B2BodyId, void*, void>)funcTable[132])(bodyId, userData);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, nint, void>)vt[132])(bodyId, (nint)userData);
+			((delegate* unmanaged[Cdecl]<B2BodyId, nint, void>)funcTable[132])(bodyId, (nint)userData);
 			#endif
 		}
 
@@ -376,7 +497,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_SetUserData")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void BodySetUserData([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "userData")] [NativeName(NativeNameType.Type, "void*")] void* userData)
+		public static void BodySetUserData([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "userData")] [NativeName(NativeNameType.Type, "void *")] void* userData)
 		{
 			BodySetUserDataNative(bodyId, userData);
 		}
@@ -385,13 +506,14 @@ namespace Hexa.NET.Box2D
 		/// Get the user data stored in a body<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetUserData")]
-		[return: NativeName(NativeNameType.Type, "void*")]
+		[return: NativeName(NativeNameType.Type, "void *")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void* BodyGetUserDataNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, void*>)vt[133])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, void*>)funcTable[133])(bodyId);
 			#else
-			return (void*)((delegate* unmanaged[Cdecl]<B2BodyId, nint>)vt[133])(bodyId);
+			return (void*)((delegate* unmanaged[Cdecl]<B2BodyId, nint>)funcTable[133])(bodyId);
 			#endif
 		}
 
@@ -399,7 +521,7 @@ namespace Hexa.NET.Box2D
 		/// Get the user data stored in a body<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetUserData")]
-		[return: NativeName(NativeNameType.Type, "void*")]
+		[return: NativeName(NativeNameType.Type, "void *")]
 		public static void* BodyGetUserData([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			void* ret = BodyGetUserDataNative(bodyId);
@@ -411,12 +533,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetPosition")]
 		[return: NativeName(NativeNameType.Type, "b2Vec2")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static Vector2 BodyGetPositionNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, Vector2>)vt[134])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, Vector2>)funcTable[134])(bodyId);
 			#else
-			return (Vector2)((delegate* unmanaged[Cdecl]<B2BodyId, Vector2>)vt[134])(bodyId);
+			return (Vector2)((delegate* unmanaged[Cdecl]<B2BodyId, Vector2>)funcTable[134])(bodyId);
 			#endif
 		}
 
@@ -436,12 +559,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetRotation")]
 		[return: NativeName(NativeNameType.Type, "b2Rot")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2Rot BodyGetRotationNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2Rot>)vt[135])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2Rot>)funcTable[135])(bodyId);
 			#else
-			return (B2Rot)((delegate* unmanaged[Cdecl]<B2BodyId, B2Rot>)vt[135])(bodyId);
+			return (B2Rot)((delegate* unmanaged[Cdecl]<B2BodyId, B2Rot>)funcTable[135])(bodyId);
 			#endif
 		}
 
@@ -461,12 +585,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetTransform")]
 		[return: NativeName(NativeNameType.Type, "b2Transform")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2Transform BodyGetTransformNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2Transform>)vt[136])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2Transform>)funcTable[136])(bodyId);
 			#else
-			return (B2Transform)((delegate* unmanaged[Cdecl]<B2BodyId, B2Transform>)vt[136])(bodyId);
+			return (B2Transform)((delegate* unmanaged[Cdecl]<B2BodyId, B2Transform>)funcTable[136])(bodyId);
 			#endif
 		}
 
@@ -487,12 +612,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_SetTransform")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodySetTransformNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "position")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 position, [NativeName(NativeNameType.Param, "rotation")] [NativeName(NativeNameType.Type, "b2Rot")] B2Rot rotation)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, B2Rot, void>)vt[137])(bodyId, position, rotation);
+			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, B2Rot, void>)funcTable[137])(bodyId, position, rotation);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, B2Rot, void>)vt[137])(bodyId, position, rotation);
+			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, B2Rot, void>)funcTable[137])(bodyId, position, rotation);
 			#endif
 		}
 
@@ -512,12 +638,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetLocalPoint")]
 		[return: NativeName(NativeNameType.Type, "b2Vec2")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static Vector2 BodyGetLocalPointNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "worldPoint")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 worldPoint)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2>)vt[138])(bodyId, worldPoint);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2>)funcTable[138])(bodyId, worldPoint);
 			#else
-			return (Vector2)((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2>)vt[138])(bodyId, worldPoint);
+			return (Vector2)((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2>)funcTable[138])(bodyId, worldPoint);
 			#endif
 		}
 
@@ -537,12 +664,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetWorldPoint")]
 		[return: NativeName(NativeNameType.Type, "b2Vec2")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static Vector2 BodyGetWorldPointNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "localPoint")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 localPoint)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2>)vt[139])(bodyId, localPoint);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2>)funcTable[139])(bodyId, localPoint);
 			#else
-			return (Vector2)((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2>)vt[139])(bodyId, localPoint);
+			return (Vector2)((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2>)funcTable[139])(bodyId, localPoint);
 			#endif
 		}
 
@@ -562,12 +690,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetLocalVector")]
 		[return: NativeName(NativeNameType.Type, "b2Vec2")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static Vector2 BodyGetLocalVectorNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "worldVector")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 worldVector)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2>)vt[140])(bodyId, worldVector);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2>)funcTable[140])(bodyId, worldVector);
 			#else
-			return (Vector2)((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2>)vt[140])(bodyId, worldVector);
+			return (Vector2)((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2>)funcTable[140])(bodyId, worldVector);
 			#endif
 		}
 
@@ -587,12 +716,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetWorldVector")]
 		[return: NativeName(NativeNameType.Type, "b2Vec2")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static Vector2 BodyGetWorldVectorNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "localVector")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 localVector)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2>)vt[141])(bodyId, localVector);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2>)funcTable[141])(bodyId, localVector);
 			#else
-			return (Vector2)((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2>)vt[141])(bodyId, localVector);
+			return (Vector2)((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2>)funcTable[141])(bodyId, localVector);
 			#endif
 		}
 
@@ -612,12 +742,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetLinearVelocity")]
 		[return: NativeName(NativeNameType.Type, "b2Vec2")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static Vector2 BodyGetLinearVelocityNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, Vector2>)vt[142])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, Vector2>)funcTable[142])(bodyId);
 			#else
-			return (Vector2)((delegate* unmanaged[Cdecl]<B2BodyId, Vector2>)vt[142])(bodyId);
+			return (Vector2)((delegate* unmanaged[Cdecl]<B2BodyId, Vector2>)funcTable[142])(bodyId);
 			#endif
 		}
 
@@ -637,12 +768,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetAngularVelocity")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float BodyGetAngularVelocityNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, float>)vt[143])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, float>)funcTable[143])(bodyId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2BodyId, float>)vt[143])(bodyId);
+			return (float)((delegate* unmanaged[Cdecl]<B2BodyId, float>)funcTable[143])(bodyId);
 			#endif
 		}
 
@@ -662,12 +794,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_SetLinearVelocity")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodySetLinearVelocityNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "linearVelocity")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 linearVelocity)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, void>)vt[144])(bodyId, linearVelocity);
+			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, void>)funcTable[144])(bodyId, linearVelocity);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, void>)vt[144])(bodyId, linearVelocity);
+			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, void>)funcTable[144])(bodyId, linearVelocity);
 			#endif
 		}
 
@@ -686,12 +819,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_SetAngularVelocity")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodySetAngularVelocityNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "angularVelocity")] [NativeName(NativeNameType.Type, "float")] float angularVelocity)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, float, void>)vt[145])(bodyId, angularVelocity);
+			((delegate* unmanaged[Cdecl]<B2BodyId, float, void>)funcTable[145])(bodyId, angularVelocity);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, float, void>)vt[145])(bodyId, angularVelocity);
+			((delegate* unmanaged[Cdecl]<B2BodyId, float, void>)funcTable[145])(bodyId, angularVelocity);
 			#endif
 		}
 
@@ -713,12 +847,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_ApplyForce")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodyApplyForceNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "force")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 force, [NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 point, [NativeName(NativeNameType.Param, "wake")] [NativeName(NativeNameType.Type, "bool")] byte wake)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2, byte, void>)vt[146])(bodyId, force, point, wake);
+			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2, byte, void>)funcTable[146])(bodyId, force, point, wake);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2, byte, void>)vt[146])(bodyId, force, point, wake);
+			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2, byte, void>)funcTable[146])(bodyId, force, point, wake);
 			#endif
 		}
 
@@ -742,12 +877,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_ApplyForceToCenter")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodyApplyForceToCenterNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "force")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 force, [NativeName(NativeNameType.Param, "wake")] [NativeName(NativeNameType.Type, "bool")] byte wake)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, byte, void>)vt[147])(bodyId, force, wake);
+			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, byte, void>)funcTable[147])(bodyId, force, wake);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, byte, void>)vt[147])(bodyId, force, wake);
+			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, byte, void>)funcTable[147])(bodyId, force, wake);
 			#endif
 		}
 
@@ -770,12 +906,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_ApplyTorque")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodyApplyTorqueNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "torque")] [NativeName(NativeNameType.Type, "float")] float torque, [NativeName(NativeNameType.Param, "wake")] [NativeName(NativeNameType.Type, "bool")] byte wake)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, float, byte, void>)vt[148])(bodyId, torque, wake);
+			((delegate* unmanaged[Cdecl]<B2BodyId, float, byte, void>)funcTable[148])(bodyId, torque, wake);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, float, byte, void>)vt[148])(bodyId, torque, wake);
+			((delegate* unmanaged[Cdecl]<B2BodyId, float, byte, void>)funcTable[148])(bodyId, torque, wake);
 			#endif
 		}
 
@@ -800,12 +937,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_ApplyLinearImpulse")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodyApplyLinearImpulseNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "impulse")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 impulse, [NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 point, [NativeName(NativeNameType.Param, "wake")] [NativeName(NativeNameType.Type, "bool")] byte wake)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2, byte, void>)vt[149])(bodyId, impulse, point, wake);
+			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2, byte, void>)funcTable[149])(bodyId, impulse, point, wake);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2, byte, void>)vt[149])(bodyId, impulse, point, wake);
+			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, Vector2, byte, void>)funcTable[149])(bodyId, impulse, point, wake);
 			#endif
 		}
 
@@ -830,12 +968,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_ApplyLinearImpulseToCenter")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodyApplyLinearImpulseToCenterNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "impulse")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 impulse, [NativeName(NativeNameType.Param, "wake")] [NativeName(NativeNameType.Type, "bool")] byte wake)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, byte, void>)vt[150])(bodyId, impulse, wake);
+			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, byte, void>)funcTable[150])(bodyId, impulse, wake);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, byte, void>)vt[150])(bodyId, impulse, wake);
+			((delegate* unmanaged[Cdecl]<B2BodyId, Vector2, byte, void>)funcTable[150])(bodyId, impulse, wake);
 			#endif
 		}
 
@@ -858,12 +997,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_ApplyAngularImpulse")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodyApplyAngularImpulseNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "impulse")] [NativeName(NativeNameType.Type, "float")] float impulse, [NativeName(NativeNameType.Param, "wake")] [NativeName(NativeNameType.Type, "bool")] byte wake)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, float, byte, void>)vt[151])(bodyId, impulse, wake);
+			((delegate* unmanaged[Cdecl]<B2BodyId, float, byte, void>)funcTable[151])(bodyId, impulse, wake);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, float, byte, void>)vt[151])(bodyId, impulse, wake);
+			((delegate* unmanaged[Cdecl]<B2BodyId, float, byte, void>)funcTable[151])(bodyId, impulse, wake);
 			#endif
 		}
 
@@ -884,12 +1024,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetMass")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float BodyGetMassNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, float>)vt[152])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, float>)funcTable[152])(bodyId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2BodyId, float>)vt[152])(bodyId);
+			return (float)((delegate* unmanaged[Cdecl]<B2BodyId, float>)funcTable[152])(bodyId);
 			#endif
 		}
 
@@ -909,12 +1050,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetInertiaTensor")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float BodyGetInertiaTensorNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, float>)vt[153])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, float>)funcTable[153])(bodyId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2BodyId, float>)vt[153])(bodyId);
+			return (float)((delegate* unmanaged[Cdecl]<B2BodyId, float>)funcTable[153])(bodyId);
 			#endif
 		}
 
@@ -934,12 +1076,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetLocalCenterOfMass")]
 		[return: NativeName(NativeNameType.Type, "b2Vec2")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static Vector2 BodyGetLocalCenterOfMassNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, Vector2>)vt[154])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, Vector2>)funcTable[154])(bodyId);
 			#else
-			return (Vector2)((delegate* unmanaged[Cdecl]<B2BodyId, Vector2>)vt[154])(bodyId);
+			return (Vector2)((delegate* unmanaged[Cdecl]<B2BodyId, Vector2>)funcTable[154])(bodyId);
 			#endif
 		}
 
@@ -959,12 +1102,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetWorldCenterOfMass")]
 		[return: NativeName(NativeNameType.Type, "b2Vec2")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static Vector2 BodyGetWorldCenterOfMassNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, Vector2>)vt[155])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, Vector2>)funcTable[155])(bodyId);
 			#else
-			return (Vector2)((delegate* unmanaged[Cdecl]<B2BodyId, Vector2>)vt[155])(bodyId);
+			return (Vector2)((delegate* unmanaged[Cdecl]<B2BodyId, Vector2>)funcTable[155])(bodyId);
 			#endif
 		}
 
@@ -986,12 +1130,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_SetMassData")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodySetMassDataNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "massData")] [NativeName(NativeNameType.Type, "b2MassData")] B2MassData massData)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, B2MassData, void>)vt[156])(bodyId, massData);
+			((delegate* unmanaged[Cdecl]<B2BodyId, B2MassData, void>)funcTable[156])(bodyId, massData);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, B2MassData, void>)vt[156])(bodyId, massData);
+			((delegate* unmanaged[Cdecl]<B2BodyId, B2MassData, void>)funcTable[156])(bodyId, massData);
 			#endif
 		}
 
@@ -1012,12 +1157,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetMassData")]
 		[return: NativeName(NativeNameType.Type, "b2MassData")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2MassData BodyGetMassDataNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2MassData>)vt[157])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2MassData>)funcTable[157])(bodyId);
 			#else
-			return (B2MassData)((delegate* unmanaged[Cdecl]<B2BodyId, B2MassData>)vt[157])(bodyId);
+			return (B2MassData)((delegate* unmanaged[Cdecl]<B2BodyId, B2MassData>)funcTable[157])(bodyId);
 			#endif
 		}
 
@@ -1041,12 +1187,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_ApplyMassFromShapes")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodyApplyMassFromShapesNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, void>)vt[158])(bodyId);
+			((delegate* unmanaged[Cdecl]<B2BodyId, void>)funcTable[158])(bodyId);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, void>)vt[158])(bodyId);
+			((delegate* unmanaged[Cdecl]<B2BodyId, void>)funcTable[158])(bodyId);
 			#endif
 		}
 
@@ -1070,12 +1217,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_SetAutomaticMass")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodySetAutomaticMassNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "automaticMass")] [NativeName(NativeNameType.Type, "bool")] byte automaticMass)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)vt[159])(bodyId, automaticMass);
+			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)funcTable[159])(bodyId, automaticMass);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)vt[159])(bodyId, automaticMass);
+			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)funcTable[159])(bodyId, automaticMass);
 			#endif
 		}
 
@@ -1095,12 +1243,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetAutomaticMass")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte BodyGetAutomaticMassNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, byte>)vt[160])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, byte>)funcTable[160])(bodyId);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2BodyId, byte>)vt[160])(bodyId);
+			return (byte)((delegate* unmanaged[Cdecl]<B2BodyId, byte>)funcTable[160])(bodyId);
 			#endif
 		}
 
@@ -1120,12 +1269,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_SetLinearDamping")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodySetLinearDampingNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "linearDamping")] [NativeName(NativeNameType.Type, "float")] float linearDamping)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, float, void>)vt[161])(bodyId, linearDamping);
+			((delegate* unmanaged[Cdecl]<B2BodyId, float, void>)funcTable[161])(bodyId, linearDamping);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, float, void>)vt[161])(bodyId, linearDamping);
+			((delegate* unmanaged[Cdecl]<B2BodyId, float, void>)funcTable[161])(bodyId, linearDamping);
 			#endif
 		}
 
@@ -1144,12 +1294,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetLinearDamping")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float BodyGetLinearDampingNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, float>)vt[162])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, float>)funcTable[162])(bodyId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2BodyId, float>)vt[162])(bodyId);
+			return (float)((delegate* unmanaged[Cdecl]<B2BodyId, float>)funcTable[162])(bodyId);
 			#endif
 		}
 
@@ -1169,12 +1320,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_SetAngularDamping")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodySetAngularDampingNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "angularDamping")] [NativeName(NativeNameType.Type, "float")] float angularDamping)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, float, void>)vt[163])(bodyId, angularDamping);
+			((delegate* unmanaged[Cdecl]<B2BodyId, float, void>)funcTable[163])(bodyId, angularDamping);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, float, void>)vt[163])(bodyId, angularDamping);
+			((delegate* unmanaged[Cdecl]<B2BodyId, float, void>)funcTable[163])(bodyId, angularDamping);
 			#endif
 		}
 
@@ -1193,12 +1345,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetAngularDamping")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float BodyGetAngularDampingNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, float>)vt[164])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, float>)funcTable[164])(bodyId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2BodyId, float>)vt[164])(bodyId);
+			return (float)((delegate* unmanaged[Cdecl]<B2BodyId, float>)funcTable[164])(bodyId);
 			#endif
 		}
 
@@ -1219,12 +1372,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_SetGravityScale")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodySetGravityScaleNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "gravityScale")] [NativeName(NativeNameType.Type, "float")] float gravityScale)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, float, void>)vt[165])(bodyId, gravityScale);
+			((delegate* unmanaged[Cdecl]<B2BodyId, float, void>)funcTable[165])(bodyId, gravityScale);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, float, void>)vt[165])(bodyId, gravityScale);
+			((delegate* unmanaged[Cdecl]<B2BodyId, float, void>)funcTable[165])(bodyId, gravityScale);
 			#endif
 		}
 
@@ -1244,12 +1398,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetGravityScale")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float BodyGetGravityScaleNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, float>)vt[166])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, float>)funcTable[166])(bodyId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2BodyId, float>)vt[166])(bodyId);
+			return (float)((delegate* unmanaged[Cdecl]<B2BodyId, float>)funcTable[166])(bodyId);
 			#endif
 		}
 
@@ -1269,12 +1424,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_IsAwake")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte BodyIsAwakeNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, byte>)vt[167])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, byte>)funcTable[167])(bodyId);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2BodyId, byte>)vt[167])(bodyId);
+			return (byte)((delegate* unmanaged[Cdecl]<B2BodyId, byte>)funcTable[167])(bodyId);
 			#endif
 		}
 
@@ -1295,12 +1451,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_SetAwake")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodySetAwakeNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "awake")] [NativeName(NativeNameType.Type, "bool")] byte awake)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)vt[168])(bodyId, awake);
+			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)funcTable[168])(bodyId, awake);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)vt[168])(bodyId, awake);
+			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)funcTable[168])(bodyId, awake);
 			#endif
 		}
 
@@ -1320,12 +1477,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_EnableSleep")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodyEnableSleepNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "enableSleep")] [NativeName(NativeNameType.Type, "bool")] byte enableSleep)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)vt[169])(bodyId, enableSleep);
+			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)funcTable[169])(bodyId, enableSleep);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)vt[169])(bodyId, enableSleep);
+			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)funcTable[169])(bodyId, enableSleep);
 			#endif
 		}
 
@@ -1344,12 +1502,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_IsSleepEnabled")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte BodyIsSleepEnabledNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, byte>)vt[170])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, byte>)funcTable[170])(bodyId);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2BodyId, byte>)vt[170])(bodyId);
+			return (byte)((delegate* unmanaged[Cdecl]<B2BodyId, byte>)funcTable[170])(bodyId);
 			#endif
 		}
 
@@ -1369,12 +1528,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_SetSleepThreshold")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodySetSleepThresholdNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "sleepVelocity")] [NativeName(NativeNameType.Type, "float")] float sleepVelocity)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, float, void>)vt[171])(bodyId, sleepVelocity);
+			((delegate* unmanaged[Cdecl]<B2BodyId, float, void>)funcTable[171])(bodyId, sleepVelocity);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, float, void>)vt[171])(bodyId, sleepVelocity);
+			((delegate* unmanaged[Cdecl]<B2BodyId, float, void>)funcTable[171])(bodyId, sleepVelocity);
 			#endif
 		}
 
@@ -1393,12 +1553,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetSleepThreshold")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float BodyGetSleepThresholdNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, float>)vt[172])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, float>)funcTable[172])(bodyId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2BodyId, float>)vt[172])(bodyId);
+			return (float)((delegate* unmanaged[Cdecl]<B2BodyId, float>)funcTable[172])(bodyId);
 			#endif
 		}
 
@@ -1418,12 +1579,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_IsEnabled")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte BodyIsEnabledNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, byte>)vt[173])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, byte>)funcTable[173])(bodyId);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2BodyId, byte>)vt[173])(bodyId);
+			return (byte)((delegate* unmanaged[Cdecl]<B2BodyId, byte>)funcTable[173])(bodyId);
 			#endif
 		}
 
@@ -1443,12 +1605,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_Disable")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodyDisableNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, void>)vt[174])(bodyId);
+			((delegate* unmanaged[Cdecl]<B2BodyId, void>)funcTable[174])(bodyId);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, void>)vt[174])(bodyId);
+			((delegate* unmanaged[Cdecl]<B2BodyId, void>)funcTable[174])(bodyId);
 			#endif
 		}
 
@@ -1467,12 +1630,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_Enable")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodyEnableNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, void>)vt[175])(bodyId);
+			((delegate* unmanaged[Cdecl]<B2BodyId, void>)funcTable[175])(bodyId);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, void>)vt[175])(bodyId);
+			((delegate* unmanaged[Cdecl]<B2BodyId, void>)funcTable[175])(bodyId);
 			#endif
 		}
 
@@ -1491,12 +1655,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_SetFixedRotation")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodySetFixedRotationNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "flag")] [NativeName(NativeNameType.Type, "bool")] byte flag)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)vt[176])(bodyId, flag);
+			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)funcTable[176])(bodyId, flag);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)vt[176])(bodyId, flag);
+			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)funcTable[176])(bodyId, flag);
 			#endif
 		}
 
@@ -1515,12 +1680,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_IsFixedRotation")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte BodyIsFixedRotationNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, byte>)vt[177])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, byte>)funcTable[177])(bodyId);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2BodyId, byte>)vt[177])(bodyId);
+			return (byte)((delegate* unmanaged[Cdecl]<B2BodyId, byte>)funcTable[177])(bodyId);
 			#endif
 		}
 
@@ -1541,12 +1707,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_SetBullet")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodySetBulletNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "flag")] [NativeName(NativeNameType.Type, "bool")] byte flag)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)vt[178])(bodyId, flag);
+			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)funcTable[178])(bodyId, flag);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)vt[178])(bodyId, flag);
+			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)funcTable[178])(bodyId, flag);
 			#endif
 		}
 
@@ -1566,12 +1733,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_IsBullet")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte BodyIsBulletNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, byte>)vt[179])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, byte>)funcTable[179])(bodyId);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2BodyId, byte>)vt[179])(bodyId);
+			return (byte)((delegate* unmanaged[Cdecl]<B2BodyId, byte>)funcTable[179])(bodyId);
 			#endif
 		}
 
@@ -1592,12 +1760,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_EnableHitEvents")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void BodyEnableHitEventsNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "enableHitEvents")] [NativeName(NativeNameType.Type, "bool")] byte enableHitEvents)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)vt[180])(bodyId, enableHitEvents);
+			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)funcTable[180])(bodyId, enableHitEvents);
 			#else
-			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)vt[180])(bodyId, enableHitEvents);
+			((delegate* unmanaged[Cdecl]<B2BodyId, byte, void>)funcTable[180])(bodyId, enableHitEvents);
 			#endif
 		}
 
@@ -1617,12 +1786,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetShapeCount")]
 		[return: NativeName(NativeNameType.Type, "int")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static int BodyGetShapeCountNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, int>)vt[181])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, int>)funcTable[181])(bodyId);
 			#else
-			return (int)((delegate* unmanaged[Cdecl]<B2BodyId, int>)vt[181])(bodyId);
+			return (int)((delegate* unmanaged[Cdecl]<B2BodyId, int>)funcTable[181])(bodyId);
 			#endif
 		}
 
@@ -1643,12 +1813,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetShapes")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		internal static int BodyGetShapesNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "shapeArray")] [NativeName(NativeNameType.Type, "b2ShapeId*")] B2ShapeId* shapeArray, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static int BodyGetShapesNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "shapeArray")] [NativeName(NativeNameType.Type, "b2ShapeId *")] B2ShapeId* shapeArray, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2ShapeId*, int, int>)vt[182])(bodyId, shapeArray, capacity);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2ShapeId*, int, int>)funcTable[182])(bodyId, shapeArray, capacity);
 			#else
-			return (int)((delegate* unmanaged[Cdecl]<B2BodyId, nint, int, int>)vt[182])(bodyId, (nint)shapeArray, capacity);
+			return (int)((delegate* unmanaged[Cdecl]<B2BodyId, nint, int, int>)funcTable[182])(bodyId, (nint)shapeArray, capacity);
 			#endif
 		}
 
@@ -1658,7 +1829,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetShapes")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int BodyGetShapes([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "shapeArray")] [NativeName(NativeNameType.Type, "b2ShapeId*")] B2ShapeId* shapeArray, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
+		public static int BodyGetShapes([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "shapeArray")] [NativeName(NativeNameType.Type, "b2ShapeId *")] B2ShapeId* shapeArray, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
 		{
 			int ret = BodyGetShapesNative(bodyId, shapeArray, capacity);
 			return ret;
@@ -1670,7 +1841,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetShapes")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int BodyGetShapes([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "shapeArray")] [NativeName(NativeNameType.Type, "b2ShapeId*")] ref B2ShapeId shapeArray, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
+		public static int BodyGetShapes([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "shapeArray")] [NativeName(NativeNameType.Type, "b2ShapeId *")] ref B2ShapeId shapeArray, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
 		{
 			fixed (B2ShapeId* pshapeArray = &shapeArray)
 			{
@@ -1684,12 +1855,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetJointCount")]
 		[return: NativeName(NativeNameType.Type, "int")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static int BodyGetJointCountNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, int>)vt[183])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, int>)funcTable[183])(bodyId);
 			#else
-			return (int)((delegate* unmanaged[Cdecl]<B2BodyId, int>)vt[183])(bodyId);
+			return (int)((delegate* unmanaged[Cdecl]<B2BodyId, int>)funcTable[183])(bodyId);
 			#endif
 		}
 
@@ -1710,12 +1882,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetJoints")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		internal static int BodyGetJointsNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "jointArray")] [NativeName(NativeNameType.Type, "b2JointId*")] B2JointId* jointArray, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static int BodyGetJointsNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "jointArray")] [NativeName(NativeNameType.Type, "b2JointId *")] B2JointId* jointArray, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2JointId*, int, int>)vt[184])(bodyId, jointArray, capacity);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2JointId*, int, int>)funcTable[184])(bodyId, jointArray, capacity);
 			#else
-			return (int)((delegate* unmanaged[Cdecl]<B2BodyId, nint, int, int>)vt[184])(bodyId, (nint)jointArray, capacity);
+			return (int)((delegate* unmanaged[Cdecl]<B2BodyId, nint, int, int>)funcTable[184])(bodyId, (nint)jointArray, capacity);
 			#endif
 		}
 
@@ -1725,7 +1898,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetJoints")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int BodyGetJoints([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "jointArray")] [NativeName(NativeNameType.Type, "b2JointId*")] B2JointId* jointArray, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
+		public static int BodyGetJoints([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "jointArray")] [NativeName(NativeNameType.Type, "b2JointId *")] B2JointId* jointArray, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
 		{
 			int ret = BodyGetJointsNative(bodyId, jointArray, capacity);
 			return ret;
@@ -1737,7 +1910,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetJoints")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int BodyGetJoints([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "jointArray")] [NativeName(NativeNameType.Type, "b2JointId*")] ref B2JointId jointArray, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
+		public static int BodyGetJoints([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "jointArray")] [NativeName(NativeNameType.Type, "b2JointId *")] ref B2JointId jointArray, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
 		{
 			fixed (B2JointId* pjointArray = &jointArray)
 			{
@@ -1751,12 +1924,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetContactCapacity")]
 		[return: NativeName(NativeNameType.Type, "int")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static int BodyGetContactCapacityNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, int>)vt[185])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, int>)funcTable[185])(bodyId);
 			#else
-			return (int)((delegate* unmanaged[Cdecl]<B2BodyId, int>)vt[185])(bodyId);
+			return (int)((delegate* unmanaged[Cdecl]<B2BodyId, int>)funcTable[185])(bodyId);
 			#endif
 		}
 
@@ -1776,12 +1950,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetContactData")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		internal static int BodyGetContactDataNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "contactData")] [NativeName(NativeNameType.Type, "b2ContactData*")] B2ContactData* contactData, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static int BodyGetContactDataNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "contactData")] [NativeName(NativeNameType.Type, "b2ContactData *")] B2ContactData* contactData, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2ContactData*, int, int>)vt[186])(bodyId, contactData, capacity);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2ContactData*, int, int>)funcTable[186])(bodyId, contactData, capacity);
 			#else
-			return (int)((delegate* unmanaged[Cdecl]<B2BodyId, nint, int, int>)vt[186])(bodyId, (nint)contactData, capacity);
+			return (int)((delegate* unmanaged[Cdecl]<B2BodyId, nint, int, int>)funcTable[186])(bodyId, (nint)contactData, capacity);
 			#endif
 		}
 
@@ -1790,7 +1965,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetContactData")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int BodyGetContactData([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "contactData")] [NativeName(NativeNameType.Type, "b2ContactData*")] B2ContactData* contactData, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
+		public static int BodyGetContactData([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "contactData")] [NativeName(NativeNameType.Type, "b2ContactData *")] B2ContactData* contactData, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
 		{
 			int ret = BodyGetContactDataNative(bodyId, contactData, capacity);
 			return ret;
@@ -1801,7 +1976,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_GetContactData")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int BodyGetContactData([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "contactData")] [NativeName(NativeNameType.Type, "b2ContactData*")] ref B2ContactData contactData, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
+		public static int BodyGetContactData([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "contactData")] [NativeName(NativeNameType.Type, "b2ContactData *")] ref B2ContactData contactData, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
 		{
 			fixed (B2ContactData* pcontactData = &contactData)
 			{
@@ -1816,12 +1991,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Body_ComputeAABB")]
 		[return: NativeName(NativeNameType.Type, "b2AABB")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2AABB BodyComputeAABBNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2AABB>)vt[187])(bodyId);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2AABB>)funcTable[187])(bodyId);
 			#else
-			return (B2AABB)((delegate* unmanaged[Cdecl]<B2BodyId, B2AABB>)vt[187])(bodyId);
+			return (B2AABB)((delegate* unmanaged[Cdecl]<B2BodyId, B2AABB>)funcTable[187])(bodyId);
 			#endif
 		}
 
@@ -1844,12 +2020,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateCircleShape")]
 		[return: NativeName(NativeNameType.Type, "b2ShapeId")]
-		internal static B2ShapeId CreateCircleShapeNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ShapeDef*")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circle)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2ShapeId CreateCircleShapeNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ShapeDef const *")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circle)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2ShapeDef*, B2Circle*, B2ShapeId>)vt[188])(bodyId, def, circle);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2ShapeDef*, B2Circle*, B2ShapeId>)funcTable[188])(bodyId, def, circle);
 			#else
-			return (B2ShapeId)((delegate* unmanaged[Cdecl]<B2BodyId, nint, nint, B2ShapeId>)vt[188])(bodyId, (nint)def, (nint)circle);
+			return (B2ShapeId)((delegate* unmanaged[Cdecl]<B2BodyId, nint, nint, B2ShapeId>)funcTable[188])(bodyId, (nint)def, (nint)circle);
 			#endif
 		}
 
@@ -1860,7 +2037,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateCircleShape")]
 		[return: NativeName(NativeNameType.Type, "b2ShapeId")]
-		public static B2ShapeId CreateCircleShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ShapeDef*")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circle)
+		public static B2ShapeId CreateCircleShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ShapeDef const *")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circle)
 		{
 			B2ShapeId ret = CreateCircleShapeNative(bodyId, def, circle);
 			return ret;
@@ -1873,7 +2050,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateCircleShape")]
 		[return: NativeName(NativeNameType.Type, "b2ShapeId")]
-		public static B2ShapeId CreateCircleShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ShapeDef*")] ref B2ShapeDef def, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circle)
+		public static B2ShapeId CreateCircleShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ShapeDef const *")] ref B2ShapeDef def, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circle)
 		{
 			fixed (B2ShapeDef* pdef = &def)
 			{
@@ -1889,7 +2066,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateCircleShape")]
 		[return: NativeName(NativeNameType.Type, "b2ShapeId")]
-		public static B2ShapeId CreateCircleShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ShapeDef*")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle circle)
+		public static B2ShapeId CreateCircleShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ShapeDef const *")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle circle)
 		{
 			fixed (B2Circle* pcircle = &circle)
 			{
@@ -1905,7 +2082,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateCircleShape")]
 		[return: NativeName(NativeNameType.Type, "b2ShapeId")]
-		public static B2ShapeId CreateCircleShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ShapeDef*")] ref B2ShapeDef def, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle circle)
+		public static B2ShapeId CreateCircleShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ShapeDef const *")] ref B2ShapeDef def, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle circle)
 		{
 			fixed (B2ShapeDef* pdef = &def)
 			{
@@ -1924,12 +2101,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateSegmentShape")]
 		[return: NativeName(NativeNameType.Type, "b2ShapeId")]
-		internal static B2ShapeId CreateSegmentShapeNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ShapeDef*")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "segment")] [NativeName(NativeNameType.Type, "const b2Segment*")] B2Segment* segment)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2ShapeId CreateSegmentShapeNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ShapeDef const *")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "segment")] [NativeName(NativeNameType.Type, "b2Segment const *")] B2Segment* segment)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2ShapeDef*, B2Segment*, B2ShapeId>)vt[189])(bodyId, def, segment);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2ShapeDef*, B2Segment*, B2ShapeId>)funcTable[189])(bodyId, def, segment);
 			#else
-			return (B2ShapeId)((delegate* unmanaged[Cdecl]<B2BodyId, nint, nint, B2ShapeId>)vt[189])(bodyId, (nint)def, (nint)segment);
+			return (B2ShapeId)((delegate* unmanaged[Cdecl]<B2BodyId, nint, nint, B2ShapeId>)funcTable[189])(bodyId, (nint)def, (nint)segment);
 			#endif
 		}
 
@@ -1940,7 +2118,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateSegmentShape")]
 		[return: NativeName(NativeNameType.Type, "b2ShapeId")]
-		public static B2ShapeId CreateSegmentShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ShapeDef*")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "segment")] [NativeName(NativeNameType.Type, "const b2Segment*")] B2Segment* segment)
+		public static B2ShapeId CreateSegmentShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ShapeDef const *")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "segment")] [NativeName(NativeNameType.Type, "b2Segment const *")] B2Segment* segment)
 		{
 			B2ShapeId ret = CreateSegmentShapeNative(bodyId, def, segment);
 			return ret;
@@ -1953,7 +2131,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateSegmentShape")]
 		[return: NativeName(NativeNameType.Type, "b2ShapeId")]
-		public static B2ShapeId CreateSegmentShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ShapeDef*")] ref B2ShapeDef def, [NativeName(NativeNameType.Param, "segment")] [NativeName(NativeNameType.Type, "const b2Segment*")] B2Segment* segment)
+		public static B2ShapeId CreateSegmentShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ShapeDef const *")] ref B2ShapeDef def, [NativeName(NativeNameType.Param, "segment")] [NativeName(NativeNameType.Type, "b2Segment const *")] B2Segment* segment)
 		{
 			fixed (B2ShapeDef* pdef = &def)
 			{
@@ -1969,7 +2147,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateSegmentShape")]
 		[return: NativeName(NativeNameType.Type, "b2ShapeId")]
-		public static B2ShapeId CreateSegmentShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ShapeDef*")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "segment")] [NativeName(NativeNameType.Type, "const b2Segment*")] ref B2Segment segment)
+		public static B2ShapeId CreateSegmentShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ShapeDef const *")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "segment")] [NativeName(NativeNameType.Type, "b2Segment const *")] ref B2Segment segment)
 		{
 			fixed (B2Segment* psegment = &segment)
 			{
@@ -1985,7 +2163,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateSegmentShape")]
 		[return: NativeName(NativeNameType.Type, "b2ShapeId")]
-		public static B2ShapeId CreateSegmentShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ShapeDef*")] ref B2ShapeDef def, [NativeName(NativeNameType.Param, "segment")] [NativeName(NativeNameType.Type, "const b2Segment*")] ref B2Segment segment)
+		public static B2ShapeId CreateSegmentShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ShapeDef const *")] ref B2ShapeDef def, [NativeName(NativeNameType.Param, "segment")] [NativeName(NativeNameType.Type, "b2Segment const *")] ref B2Segment segment)
 		{
 			fixed (B2ShapeDef* pdef = &def)
 			{
@@ -2004,12 +2182,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateCapsuleShape")]
 		[return: NativeName(NativeNameType.Type, "b2ShapeId")]
-		internal static B2ShapeId CreateCapsuleShapeNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ShapeDef*")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsule)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2ShapeId CreateCapsuleShapeNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ShapeDef const *")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsule)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2ShapeDef*, B2Capsule*, B2ShapeId>)vt[190])(bodyId, def, capsule);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2ShapeDef*, B2Capsule*, B2ShapeId>)funcTable[190])(bodyId, def, capsule);
 			#else
-			return (B2ShapeId)((delegate* unmanaged[Cdecl]<B2BodyId, nint, nint, B2ShapeId>)vt[190])(bodyId, (nint)def, (nint)capsule);
+			return (B2ShapeId)((delegate* unmanaged[Cdecl]<B2BodyId, nint, nint, B2ShapeId>)funcTable[190])(bodyId, (nint)def, (nint)capsule);
 			#endif
 		}
 
@@ -2020,7 +2199,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateCapsuleShape")]
 		[return: NativeName(NativeNameType.Type, "b2ShapeId")]
-		public static B2ShapeId CreateCapsuleShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ShapeDef*")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsule)
+		public static B2ShapeId CreateCapsuleShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ShapeDef const *")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsule)
 		{
 			B2ShapeId ret = CreateCapsuleShapeNative(bodyId, def, capsule);
 			return ret;
@@ -2033,7 +2212,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateCapsuleShape")]
 		[return: NativeName(NativeNameType.Type, "b2ShapeId")]
-		public static B2ShapeId CreateCapsuleShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ShapeDef*")] ref B2ShapeDef def, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsule)
+		public static B2ShapeId CreateCapsuleShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ShapeDef const *")] ref B2ShapeDef def, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsule)
 		{
 			fixed (B2ShapeDef* pdef = &def)
 			{
@@ -2049,7 +2228,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateCapsuleShape")]
 		[return: NativeName(NativeNameType.Type, "b2ShapeId")]
-		public static B2ShapeId CreateCapsuleShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ShapeDef*")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule capsule)
+		public static B2ShapeId CreateCapsuleShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ShapeDef const *")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule capsule)
 		{
 			fixed (B2Capsule* pcapsule = &capsule)
 			{
@@ -2065,7 +2244,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateCapsuleShape")]
 		[return: NativeName(NativeNameType.Type, "b2ShapeId")]
-		public static B2ShapeId CreateCapsuleShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ShapeDef*")] ref B2ShapeDef def, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule capsule)
+		public static B2ShapeId CreateCapsuleShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ShapeDef const *")] ref B2ShapeDef def, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule capsule)
 		{
 			fixed (B2ShapeDef* pdef = &def)
 			{
@@ -2084,12 +2263,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreatePolygonShape")]
 		[return: NativeName(NativeNameType.Type, "b2ShapeId")]
-		internal static B2ShapeId CreatePolygonShapeNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ShapeDef*")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygon)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2ShapeId CreatePolygonShapeNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ShapeDef const *")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygon)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2ShapeDef*, B2Polygon*, B2ShapeId>)vt[191])(bodyId, def, polygon);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2ShapeDef*, B2Polygon*, B2ShapeId>)funcTable[191])(bodyId, def, polygon);
 			#else
-			return (B2ShapeId)((delegate* unmanaged[Cdecl]<B2BodyId, nint, nint, B2ShapeId>)vt[191])(bodyId, (nint)def, (nint)polygon);
+			return (B2ShapeId)((delegate* unmanaged[Cdecl]<B2BodyId, nint, nint, B2ShapeId>)funcTable[191])(bodyId, (nint)def, (nint)polygon);
 			#endif
 		}
 
@@ -2100,7 +2280,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreatePolygonShape")]
 		[return: NativeName(NativeNameType.Type, "b2ShapeId")]
-		public static B2ShapeId CreatePolygonShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ShapeDef*")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygon)
+		public static B2ShapeId CreatePolygonShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ShapeDef const *")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygon)
 		{
 			B2ShapeId ret = CreatePolygonShapeNative(bodyId, def, polygon);
 			return ret;
@@ -2113,7 +2293,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreatePolygonShape")]
 		[return: NativeName(NativeNameType.Type, "b2ShapeId")]
-		public static B2ShapeId CreatePolygonShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ShapeDef*")] ref B2ShapeDef def, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygon)
+		public static B2ShapeId CreatePolygonShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ShapeDef const *")] ref B2ShapeDef def, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygon)
 		{
 			fixed (B2ShapeDef* pdef = &def)
 			{
@@ -2129,7 +2309,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreatePolygonShape")]
 		[return: NativeName(NativeNameType.Type, "b2ShapeId")]
-		public static B2ShapeId CreatePolygonShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ShapeDef*")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon polygon)
+		public static B2ShapeId CreatePolygonShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ShapeDef const *")] B2ShapeDef* def, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon polygon)
 		{
 			fixed (B2Polygon* ppolygon = &polygon)
 			{
@@ -2145,7 +2325,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreatePolygonShape")]
 		[return: NativeName(NativeNameType.Type, "b2ShapeId")]
-		public static B2ShapeId CreatePolygonShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ShapeDef*")] ref B2ShapeDef def, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon polygon)
+		public static B2ShapeId CreatePolygonShape([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ShapeDef const *")] ref B2ShapeDef def, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon polygon)
 		{
 			fixed (B2ShapeDef* pdef = &def)
 			{
@@ -2162,12 +2342,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DestroyShape")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void DestroyShapeNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2ShapeId, void>)vt[192])(shapeId);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, void>)funcTable[192])(shapeId);
 			#else
-			((delegate* unmanaged[Cdecl]<B2ShapeId, void>)vt[192])(shapeId);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, void>)funcTable[192])(shapeId);
 			#endif
 		}
 
@@ -2186,12 +2367,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_IsValid")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte ShapeIsValidNative([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId id)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)vt[193])(id);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)funcTable[193])(id);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)vt[193])(id);
+			return (byte)((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)funcTable[193])(id);
 			#endif
 		}
 
@@ -2211,12 +2393,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_GetType")]
 		[return: NativeName(NativeNameType.Type, "b2ShapeType")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2ShapeType ShapeGetTypeNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, B2ShapeType>)vt[194])(shapeId);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, B2ShapeType>)funcTable[194])(shapeId);
 			#else
-			return (B2ShapeType)((delegate* unmanaged[Cdecl]<B2ShapeId, B2ShapeType>)vt[194])(shapeId);
+			return (B2ShapeType)((delegate* unmanaged[Cdecl]<B2ShapeId, B2ShapeType>)funcTable[194])(shapeId);
 			#endif
 		}
 
@@ -2236,12 +2419,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_GetBody")]
 		[return: NativeName(NativeNameType.Type, "b2BodyId")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2BodyId ShapeGetBodyNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, B2BodyId>)vt[195])(shapeId);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, B2BodyId>)funcTable[195])(shapeId);
 			#else
-			return (B2BodyId)((delegate* unmanaged[Cdecl]<B2ShapeId, B2BodyId>)vt[195])(shapeId);
+			return (B2BodyId)((delegate* unmanaged[Cdecl]<B2ShapeId, B2BodyId>)funcTable[195])(shapeId);
 			#endif
 		}
 
@@ -2261,12 +2445,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_IsSensor")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte ShapeIsSensorNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)vt[196])(shapeId);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)funcTable[196])(shapeId);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)vt[196])(shapeId);
+			return (byte)((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)funcTable[196])(shapeId);
 			#endif
 		}
 
@@ -2286,12 +2471,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_SetUserData")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void ShapeSetUserDataNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "userData")] [NativeName(NativeNameType.Type, "void*")] void* userData)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void ShapeSetUserDataNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "userData")] [NativeName(NativeNameType.Type, "void *")] void* userData)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2ShapeId, void*, void>)vt[197])(shapeId, userData);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, void*, void>)funcTable[197])(shapeId, userData);
 			#else
-			((delegate* unmanaged[Cdecl]<B2ShapeId, nint, void>)vt[197])(shapeId, (nint)userData);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, nint, void>)funcTable[197])(shapeId, (nint)userData);
 			#endif
 		}
 
@@ -2300,7 +2486,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_SetUserData")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ShapeSetUserData([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "userData")] [NativeName(NativeNameType.Type, "void*")] void* userData)
+		public static void ShapeSetUserData([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "userData")] [NativeName(NativeNameType.Type, "void *")] void* userData)
 		{
 			ShapeSetUserDataNative(shapeId, userData);
 		}
@@ -2310,13 +2496,14 @@ namespace Hexa.NET.Box2D
 		/// from an event or query.<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_GetUserData")]
-		[return: NativeName(NativeNameType.Type, "void*")]
+		[return: NativeName(NativeNameType.Type, "void *")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void* ShapeGetUserDataNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, void*>)vt[198])(shapeId);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, void*>)funcTable[198])(shapeId);
 			#else
-			return (void*)((delegate* unmanaged[Cdecl]<B2ShapeId, nint>)vt[198])(shapeId);
+			return (void*)((delegate* unmanaged[Cdecl]<B2ShapeId, nint>)funcTable[198])(shapeId);
 			#endif
 		}
 
@@ -2325,7 +2512,7 @@ namespace Hexa.NET.Box2D
 		/// from an event or query.<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_GetUserData")]
-		[return: NativeName(NativeNameType.Type, "void*")]
+		[return: NativeName(NativeNameType.Type, "void *")]
 		public static void* ShapeGetUserData([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId)
 		{
 			void* ret = ShapeGetUserDataNative(shapeId);
@@ -2339,12 +2526,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_SetDensity")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void ShapeSetDensityNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "density")] [NativeName(NativeNameType.Type, "float")] float density)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2ShapeId, float, void>)vt[199])(shapeId, density);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, float, void>)funcTable[199])(shapeId, density);
 			#else
-			((delegate* unmanaged[Cdecl]<B2ShapeId, float, void>)vt[199])(shapeId, density);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, float, void>)funcTable[199])(shapeId, density);
 			#endif
 		}
 
@@ -2365,12 +2553,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_GetDensity")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float ShapeGetDensityNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, float>)vt[200])(shapeId);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, float>)funcTable[200])(shapeId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2ShapeId, float>)vt[200])(shapeId);
+			return (float)((delegate* unmanaged[Cdecl]<B2ShapeId, float>)funcTable[200])(shapeId);
 			#endif
 		}
 
@@ -2391,12 +2580,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_SetFriction")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void ShapeSetFrictionNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "friction")] [NativeName(NativeNameType.Type, "float")] float friction)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2ShapeId, float, void>)vt[201])(shapeId, friction);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, float, void>)funcTable[201])(shapeId, friction);
 			#else
-			((delegate* unmanaged[Cdecl]<B2ShapeId, float, void>)vt[201])(shapeId, friction);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, float, void>)funcTable[201])(shapeId, friction);
 			#endif
 		}
 
@@ -2416,12 +2606,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_GetFriction")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float ShapeGetFrictionNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, float>)vt[202])(shapeId);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, float>)funcTable[202])(shapeId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2ShapeId, float>)vt[202])(shapeId);
+			return (float)((delegate* unmanaged[Cdecl]<B2ShapeId, float>)funcTable[202])(shapeId);
 			#endif
 		}
 
@@ -2442,12 +2633,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_SetRestitution")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void ShapeSetRestitutionNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "restitution")] [NativeName(NativeNameType.Type, "float")] float restitution)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2ShapeId, float, void>)vt[203])(shapeId, restitution);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, float, void>)funcTable[203])(shapeId, restitution);
 			#else
-			((delegate* unmanaged[Cdecl]<B2ShapeId, float, void>)vt[203])(shapeId, restitution);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, float, void>)funcTable[203])(shapeId, restitution);
 			#endif
 		}
 
@@ -2467,12 +2659,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_GetRestitution")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float ShapeGetRestitutionNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, float>)vt[204])(shapeId);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, float>)funcTable[204])(shapeId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2ShapeId, float>)vt[204])(shapeId);
+			return (float)((delegate* unmanaged[Cdecl]<B2ShapeId, float>)funcTable[204])(shapeId);
 			#endif
 		}
 
@@ -2492,12 +2685,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_GetFilter")]
 		[return: NativeName(NativeNameType.Type, "b2Filter")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2Filter ShapeGetFilterNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, B2Filter>)vt[205])(shapeId);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, B2Filter>)funcTable[205])(shapeId);
 			#else
-			return (B2Filter)((delegate* unmanaged[Cdecl]<B2ShapeId, B2Filter>)vt[205])(shapeId);
+			return (B2Filter)((delegate* unmanaged[Cdecl]<B2ShapeId, B2Filter>)funcTable[205])(shapeId);
 			#endif
 		}
 
@@ -2518,12 +2712,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_SetFilter")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void ShapeSetFilterNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2Filter")] B2Filter filter)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2ShapeId, B2Filter, void>)vt[206])(shapeId, filter);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, B2Filter, void>)funcTable[206])(shapeId, filter);
 			#else
-			((delegate* unmanaged[Cdecl]<B2ShapeId, B2Filter, void>)vt[206])(shapeId, filter);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, B2Filter, void>)funcTable[206])(shapeId, filter);
 			#endif
 		}
 
@@ -2544,12 +2739,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_EnableSensorEvents")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void ShapeEnableSensorEventsNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "flag")] [NativeName(NativeNameType.Type, "bool")] byte flag)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2ShapeId, byte, void>)vt[207])(shapeId, flag);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, byte, void>)funcTable[207])(shapeId, flag);
 			#else
-			((delegate* unmanaged[Cdecl]<B2ShapeId, byte, void>)vt[207])(shapeId, flag);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, byte, void>)funcTable[207])(shapeId, flag);
 			#endif
 		}
 
@@ -2569,12 +2765,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_AreSensorEventsEnabled")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte ShapeAreSensorEventsEnabledNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)vt[208])(shapeId);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)funcTable[208])(shapeId);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)vt[208])(shapeId);
+			return (byte)((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)funcTable[208])(shapeId);
 			#endif
 		}
 
@@ -2595,12 +2792,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_EnableContactEvents")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void ShapeEnableContactEventsNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "flag")] [NativeName(NativeNameType.Type, "bool")] byte flag)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2ShapeId, byte, void>)vt[209])(shapeId, flag);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, byte, void>)funcTable[209])(shapeId, flag);
 			#else
-			((delegate* unmanaged[Cdecl]<B2ShapeId, byte, void>)vt[209])(shapeId, flag);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, byte, void>)funcTable[209])(shapeId, flag);
 			#endif
 		}
 
@@ -2620,12 +2818,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_AreContactEventsEnabled")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte ShapeAreContactEventsEnabledNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)vt[210])(shapeId);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)funcTable[210])(shapeId);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)vt[210])(shapeId);
+			return (byte)((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)funcTable[210])(shapeId);
 			#endif
 		}
 
@@ -2647,12 +2846,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_EnablePreSolveEvents")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void ShapeEnablePreSolveEventsNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "flag")] [NativeName(NativeNameType.Type, "bool")] byte flag)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2ShapeId, byte, void>)vt[211])(shapeId, flag);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, byte, void>)funcTable[211])(shapeId, flag);
 			#else
-			((delegate* unmanaged[Cdecl]<B2ShapeId, byte, void>)vt[211])(shapeId, flag);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, byte, void>)funcTable[211])(shapeId, flag);
 			#endif
 		}
 
@@ -2673,12 +2873,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_ArePreSolveEventsEnabled")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte ShapeArePreSolveEventsEnabledNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)vt[212])(shapeId);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)funcTable[212])(shapeId);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)vt[212])(shapeId);
+			return (byte)((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)funcTable[212])(shapeId);
 			#endif
 		}
 
@@ -2699,12 +2900,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_EnableHitEvents")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void ShapeEnableHitEventsNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "flag")] [NativeName(NativeNameType.Type, "bool")] byte flag)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2ShapeId, byte, void>)vt[213])(shapeId, flag);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, byte, void>)funcTable[213])(shapeId, flag);
 			#else
-			((delegate* unmanaged[Cdecl]<B2ShapeId, byte, void>)vt[213])(shapeId, flag);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, byte, void>)funcTable[213])(shapeId, flag);
 			#endif
 		}
 
@@ -2724,12 +2926,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_AreHitEventsEnabled")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte ShapeAreHitEventsEnabledNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)vt[214])(shapeId);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)funcTable[214])(shapeId);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)vt[214])(shapeId);
+			return (byte)((delegate* unmanaged[Cdecl]<B2ShapeId, byte>)funcTable[214])(shapeId);
 			#endif
 		}
 
@@ -2749,12 +2952,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_TestPoint")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte ShapeTestPointNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 point)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, Vector2, byte>)vt[215])(shapeId, point);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, Vector2, byte>)funcTable[215])(shapeId, point);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2ShapeId, Vector2, byte>)vt[215])(shapeId, point);
+			return (byte)((delegate* unmanaged[Cdecl]<B2ShapeId, Vector2, byte>)funcTable[215])(shapeId, point);
 			#endif
 		}
 
@@ -2774,12 +2978,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_RayCast")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2CastOutput ShapeRayCastNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "origin")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 origin, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, Vector2, Vector2, B2CastOutput>)vt[216])(shapeId, origin, translation);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, Vector2, Vector2, B2CastOutput>)funcTable[216])(shapeId, origin, translation);
 			#else
-			return (B2CastOutput)((delegate* unmanaged[Cdecl]<B2ShapeId, Vector2, Vector2, B2CastOutput>)vt[216])(shapeId, origin, translation);
+			return (B2CastOutput)((delegate* unmanaged[Cdecl]<B2ShapeId, Vector2, Vector2, B2CastOutput>)funcTable[216])(shapeId, origin, translation);
 			#endif
 		}
 
@@ -2799,12 +3004,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_GetCircle")]
 		[return: NativeName(NativeNameType.Type, "b2Circle")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2Circle ShapeGetCircleNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, B2Circle>)vt[217])(shapeId);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, B2Circle>)funcTable[217])(shapeId);
 			#else
-			return (B2Circle)((delegate* unmanaged[Cdecl]<B2ShapeId, B2Circle>)vt[217])(shapeId);
+			return (B2Circle)((delegate* unmanaged[Cdecl]<B2ShapeId, B2Circle>)funcTable[217])(shapeId);
 			#endif
 		}
 
@@ -2824,12 +3030,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_GetSegment")]
 		[return: NativeName(NativeNameType.Type, "b2Segment")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2Segment ShapeGetSegmentNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, B2Segment>)vt[218])(shapeId);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, B2Segment>)funcTable[218])(shapeId);
 			#else
-			return (B2Segment)((delegate* unmanaged[Cdecl]<B2ShapeId, B2Segment>)vt[218])(shapeId);
+			return (B2Segment)((delegate* unmanaged[Cdecl]<B2ShapeId, B2Segment>)funcTable[218])(shapeId);
 			#endif
 		}
 
@@ -2850,12 +3057,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_GetSmoothSegment")]
 		[return: NativeName(NativeNameType.Type, "b2SmoothSegment")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2SmoothSegment ShapeGetSmoothSegmentNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, B2SmoothSegment>)vt[219])(shapeId);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, B2SmoothSegment>)funcTable[219])(shapeId);
 			#else
-			return (B2SmoothSegment)((delegate* unmanaged[Cdecl]<B2ShapeId, B2SmoothSegment>)vt[219])(shapeId);
+			return (B2SmoothSegment)((delegate* unmanaged[Cdecl]<B2ShapeId, B2SmoothSegment>)funcTable[219])(shapeId);
 			#endif
 		}
 
@@ -2876,12 +3084,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_GetCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2Capsule")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2Capsule ShapeGetCapsuleNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, B2Capsule>)vt[220])(shapeId);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, B2Capsule>)funcTable[220])(shapeId);
 			#else
-			return (B2Capsule)((delegate* unmanaged[Cdecl]<B2ShapeId, B2Capsule>)vt[220])(shapeId);
+			return (B2Capsule)((delegate* unmanaged[Cdecl]<B2ShapeId, B2Capsule>)funcTable[220])(shapeId);
 			#endif
 		}
 
@@ -2901,12 +3110,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_GetPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Polygon")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2Polygon ShapeGetPolygonNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, B2Polygon>)vt[221])(shapeId);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, B2Polygon>)funcTable[221])(shapeId);
 			#else
-			return (B2Polygon)((delegate* unmanaged[Cdecl]<B2ShapeId, B2Polygon>)vt[221])(shapeId);
+			return (B2Polygon)((delegate* unmanaged[Cdecl]<B2ShapeId, B2Polygon>)funcTable[221])(shapeId);
 			#endif
 		}
 
@@ -2928,12 +3138,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_SetCircle")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void ShapeSetCircleNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circle)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void ShapeSetCircleNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circle)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2ShapeId, B2Circle*, void>)vt[222])(shapeId, circle);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, B2Circle*, void>)funcTable[222])(shapeId, circle);
 			#else
-			((delegate* unmanaged[Cdecl]<B2ShapeId, nint, void>)vt[222])(shapeId, (nint)circle);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, nint, void>)funcTable[222])(shapeId, (nint)circle);
 			#endif
 		}
 
@@ -2944,7 +3155,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_SetCircle")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ShapeSetCircle([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circle)
+		public static void ShapeSetCircle([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circle)
 		{
 			ShapeSetCircleNative(shapeId, circle);
 		}
@@ -2956,7 +3167,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_SetCircle")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ShapeSetCircle([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle circle)
+		public static void ShapeSetCircle([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle circle)
 		{
 			fixed (B2Circle* pcircle = &circle)
 			{
@@ -2971,12 +3182,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_SetCapsule")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void ShapeSetCapsuleNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsule)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void ShapeSetCapsuleNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsule)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2ShapeId, B2Capsule*, void>)vt[223])(shapeId, capsule);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, B2Capsule*, void>)funcTable[223])(shapeId, capsule);
 			#else
-			((delegate* unmanaged[Cdecl]<B2ShapeId, nint, void>)vt[223])(shapeId, (nint)capsule);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, nint, void>)funcTable[223])(shapeId, (nint)capsule);
 			#endif
 		}
 
@@ -2987,7 +3199,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_SetCapsule")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ShapeSetCapsule([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsule)
+		public static void ShapeSetCapsule([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsule)
 		{
 			ShapeSetCapsuleNative(shapeId, capsule);
 		}
@@ -2999,7 +3211,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_SetCapsule")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ShapeSetCapsule([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule capsule)
+		public static void ShapeSetCapsule([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule capsule)
 		{
 			fixed (B2Capsule* pcapsule = &capsule)
 			{
@@ -3012,12 +3224,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_SetSegment")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void ShapeSetSegmentNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "segment")] [NativeName(NativeNameType.Type, "const b2Segment*")] B2Segment* segment)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void ShapeSetSegmentNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "segment")] [NativeName(NativeNameType.Type, "b2Segment const *")] B2Segment* segment)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2ShapeId, B2Segment*, void>)vt[224])(shapeId, segment);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, B2Segment*, void>)funcTable[224])(shapeId, segment);
 			#else
-			((delegate* unmanaged[Cdecl]<B2ShapeId, nint, void>)vt[224])(shapeId, (nint)segment);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, nint, void>)funcTable[224])(shapeId, (nint)segment);
 			#endif
 		}
 
@@ -3026,7 +3239,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_SetSegment")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ShapeSetSegment([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "segment")] [NativeName(NativeNameType.Type, "const b2Segment*")] B2Segment* segment)
+		public static void ShapeSetSegment([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "segment")] [NativeName(NativeNameType.Type, "b2Segment const *")] B2Segment* segment)
 		{
 			ShapeSetSegmentNative(shapeId, segment);
 		}
@@ -3036,7 +3249,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_SetSegment")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ShapeSetSegment([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "segment")] [NativeName(NativeNameType.Type, "const b2Segment*")] ref B2Segment segment)
+		public static void ShapeSetSegment([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "segment")] [NativeName(NativeNameType.Type, "b2Segment const *")] ref B2Segment segment)
 		{
 			fixed (B2Segment* psegment = &segment)
 			{
@@ -3051,12 +3264,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_SetPolygon")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void ShapeSetPolygonNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygon)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void ShapeSetPolygonNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygon)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2ShapeId, B2Polygon*, void>)vt[225])(shapeId, polygon);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, B2Polygon*, void>)funcTable[225])(shapeId, polygon);
 			#else
-			((delegate* unmanaged[Cdecl]<B2ShapeId, nint, void>)vt[225])(shapeId, (nint)polygon);
+			((delegate* unmanaged[Cdecl]<B2ShapeId, nint, void>)funcTable[225])(shapeId, (nint)polygon);
 			#endif
 		}
 
@@ -3067,7 +3281,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_SetPolygon")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ShapeSetPolygon([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygon)
+		public static void ShapeSetPolygon([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygon)
 		{
 			ShapeSetPolygonNative(shapeId, polygon);
 		}
@@ -3079,7 +3293,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_SetPolygon")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ShapeSetPolygon([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon polygon)
+		public static void ShapeSetPolygon([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon polygon)
 		{
 			fixed (B2Polygon* ppolygon = &polygon)
 			{
@@ -3093,12 +3307,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_GetParentChain")]
 		[return: NativeName(NativeNameType.Type, "b2ChainId")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2ChainId ShapeGetParentChainNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, B2ChainId>)vt[226])(shapeId);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, B2ChainId>)funcTable[226])(shapeId);
 			#else
-			return (B2ChainId)((delegate* unmanaged[Cdecl]<B2ShapeId, B2ChainId>)vt[226])(shapeId);
+			return (B2ChainId)((delegate* unmanaged[Cdecl]<B2ShapeId, B2ChainId>)funcTable[226])(shapeId);
 			#endif
 		}
 
@@ -3119,12 +3334,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_GetContactCapacity")]
 		[return: NativeName(NativeNameType.Type, "int")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static int ShapeGetContactCapacityNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, int>)vt[227])(shapeId);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, int>)funcTable[227])(shapeId);
 			#else
-			return (int)((delegate* unmanaged[Cdecl]<B2ShapeId, int>)vt[227])(shapeId);
+			return (int)((delegate* unmanaged[Cdecl]<B2ShapeId, int>)funcTable[227])(shapeId);
 			#endif
 		}
 
@@ -3144,12 +3360,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_GetContactData")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		internal static int ShapeGetContactDataNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "contactData")] [NativeName(NativeNameType.Type, "b2ContactData*")] B2ContactData* contactData, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static int ShapeGetContactDataNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "contactData")] [NativeName(NativeNameType.Type, "b2ContactData *")] B2ContactData* contactData, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, B2ContactData*, int, int>)vt[228])(shapeId, contactData, capacity);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, B2ContactData*, int, int>)funcTable[228])(shapeId, contactData, capacity);
 			#else
-			return (int)((delegate* unmanaged[Cdecl]<B2ShapeId, nint, int, int>)vt[228])(shapeId, (nint)contactData, capacity);
+			return (int)((delegate* unmanaged[Cdecl]<B2ShapeId, nint, int, int>)funcTable[228])(shapeId, (nint)contactData, capacity);
 			#endif
 		}
 
@@ -3158,7 +3375,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_GetContactData")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ShapeGetContactData([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "contactData")] [NativeName(NativeNameType.Type, "b2ContactData*")] B2ContactData* contactData, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
+		public static int ShapeGetContactData([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "contactData")] [NativeName(NativeNameType.Type, "b2ContactData *")] B2ContactData* contactData, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
 		{
 			int ret = ShapeGetContactDataNative(shapeId, contactData, capacity);
 			return ret;
@@ -3169,7 +3386,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_GetContactData")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ShapeGetContactData([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "contactData")] [NativeName(NativeNameType.Type, "b2ContactData*")] ref B2ContactData contactData, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
+		public static int ShapeGetContactData([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "contactData")] [NativeName(NativeNameType.Type, "b2ContactData *")] ref B2ContactData contactData, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
 		{
 			fixed (B2ContactData* pcontactData = &contactData)
 			{
@@ -3183,12 +3400,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_GetAABB")]
 		[return: NativeName(NativeNameType.Type, "b2AABB")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2AABB ShapeGetAABBNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, B2AABB>)vt[229])(shapeId);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, B2AABB>)funcTable[229])(shapeId);
 			#else
-			return (B2AABB)((delegate* unmanaged[Cdecl]<B2ShapeId, B2AABB>)vt[229])(shapeId);
+			return (B2AABB)((delegate* unmanaged[Cdecl]<B2ShapeId, B2AABB>)funcTable[229])(shapeId);
 			#endif
 		}
 
@@ -3208,12 +3426,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Shape_GetClosestPoint")]
 		[return: NativeName(NativeNameType.Type, "b2Vec2")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static Vector2 ShapeGetClosestPointNative([NativeName(NativeNameType.Param, "shapeId")] [NativeName(NativeNameType.Type, "b2ShapeId")] B2ShapeId shapeId, [NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 target)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeId, Vector2, Vector2>)vt[230])(shapeId, target);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeId, Vector2, Vector2>)funcTable[230])(shapeId, target);
 			#else
-			return (Vector2)((delegate* unmanaged[Cdecl]<B2ShapeId, Vector2, Vector2>)vt[230])(shapeId, target);
+			return (Vector2)((delegate* unmanaged[Cdecl]<B2ShapeId, Vector2, Vector2>)funcTable[230])(shapeId, target);
 			#endif
 		}
 
@@ -3234,12 +3453,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateChain")]
 		[return: NativeName(NativeNameType.Type, "b2ChainId")]
-		internal static B2ChainId CreateChainNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ChainDef*")] B2ChainDef* def)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2ChainId CreateChainNative([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ChainDef const *")] B2ChainDef* def)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2ChainDef*, B2ChainId>)vt[231])(bodyId, def);
+			return ((delegate* unmanaged[Cdecl]<B2BodyId, B2ChainDef*, B2ChainId>)funcTable[231])(bodyId, def);
 			#else
-			return (B2ChainId)((delegate* unmanaged[Cdecl]<B2BodyId, nint, B2ChainId>)vt[231])(bodyId, (nint)def);
+			return (B2ChainId)((delegate* unmanaged[Cdecl]<B2BodyId, nint, B2ChainId>)funcTable[231])(bodyId, (nint)def);
 			#endif
 		}
 
@@ -3249,7 +3469,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateChain")]
 		[return: NativeName(NativeNameType.Type, "b2ChainId")]
-		public static B2ChainId CreateChain([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ChainDef*")] B2ChainDef* def)
+		public static B2ChainId CreateChain([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ChainDef const *")] B2ChainDef* def)
 		{
 			B2ChainId ret = CreateChainNative(bodyId, def);
 			return ret;
@@ -3261,7 +3481,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateChain")]
 		[return: NativeName(NativeNameType.Type, "b2ChainId")]
-		public static B2ChainId CreateChain([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2ChainDef*")] ref B2ChainDef def)
+		public static B2ChainId CreateChain([NativeName(NativeNameType.Param, "bodyId")] [NativeName(NativeNameType.Type, "b2BodyId")] B2BodyId bodyId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2ChainDef const *")] ref B2ChainDef def)
 		{
 			fixed (B2ChainDef* pdef = &def)
 			{
@@ -3275,12 +3495,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DestroyChain")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void DestroyChainNative([NativeName(NativeNameType.Param, "chainId")] [NativeName(NativeNameType.Type, "b2ChainId")] B2ChainId chainId)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2ChainId, void>)vt[232])(chainId);
+			((delegate* unmanaged[Cdecl]<B2ChainId, void>)funcTable[232])(chainId);
 			#else
-			((delegate* unmanaged[Cdecl]<B2ChainId, void>)vt[232])(chainId);
+			((delegate* unmanaged[Cdecl]<B2ChainId, void>)funcTable[232])(chainId);
 			#endif
 		}
 
@@ -3300,12 +3521,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Chain_SetFriction")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void ChainSetFrictionNative([NativeName(NativeNameType.Param, "chainId")] [NativeName(NativeNameType.Type, "b2ChainId")] B2ChainId chainId, [NativeName(NativeNameType.Param, "friction")] [NativeName(NativeNameType.Type, "float")] float friction)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2ChainId, float, void>)vt[233])(chainId, friction);
+			((delegate* unmanaged[Cdecl]<B2ChainId, float, void>)funcTable[233])(chainId, friction);
 			#else
-			((delegate* unmanaged[Cdecl]<B2ChainId, float, void>)vt[233])(chainId, friction);
+			((delegate* unmanaged[Cdecl]<B2ChainId, float, void>)funcTable[233])(chainId, friction);
 			#endif
 		}
 
@@ -3326,12 +3548,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Chain_SetRestitution")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void ChainSetRestitutionNative([NativeName(NativeNameType.Param, "chainId")] [NativeName(NativeNameType.Type, "b2ChainId")] B2ChainId chainId, [NativeName(NativeNameType.Param, "restitution")] [NativeName(NativeNameType.Type, "float")] float restitution)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2ChainId, float, void>)vt[234])(chainId, restitution);
+			((delegate* unmanaged[Cdecl]<B2ChainId, float, void>)funcTable[234])(chainId, restitution);
 			#else
-			((delegate* unmanaged[Cdecl]<B2ChainId, float, void>)vt[234])(chainId, restitution);
+			((delegate* unmanaged[Cdecl]<B2ChainId, float, void>)funcTable[234])(chainId, restitution);
 			#endif
 		}
 
@@ -3351,12 +3574,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Chain_IsValid")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte ChainIsValidNative([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "b2ChainId")] B2ChainId id)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ChainId, byte>)vt[235])(id);
+			return ((delegate* unmanaged[Cdecl]<B2ChainId, byte>)funcTable[235])(id);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2ChainId, byte>)vt[235])(id);
+			return (byte)((delegate* unmanaged[Cdecl]<B2ChainId, byte>)funcTable[235])(id);
 			#endif
 		}
 
@@ -3376,12 +3600,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DestroyJoint")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void DestroyJointNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, void>)vt[236])(jointId);
+			((delegate* unmanaged[Cdecl]<B2JointId, void>)funcTable[236])(jointId);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, void>)vt[236])(jointId);
+			((delegate* unmanaged[Cdecl]<B2JointId, void>)funcTable[236])(jointId);
 			#endif
 		}
 
@@ -3400,12 +3625,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Joint_IsValid")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte JointIsValidNative([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId id)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[237])(id);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[237])(id);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[237])(id);
+			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[237])(id);
 			#endif
 		}
 
@@ -3425,12 +3651,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Joint_GetType")]
 		[return: NativeName(NativeNameType.Type, "b2JointType")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2JointType JointGetTypeNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, B2JointType>)vt[238])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, B2JointType>)funcTable[238])(jointId);
 			#else
-			return (B2JointType)((delegate* unmanaged[Cdecl]<B2JointId, B2JointType>)vt[238])(jointId);
+			return (B2JointType)((delegate* unmanaged[Cdecl]<B2JointId, B2JointType>)funcTable[238])(jointId);
 			#endif
 		}
 
@@ -3450,12 +3677,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Joint_GetBodyA")]
 		[return: NativeName(NativeNameType.Type, "b2BodyId")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2BodyId JointGetBodyANative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, B2BodyId>)vt[239])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, B2BodyId>)funcTable[239])(jointId);
 			#else
-			return (B2BodyId)((delegate* unmanaged[Cdecl]<B2JointId, B2BodyId>)vt[239])(jointId);
+			return (B2BodyId)((delegate* unmanaged[Cdecl]<B2JointId, B2BodyId>)funcTable[239])(jointId);
 			#endif
 		}
 
@@ -3475,12 +3703,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Joint_GetBodyB")]
 		[return: NativeName(NativeNameType.Type, "b2BodyId")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2BodyId JointGetBodyBNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, B2BodyId>)vt[240])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, B2BodyId>)funcTable[240])(jointId);
 			#else
-			return (B2BodyId)((delegate* unmanaged[Cdecl]<B2JointId, B2BodyId>)vt[240])(jointId);
+			return (B2BodyId)((delegate* unmanaged[Cdecl]<B2JointId, B2BodyId>)funcTable[240])(jointId);
 			#endif
 		}
 
@@ -3500,12 +3729,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Joint_GetLocalAnchorA")]
 		[return: NativeName(NativeNameType.Type, "b2Vec2")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static Vector2 JointGetLocalAnchorANative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, Vector2>)vt[241])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, Vector2>)funcTable[241])(jointId);
 			#else
-			return (Vector2)((delegate* unmanaged[Cdecl]<B2JointId, Vector2>)vt[241])(jointId);
+			return (Vector2)((delegate* unmanaged[Cdecl]<B2JointId, Vector2>)funcTable[241])(jointId);
 			#endif
 		}
 
@@ -3525,12 +3755,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Joint_GetLocalAnchorB")]
 		[return: NativeName(NativeNameType.Type, "b2Vec2")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static Vector2 JointGetLocalAnchorBNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, Vector2>)vt[242])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, Vector2>)funcTable[242])(jointId);
 			#else
-			return (Vector2)((delegate* unmanaged[Cdecl]<B2JointId, Vector2>)vt[242])(jointId);
+			return (Vector2)((delegate* unmanaged[Cdecl]<B2JointId, Vector2>)funcTable[242])(jointId);
 			#endif
 		}
 
@@ -3550,12 +3781,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Joint_SetCollideConnected")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void JointSetCollideConnectedNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "shouldCollide")] [NativeName(NativeNameType.Type, "bool")] byte shouldCollide)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[243])(jointId, shouldCollide);
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[243])(jointId, shouldCollide);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[243])(jointId, shouldCollide);
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[243])(jointId, shouldCollide);
 			#endif
 		}
 
@@ -3574,12 +3806,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Joint_GetCollideConnected")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte JointGetCollideConnectedNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[244])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[244])(jointId);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[244])(jointId);
+			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[244])(jointId);
 			#endif
 		}
 
@@ -3599,12 +3832,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Joint_SetUserData")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void JointSetUserDataNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "userData")] [NativeName(NativeNameType.Type, "void*")] void* userData)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void JointSetUserDataNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "userData")] [NativeName(NativeNameType.Type, "void *")] void* userData)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, void*, void>)vt[245])(jointId, userData);
+			((delegate* unmanaged[Cdecl]<B2JointId, void*, void>)funcTable[245])(jointId, userData);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, nint, void>)vt[245])(jointId, (nint)userData);
+			((delegate* unmanaged[Cdecl]<B2JointId, nint, void>)funcTable[245])(jointId, (nint)userData);
 			#endif
 		}
 
@@ -3613,7 +3847,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Joint_SetUserData")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void JointSetUserData([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "userData")] [NativeName(NativeNameType.Type, "void*")] void* userData)
+		public static void JointSetUserData([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "userData")] [NativeName(NativeNameType.Type, "void *")] void* userData)
 		{
 			JointSetUserDataNative(jointId, userData);
 		}
@@ -3622,13 +3856,14 @@ namespace Hexa.NET.Box2D
 		/// Get the user data on a joint<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Joint_GetUserData")]
-		[return: NativeName(NativeNameType.Type, "void*")]
+		[return: NativeName(NativeNameType.Type, "void *")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void* JointGetUserDataNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, void*>)vt[246])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, void*>)funcTable[246])(jointId);
 			#else
-			return (void*)((delegate* unmanaged[Cdecl]<B2JointId, nint>)vt[246])(jointId);
+			return (void*)((delegate* unmanaged[Cdecl]<B2JointId, nint>)funcTable[246])(jointId);
 			#endif
 		}
 
@@ -3636,7 +3871,7 @@ namespace Hexa.NET.Box2D
 		/// Get the user data on a joint<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Joint_GetUserData")]
-		[return: NativeName(NativeNameType.Type, "void*")]
+		[return: NativeName(NativeNameType.Type, "void *")]
 		public static void* JointGetUserData([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			void* ret = JointGetUserDataNative(jointId);
@@ -3648,12 +3883,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Joint_WakeBodies")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void JointWakeBodiesNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, void>)vt[247])(jointId);
+			((delegate* unmanaged[Cdecl]<B2JointId, void>)funcTable[247])(jointId);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, void>)vt[247])(jointId);
+			((delegate* unmanaged[Cdecl]<B2JointId, void>)funcTable[247])(jointId);
 			#endif
 		}
 
@@ -3672,12 +3908,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Joint_GetConstraintForce")]
 		[return: NativeName(NativeNameType.Type, "b2Vec2")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static Vector2 JointGetConstraintForceNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, Vector2>)vt[248])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, Vector2>)funcTable[248])(jointId);
 			#else
-			return (Vector2)((delegate* unmanaged[Cdecl]<B2JointId, Vector2>)vt[248])(jointId);
+			return (Vector2)((delegate* unmanaged[Cdecl]<B2JointId, Vector2>)funcTable[248])(jointId);
 			#endif
 		}
 
@@ -3697,12 +3934,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Joint_GetConstraintTorque")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float JointGetConstraintTorqueNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[249])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[249])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[249])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[249])(jointId);
 			#endif
 		}
 
@@ -3723,12 +3961,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateDistanceJoint")]
 		[return: NativeName(NativeNameType.Type, "b2JointId")]
-		internal static B2JointId CreateDistanceJointNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2DistanceJointDef*")] B2DistanceJointDef* def)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2JointId CreateDistanceJointNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2DistanceJointDef const *")] B2DistanceJointDef* def)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2DistanceJointDef*, B2JointId>)vt[250])(worldId, def);
+			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2DistanceJointDef*, B2JointId>)funcTable[250])(worldId, def);
 			#else
-			return (B2JointId)((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2JointId>)vt[250])(worldId, (nint)def);
+			return (B2JointId)((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2JointId>)funcTable[250])(worldId, (nint)def);
 			#endif
 		}
 
@@ -3738,7 +3977,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateDistanceJoint")]
 		[return: NativeName(NativeNameType.Type, "b2JointId")]
-		public static B2JointId CreateDistanceJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2DistanceJointDef*")] B2DistanceJointDef* def)
+		public static B2JointId CreateDistanceJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2DistanceJointDef const *")] B2DistanceJointDef* def)
 		{
 			B2JointId ret = CreateDistanceJointNative(worldId, def);
 			return ret;
@@ -3750,7 +3989,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateDistanceJoint")]
 		[return: NativeName(NativeNameType.Type, "b2JointId")]
-		public static B2JointId CreateDistanceJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2DistanceJointDef*")] ref B2DistanceJointDef def)
+		public static B2JointId CreateDistanceJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2DistanceJointDef const *")] ref B2DistanceJointDef def)
 		{
 			fixed (B2DistanceJointDef* pdef = &def)
 			{
@@ -3765,12 +4004,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DistanceJoint_SetLength")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void DistanceJointSetLengthNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "float")] float length)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[251])(jointId, length);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[251])(jointId, length);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[251])(jointId, length);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[251])(jointId, length);
 			#endif
 		}
 
@@ -3790,12 +4030,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DistanceJoint_GetLength")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float DistanceJointGetLengthNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[252])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[252])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[252])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[252])(jointId);
 			#endif
 		}
 
@@ -3815,12 +4056,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DistanceJoint_EnableSpring")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void DistanceJointEnableSpringNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "enableSpring")] [NativeName(NativeNameType.Type, "bool")] byte enableSpring)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[253])(jointId, enableSpring);
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[253])(jointId, enableSpring);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[253])(jointId, enableSpring);
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[253])(jointId, enableSpring);
 			#endif
 		}
 
@@ -3839,12 +4081,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DistanceJoint_IsSpringEnabled")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte DistanceJointIsSpringEnabledNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[254])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[254])(jointId);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[254])(jointId);
+			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[254])(jointId);
 			#endif
 		}
 
@@ -3864,12 +4107,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DistanceJoint_SetSpringHertz")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void DistanceJointSetSpringHertzNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "hertz")] [NativeName(NativeNameType.Type, "float")] float hertz)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[255])(jointId, hertz);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[255])(jointId, hertz);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[255])(jointId, hertz);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[255])(jointId, hertz);
 			#endif
 		}
 
@@ -3888,12 +4132,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DistanceJoint_SetSpringDampingRatio")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void DistanceJointSetSpringDampingRatioNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "dampingRatio")] [NativeName(NativeNameType.Type, "float")] float dampingRatio)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[256])(jointId, dampingRatio);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[256])(jointId, dampingRatio);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[256])(jointId, dampingRatio);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[256])(jointId, dampingRatio);
 			#endif
 		}
 
@@ -3912,12 +4157,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DistanceJoint_GetHertz")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float DistanceJointGetHertzNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[257])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[257])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[257])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[257])(jointId);
 			#endif
 		}
 
@@ -3937,12 +4183,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DistanceJoint_GetDampingRatio")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float DistanceJointGetDampingRatioNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[258])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[258])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[258])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[258])(jointId);
 			#endif
 		}
 
@@ -3963,12 +4210,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DistanceJoint_EnableLimit")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void DistanceJointEnableLimitNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "enableLimit")] [NativeName(NativeNameType.Type, "bool")] byte enableLimit)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[259])(jointId, enableLimit);
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[259])(jointId, enableLimit);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[259])(jointId, enableLimit);
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[259])(jointId, enableLimit);
 			#endif
 		}
 
@@ -3988,12 +4236,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DistanceJoint_IsLimitEnabled")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte DistanceJointIsLimitEnabledNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[260])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[260])(jointId);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[260])(jointId);
+			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[260])(jointId);
 			#endif
 		}
 
@@ -4013,12 +4262,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DistanceJoint_SetLengthRange")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void DistanceJointSetLengthRangeNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "minLength")] [NativeName(NativeNameType.Type, "float")] float minLength, [NativeName(NativeNameType.Param, "maxLength")] [NativeName(NativeNameType.Type, "float")] float maxLength)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, float, void>)vt[261])(jointId, minLength, maxLength);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, float, void>)funcTable[261])(jointId, minLength, maxLength);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, float, void>)vt[261])(jointId, minLength, maxLength);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, float, void>)funcTable[261])(jointId, minLength, maxLength);
 			#endif
 		}
 
@@ -4037,12 +4287,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DistanceJoint_GetMinLength")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float DistanceJointGetMinLengthNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[262])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[262])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[262])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[262])(jointId);
 			#endif
 		}
 
@@ -4062,12 +4313,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DistanceJoint_GetMaxLength")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float DistanceJointGetMaxLengthNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[263])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[263])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[263])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[263])(jointId);
 			#endif
 		}
 
@@ -4087,12 +4339,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DistanceJoint_GetCurrentLength")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float DistanceJointGetCurrentLengthNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[264])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[264])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[264])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[264])(jointId);
 			#endif
 		}
 
@@ -4112,12 +4365,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DistanceJoint_EnableMotor")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void DistanceJointEnableMotorNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "enableMotor")] [NativeName(NativeNameType.Type, "bool")] byte enableMotor)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[265])(jointId, enableMotor);
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[265])(jointId, enableMotor);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[265])(jointId, enableMotor);
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[265])(jointId, enableMotor);
 			#endif
 		}
 
@@ -4136,12 +4390,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DistanceJoint_IsMotorEnabled")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte DistanceJointIsMotorEnabledNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[266])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[266])(jointId);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[266])(jointId);
+			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[266])(jointId);
 			#endif
 		}
 
@@ -4161,12 +4416,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DistanceJoint_SetMotorSpeed")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void DistanceJointSetMotorSpeedNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "motorSpeed")] [NativeName(NativeNameType.Type, "float")] float motorSpeed)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[267])(jointId, motorSpeed);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[267])(jointId, motorSpeed);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[267])(jointId, motorSpeed);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[267])(jointId, motorSpeed);
 			#endif
 		}
 
@@ -4185,12 +4441,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DistanceJoint_GetMotorSpeed")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float DistanceJointGetMotorSpeedNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[268])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[268])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[268])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[268])(jointId);
 			#endif
 		}
 
@@ -4210,12 +4467,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DistanceJoint_SetMaxMotorForce")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void DistanceJointSetMaxMotorForceNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "force")] [NativeName(NativeNameType.Type, "float")] float force)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[269])(jointId, force);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[269])(jointId, force);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[269])(jointId, force);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[269])(jointId, force);
 			#endif
 		}
 
@@ -4234,12 +4492,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DistanceJoint_GetMaxMotorForce")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float DistanceJointGetMaxMotorForceNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[270])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[270])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[270])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[270])(jointId);
 			#endif
 		}
 
@@ -4259,12 +4518,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DistanceJoint_GetMotorForce")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float DistanceJointGetMotorForceNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[271])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[271])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[271])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[271])(jointId);
 			#endif
 		}
 
@@ -4285,12 +4545,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateMotorJoint")]
 		[return: NativeName(NativeNameType.Type, "b2JointId")]
-		internal static B2JointId CreateMotorJointNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2MotorJointDef*")] B2MotorJointDef* def)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2JointId CreateMotorJointNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2MotorJointDef const *")] B2MotorJointDef* def)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2MotorJointDef*, B2JointId>)vt[272])(worldId, def);
+			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2MotorJointDef*, B2JointId>)funcTable[272])(worldId, def);
 			#else
-			return (B2JointId)((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2JointId>)vt[272])(worldId, (nint)def);
+			return (B2JointId)((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2JointId>)funcTable[272])(worldId, (nint)def);
 			#endif
 		}
 
@@ -4300,7 +4561,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateMotorJoint")]
 		[return: NativeName(NativeNameType.Type, "b2JointId")]
-		public static B2JointId CreateMotorJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2MotorJointDef*")] B2MotorJointDef* def)
+		public static B2JointId CreateMotorJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2MotorJointDef const *")] B2MotorJointDef* def)
 		{
 			B2JointId ret = CreateMotorJointNative(worldId, def);
 			return ret;
@@ -4312,7 +4573,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateMotorJoint")]
 		[return: NativeName(NativeNameType.Type, "b2JointId")]
-		public static B2JointId CreateMotorJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2MotorJointDef*")] ref B2MotorJointDef def)
+		public static B2JointId CreateMotorJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2MotorJointDef const *")] ref B2MotorJointDef def)
 		{
 			fixed (B2MotorJointDef* pdef = &def)
 			{
@@ -4326,12 +4587,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MotorJoint_SetLinearOffset")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void MotorJointSetLinearOffsetNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "linearOffset")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 linearOffset)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, Vector2, void>)vt[273])(jointId, linearOffset);
+			((delegate* unmanaged[Cdecl]<B2JointId, Vector2, void>)funcTable[273])(jointId, linearOffset);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, Vector2, void>)vt[273])(jointId, linearOffset);
+			((delegate* unmanaged[Cdecl]<B2JointId, Vector2, void>)funcTable[273])(jointId, linearOffset);
 			#endif
 		}
 
@@ -4350,12 +4612,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MotorJoint_GetLinearOffset")]
 		[return: NativeName(NativeNameType.Type, "b2Vec2")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static Vector2 MotorJointGetLinearOffsetNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, Vector2>)vt[274])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, Vector2>)funcTable[274])(jointId);
 			#else
-			return (Vector2)((delegate* unmanaged[Cdecl]<B2JointId, Vector2>)vt[274])(jointId);
+			return (Vector2)((delegate* unmanaged[Cdecl]<B2JointId, Vector2>)funcTable[274])(jointId);
 			#endif
 		}
 
@@ -4375,12 +4638,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MotorJoint_SetAngularOffset")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void MotorJointSetAngularOffsetNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "angularOffset")] [NativeName(NativeNameType.Type, "float")] float angularOffset)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[275])(jointId, angularOffset);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[275])(jointId, angularOffset);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[275])(jointId, angularOffset);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[275])(jointId, angularOffset);
 			#endif
 		}
 
@@ -4399,12 +4663,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MotorJoint_GetAngularOffset")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float MotorJointGetAngularOffsetNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[276])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[276])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[276])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[276])(jointId);
 			#endif
 		}
 
@@ -4424,12 +4689,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MotorJoint_SetMaxForce")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void MotorJointSetMaxForceNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "maxForce")] [NativeName(NativeNameType.Type, "float")] float maxForce)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[277])(jointId, maxForce);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[277])(jointId, maxForce);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[277])(jointId, maxForce);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[277])(jointId, maxForce);
 			#endif
 		}
 
@@ -4448,12 +4714,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MotorJoint_GetMaxForce")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float MotorJointGetMaxForceNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[278])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[278])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[278])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[278])(jointId);
 			#endif
 		}
 
@@ -4473,12 +4740,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MotorJoint_SetMaxTorque")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void MotorJointSetMaxTorqueNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "maxTorque")] [NativeName(NativeNameType.Type, "float")] float maxTorque)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[279])(jointId, maxTorque);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[279])(jointId, maxTorque);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[279])(jointId, maxTorque);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[279])(jointId, maxTorque);
 			#endif
 		}
 
@@ -4497,12 +4765,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MotorJoint_GetMaxTorque")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float MotorJointGetMaxTorqueNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[280])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[280])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[280])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[280])(jointId);
 			#endif
 		}
 
@@ -4522,12 +4791,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MotorJoint_SetCorrectionFactor")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void MotorJointSetCorrectionFactorNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "correctionFactor")] [NativeName(NativeNameType.Type, "float")] float correctionFactor)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[281])(jointId, correctionFactor);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[281])(jointId, correctionFactor);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[281])(jointId, correctionFactor);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[281])(jointId, correctionFactor);
 			#endif
 		}
 
@@ -4546,12 +4816,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MotorJoint_GetCorrectionFactor")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float MotorJointGetCorrectionFactorNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[282])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[282])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[282])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[282])(jointId);
 			#endif
 		}
 
@@ -4572,12 +4843,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateMouseJoint")]
 		[return: NativeName(NativeNameType.Type, "b2JointId")]
-		internal static B2JointId CreateMouseJointNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2MouseJointDef*")] B2MouseJointDef* def)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2JointId CreateMouseJointNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2MouseJointDef const *")] B2MouseJointDef* def)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2MouseJointDef*, B2JointId>)vt[283])(worldId, def);
+			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2MouseJointDef*, B2JointId>)funcTable[283])(worldId, def);
 			#else
-			return (B2JointId)((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2JointId>)vt[283])(worldId, (nint)def);
+			return (B2JointId)((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2JointId>)funcTable[283])(worldId, (nint)def);
 			#endif
 		}
 
@@ -4587,7 +4859,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateMouseJoint")]
 		[return: NativeName(NativeNameType.Type, "b2JointId")]
-		public static B2JointId CreateMouseJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2MouseJointDef*")] B2MouseJointDef* def)
+		public static B2JointId CreateMouseJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2MouseJointDef const *")] B2MouseJointDef* def)
 		{
 			B2JointId ret = CreateMouseJointNative(worldId, def);
 			return ret;
@@ -4599,7 +4871,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateMouseJoint")]
 		[return: NativeName(NativeNameType.Type, "b2JointId")]
-		public static B2JointId CreateMouseJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2MouseJointDef*")] ref B2MouseJointDef def)
+		public static B2JointId CreateMouseJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2MouseJointDef const *")] ref B2MouseJointDef def)
 		{
 			fixed (B2MouseJointDef* pdef = &def)
 			{
@@ -4613,12 +4885,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MouseJoint_SetTarget")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void MouseJointSetTargetNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 target)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, Vector2, void>)vt[284])(jointId, target);
+			((delegate* unmanaged[Cdecl]<B2JointId, Vector2, void>)funcTable[284])(jointId, target);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, Vector2, void>)vt[284])(jointId, target);
+			((delegate* unmanaged[Cdecl]<B2JointId, Vector2, void>)funcTable[284])(jointId, target);
 			#endif
 		}
 
@@ -4637,12 +4910,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MouseJoint_GetTarget")]
 		[return: NativeName(NativeNameType.Type, "b2Vec2")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static Vector2 MouseJointGetTargetNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, Vector2>)vt[285])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, Vector2>)funcTable[285])(jointId);
 			#else
-			return (Vector2)((delegate* unmanaged[Cdecl]<B2JointId, Vector2>)vt[285])(jointId);
+			return (Vector2)((delegate* unmanaged[Cdecl]<B2JointId, Vector2>)funcTable[285])(jointId);
 			#endif
 		}
 
@@ -4662,12 +4936,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MouseJoint_SetSpringHertz")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void MouseJointSetSpringHertzNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "hertz")] [NativeName(NativeNameType.Type, "float")] float hertz)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[286])(jointId, hertz);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[286])(jointId, hertz);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[286])(jointId, hertz);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[286])(jointId, hertz);
 			#endif
 		}
 
@@ -4686,12 +4961,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MouseJoint_GetSpringHertz")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float MouseJointGetSpringHertzNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[287])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[287])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[287])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[287])(jointId);
 			#endif
 		}
 
@@ -4711,12 +4987,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MouseJoint_SetSpringDampingRatio")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void MouseJointSetSpringDampingRatioNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "dampingRatio")] [NativeName(NativeNameType.Type, "float")] float dampingRatio)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[288])(jointId, dampingRatio);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[288])(jointId, dampingRatio);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[288])(jointId, dampingRatio);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[288])(jointId, dampingRatio);
 			#endif
 		}
 
@@ -4735,290 +5012,14 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MouseJoint_GetSpringDampingRatio")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float MouseJointGetSpringDampingRatioNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[289])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[289])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[289])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[289])(jointId);
 			#endif
-		}
-
-		/// <summary>
-		/// Get the mouse joint damping ratio, non-dimensional<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2MouseJoint_GetSpringDampingRatio")]
-		[return: NativeName(NativeNameType.Type, "float")]
-		public static float MouseJointGetSpringDampingRatio([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
-		{
-			float ret = MouseJointGetSpringDampingRatioNative(jointId);
-			return ret;
-		}
-
-		/// <summary>
-		/// Set the mouse joint maximum force, typically in newtons<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2MouseJoint_SetMaxForce")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void MouseJointSetMaxForceNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "maxForce")] [NativeName(NativeNameType.Type, "float")] float maxForce)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[290])(jointId, maxForce);
-			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[290])(jointId, maxForce);
-			#endif
-		}
-
-		/// <summary>
-		/// Set the mouse joint maximum force, typically in newtons<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2MouseJoint_SetMaxForce")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void MouseJointSetMaxForce([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "maxForce")] [NativeName(NativeNameType.Type, "float")] float maxForce)
-		{
-			MouseJointSetMaxForceNative(jointId, maxForce);
-		}
-
-		/// <summary>
-		/// Get the mouse joint maximum force, typically in newtons<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2MouseJoint_GetMaxForce")]
-		[return: NativeName(NativeNameType.Type, "float")]
-		internal static float MouseJointGetMaxForceNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[291])(jointId);
-			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[291])(jointId);
-			#endif
-		}
-
-		/// <summary>
-		/// Get the mouse joint maximum force, typically in newtons<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2MouseJoint_GetMaxForce")]
-		[return: NativeName(NativeNameType.Type, "float")]
-		public static float MouseJointGetMaxForce([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
-		{
-			float ret = MouseJointGetMaxForceNative(jointId);
-			return ret;
-		}
-
-		/// <summary>
-		/// Create a prismatic (slider) joint.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2CreatePrismaticJoint")]
-		[return: NativeName(NativeNameType.Type, "b2JointId")]
-		internal static B2JointId CreatePrismaticJointNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2PrismaticJointDef*")] B2PrismaticJointDef* def)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2PrismaticJointDef*, B2JointId>)vt[292])(worldId, def);
-			#else
-			return (B2JointId)((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2JointId>)vt[292])(worldId, (nint)def);
-			#endif
-		}
-
-		/// <summary>
-		/// Create a prismatic (slider) joint.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2CreatePrismaticJoint")]
-		[return: NativeName(NativeNameType.Type, "b2JointId")]
-		public static B2JointId CreatePrismaticJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2PrismaticJointDef*")] B2PrismaticJointDef* def)
-		{
-			B2JointId ret = CreatePrismaticJointNative(worldId, def);
-			return ret;
-		}
-
-		/// <summary>
-		/// Create a prismatic (slider) joint.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2CreatePrismaticJoint")]
-		[return: NativeName(NativeNameType.Type, "b2JointId")]
-		public static B2JointId CreatePrismaticJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2PrismaticJointDef*")] ref B2PrismaticJointDef def)
-		{
-			fixed (B2PrismaticJointDef* pdef = &def)
-			{
-				B2JointId ret = CreatePrismaticJointNative(worldId, (B2PrismaticJointDef*)pdef);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Enable/disable the joint spring.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2PrismaticJoint_EnableSpring")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void PrismaticJointEnableSpringNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "enableSpring")] [NativeName(NativeNameType.Type, "bool")] byte enableSpring)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[293])(jointId, enableSpring);
-			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[293])(jointId, enableSpring);
-			#endif
-		}
-
-		/// <summary>
-		/// Enable/disable the joint spring.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2PrismaticJoint_EnableSpring")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void PrismaticJointEnableSpring([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "enableSpring")] [NativeName(NativeNameType.Type, "bool")] bool enableSpring)
-		{
-			PrismaticJointEnableSpringNative(jointId, enableSpring ? (byte)1 : (byte)0);
-		}
-
-		/// <summary>
-		/// Is the prismatic joint spring enabled or not?<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2PrismaticJoint_IsSpringEnabled")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte PrismaticJointIsSpringEnabledNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[294])(jointId);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[294])(jointId);
-			#endif
-		}
-
-		/// <summary>
-		/// Is the prismatic joint spring enabled or not?<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2PrismaticJoint_IsSpringEnabled")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PrismaticJointIsSpringEnabled([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
-		{
-			byte ret = PrismaticJointIsSpringEnabledNative(jointId);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// Set the prismatic joint stiffness in Hertz.<br/>
-		/// This should usually be less than a quarter of the simulation rate. For example, if the simulation<br/>
-		/// runs at 60Hz then the joint stiffness should be 15Hz or less.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2PrismaticJoint_SetSpringHertz")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void PrismaticJointSetSpringHertzNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "hertz")] [NativeName(NativeNameType.Type, "float")] float hertz)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[295])(jointId, hertz);
-			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[295])(jointId, hertz);
-			#endif
-		}
-
-		/// <summary>
-		/// Set the prismatic joint stiffness in Hertz.<br/>
-		/// This should usually be less than a quarter of the simulation rate. For example, if the simulation<br/>
-		/// runs at 60Hz then the joint stiffness should be 15Hz or less.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2PrismaticJoint_SetSpringHertz")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void PrismaticJointSetSpringHertz([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "hertz")] [NativeName(NativeNameType.Type, "float")] float hertz)
-		{
-			PrismaticJointSetSpringHertzNative(jointId, hertz);
-		}
-
-		/// <summary>
-		/// Get the prismatic joint stiffness in Hertz<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2PrismaticJoint_GetSpringHertz")]
-		[return: NativeName(NativeNameType.Type, "float")]
-		internal static float PrismaticJointGetSpringHertzNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[296])(jointId);
-			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[296])(jointId);
-			#endif
-		}
-
-		/// <summary>
-		/// Get the prismatic joint stiffness in Hertz<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2PrismaticJoint_GetSpringHertz")]
-		[return: NativeName(NativeNameType.Type, "float")]
-		public static float PrismaticJointGetSpringHertz([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
-		{
-			float ret = PrismaticJointGetSpringHertzNative(jointId);
-			return ret;
-		}
-
-		/// <summary>
-		/// Set the prismatic joint damping ratio (non-dimensional)<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2PrismaticJoint_SetSpringDampingRatio")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void PrismaticJointSetSpringDampingRatioNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "dampingRatio")] [NativeName(NativeNameType.Type, "float")] float dampingRatio)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[297])(jointId, dampingRatio);
-			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[297])(jointId, dampingRatio);
-			#endif
-		}
-
-		/// <summary>
-		/// Set the prismatic joint damping ratio (non-dimensional)<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2PrismaticJoint_SetSpringDampingRatio")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void PrismaticJointSetSpringDampingRatio([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "dampingRatio")] [NativeName(NativeNameType.Type, "float")] float dampingRatio)
-		{
-			PrismaticJointSetSpringDampingRatioNative(jointId, dampingRatio);
-		}
-
-		/// <summary>
-		/// Get the prismatic spring damping ratio (non-dimensional)<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2PrismaticJoint_GetSpringDampingRatio")]
-		[return: NativeName(NativeNameType.Type, "float")]
-		internal static float PrismaticJointGetSpringDampingRatioNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[298])(jointId);
-			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[298])(jointId);
-			#endif
-		}
-
-		/// <summary>
-		/// Get the prismatic spring damping ratio (non-dimensional)<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2PrismaticJoint_GetSpringDampingRatio")]
-		[return: NativeName(NativeNameType.Type, "float")]
-		public static float PrismaticJointGetSpringDampingRatio([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
-		{
-			float ret = PrismaticJointGetSpringDampingRatioNative(jointId);
-			return ret;
-		}
-
-		/// <summary>
-		/// Enable/disable a prismatic joint limit<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2PrismaticJoint_EnableLimit")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void PrismaticJointEnableLimitNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "enableLimit")] [NativeName(NativeNameType.Type, "bool")] byte enableLimit)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[299])(jointId, enableLimit);
-			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[299])(jointId, enableLimit);
-			#endif
-		}
-
-		/// <summary>
-		/// Enable/disable a prismatic joint limit<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2PrismaticJoint_EnableLimit")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void PrismaticJointEnableLimit([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "enableLimit")] [NativeName(NativeNameType.Type, "bool")] bool enableLimit)
-		{
-			PrismaticJointEnableLimitNative(jointId, enableLimit ? (byte)1 : (byte)0);
 		}
 	}
 }

@@ -1,7 +1,9 @@
 ﻿using HexaGen;
 using HexaGen.Patching;
 
-CsCodeGeneratorConfig config = CsCodeGeneratorConfig.Load("generator.json");
-CsCodeGenerator generator = new(config);
-generator.PatchEngine.RegisterPrePatch(new NamingPatch(["B2"], NamingPatchOptions.None));
-generator.Generate([.. Directory.GetFiles("include")], "../../../../Hexa.NET.Box2D/Generated");
+BatchGenerator batch = new();
+batch.Start()
+    .Setup<CsCodeGenerator>("generator.json")
+    .AddPrePatch(new NamingPatch(["B2"], NamingPatchOptions.None))
+    .Generate([.. Directory.GetFiles("include")], "../../../../Hexa.NET.Box2D/Generated")
+    .Finish();

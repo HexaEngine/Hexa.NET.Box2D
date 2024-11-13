@@ -40,14 +40,14 @@ namespace Hexa.NET.Box2D
 		/// Use this to store application specific shape data.<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "userData")]
-		[NativeName(NativeNameType.Type, "void*")]
+		[NativeName(NativeNameType.Type, "void *")]
 		public unsafe void* UserData;
 
 		/// <summary>
 		/// An array of at least 4 points. These are cloned and may be temporary.<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "points")]
-		[NativeName(NativeNameType.Type, "const b2Vec2*")]
+		[NativeName(NativeNameType.Type, "b2Vec2 const *")]
 		public unsafe Vector2* Points;
 
 		/// <summary>

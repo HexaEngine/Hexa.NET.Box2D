@@ -116,21 +116,21 @@ namespace Hexa.NET.Box2D
 		/// Function to spawn tasks<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "enqueueTask")]
-		[NativeName(NativeNameType.Type, "b2EnqueueTaskCallback*")]
+		[NativeName(NativeNameType.Type, "b2EnqueueTaskCallback *")]
 		public unsafe delegate*<delegate*<int, int, uint, void*, void>*, int, int, void*, void*, void*>* EnqueueTask;
 
 		/// <summary>
 		/// Function to finish a task<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "finishTask")]
-		[NativeName(NativeNameType.Type, "b2FinishTaskCallback*")]
+		[NativeName(NativeNameType.Type, "b2FinishTaskCallback *")]
 		public unsafe delegate*<void*, void*, void>* FinishTask;
 
 		/// <summary>
 		/// User context that is provided to enqueueTask and finishTask<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "userTaskContext")]
-		[NativeName(NativeNameType.Type, "void*")]
+		[NativeName(NativeNameType.Type, "void *")]
 		public unsafe void* UserTaskContext;
 
 		/// <summary>
@@ -155,8 +155,8 @@ namespace Hexa.NET.Box2D
 			EnableSleep = enableSleep ? (byte)1 : (byte)0;
 			EnableContinous = enableContinous ? (byte)1 : (byte)0;
 			WorkerCount = workerCount;
-			EnqueueTask = enqueueTask;
-			FinishTask = finishTask;
+			EnqueueTask = (delegate*<delegate*<int, int, uint, void*, void>*, int, int, void*, void*, void*>*)enqueueTask;
+			FinishTask = (delegate*<void*, void*, void>*)finishTask;
 			UserTaskContext = userTaskContext;
 			InternalValue = internalValue;
 		}

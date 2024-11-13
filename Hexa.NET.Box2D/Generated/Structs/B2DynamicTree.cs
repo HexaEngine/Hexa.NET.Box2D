@@ -28,7 +28,7 @@ namespace Hexa.NET.Box2D
 		/// The tree nodes<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "nodes")]
-		[NativeName(NativeNameType.Type, "b2TreeNode*")]
+		[NativeName(NativeNameType.Type, "b2TreeNode *")]
 		public unsafe B2TreeNode* Nodes;
 
 		/// <summary>
@@ -70,28 +70,28 @@ namespace Hexa.NET.Box2D
 		/// Leaf indices for rebuild<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "leafIndices")]
-		[NativeName(NativeNameType.Type, "int32_t*")]
+		[NativeName(NativeNameType.Type, "int32_t *")]
 		public unsafe int* LeafIndices;
 
 		/// <summary>
 		/// Leaf bounding boxes for rebuild<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "leafBoxes")]
-		[NativeName(NativeNameType.Type, "b2AABB*")]
+		[NativeName(NativeNameType.Type, "b2AABB *")]
 		public unsafe B2AABB* LeafBoxes;
 
 		/// <summary>
 		/// Leaf bounding box centers for rebuild<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "leafCenters")]
-		[NativeName(NativeNameType.Type, "b2Vec2*")]
+		[NativeName(NativeNameType.Type, "b2Vec2 *")]
 		public unsafe Vector2* LeafCenters;
 
 		/// <summary>
 		/// Bins for sorting during rebuild<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "binIndices")]
-		[NativeName(NativeNameType.Type, "int32_t*")]
+		[NativeName(NativeNameType.Type, "int32_t *")]
 		public unsafe int* BinIndices;
 
 		/// <summary>

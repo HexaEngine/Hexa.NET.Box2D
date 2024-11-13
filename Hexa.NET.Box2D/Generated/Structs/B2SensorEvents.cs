@@ -29,14 +29,14 @@ namespace Hexa.NET.Box2D
 		/// Array of sensor begin touch events<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "beginEvents")]
-		[NativeName(NativeNameType.Type, "b2SensorBeginTouchEvent*")]
+		[NativeName(NativeNameType.Type, "b2SensorBeginTouchEvent *")]
 		public unsafe B2SensorBeginTouchEvent* BeginEvents;
 
 		/// <summary>
 		/// Array of sensor end touch events<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "endEvents")]
-		[NativeName(NativeNameType.Type, "b2SensorEndTouchEvent*")]
+		[NativeName(NativeNameType.Type, "b2SensorEndTouchEvent *")]
 		public unsafe B2SensorEndTouchEvent* EndEvents;
 
 		/// <summary>

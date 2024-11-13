@@ -23,12 +23,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2SetAllocator")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void SetAllocatorNative([NativeName(NativeNameType.Param, "allocFcn")] [NativeName(NativeNameType.Type, "b2AllocFcn*")] delegate*<uint, int, void*>* allocFcn, [NativeName(NativeNameType.Param, "freeFcn")] [NativeName(NativeNameType.Type, "b2FreeFcn*")] delegate*<void*, void>* freeFcn)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void SetAllocatorNative([NativeName(NativeNameType.Param, "allocFcn")] [NativeName(NativeNameType.Type, "b2AllocFcn *")] delegate*<uint, int, void*>* allocFcn, [NativeName(NativeNameType.Param, "freeFcn")] [NativeName(NativeNameType.Type, "b2FreeFcn *")] delegate*<void*, void>* freeFcn)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<delegate*<uint, int, void*>*, delegate*<void*, void>*, void>)vt[0])(allocFcn, freeFcn);
+			((delegate* unmanaged[Cdecl]<delegate*<uint, int, void*>*, delegate*<void*, void>*, void>)funcTable[0])(allocFcn, freeFcn);
 			#else
-			((delegate* unmanaged[Cdecl]<nint, nint, void>)vt[0])((nint)allocFcn, (nint)freeFcn);
+			((delegate* unmanaged[Cdecl]<nint, nint, void>)funcTable[0])((nint)allocFcn, (nint)freeFcn);
 			#endif
 		}
 
@@ -38,7 +39,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2SetAllocator")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetAllocator([NativeName(NativeNameType.Param, "allocFcn")] [NativeName(NativeNameType.Type, "b2AllocFcn*")] delegate*<uint, int, void*>* allocFcn, [NativeName(NativeNameType.Param, "freeFcn")] [NativeName(NativeNameType.Type, "b2FreeFcn*")] delegate*<void*, void>* freeFcn)
+		public static void SetAllocator([NativeName(NativeNameType.Param, "allocFcn")] [NativeName(NativeNameType.Type, "b2AllocFcn *")] delegate*<uint, int, void*>* allocFcn, [NativeName(NativeNameType.Param, "freeFcn")] [NativeName(NativeNameType.Type, "b2FreeFcn *")] delegate*<void*, void>* freeFcn)
 		{
 			SetAllocatorNative(allocFcn, freeFcn);
 		}
@@ -48,12 +49,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2GetByteCount")]
 		[return: NativeName(NativeNameType.Type, "int")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static int GetByteCountNative()
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<int>)vt[1])();
+			return ((delegate* unmanaged[Cdecl]<int>)funcTable[1])();
 			#else
-			return (int)((delegate* unmanaged[Cdecl]<int>)vt[1])();
+			return (int)((delegate* unmanaged[Cdecl]<int>)funcTable[1])();
 			#endif
 		}
 
@@ -74,12 +76,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2SetAssertFcn")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void SetAssertFcnNative([NativeName(NativeNameType.Param, "assertFcn")] [NativeName(NativeNameType.Type, "b2AssertFcn*")] delegate*<byte*, byte*, int, int>* assertFcn)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void SetAssertFcnNative([NativeName(NativeNameType.Param, "assertFcn")] [NativeName(NativeNameType.Type, "b2AssertFcn *")] delegate*<byte*, byte*, int, int>* assertFcn)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<delegate*<byte*, byte*, int, int>*, void>)vt[2])(assertFcn);
+			((delegate* unmanaged[Cdecl]<delegate*<byte*, byte*, int, int>*, void>)funcTable[2])(assertFcn);
 			#else
-			((delegate* unmanaged[Cdecl]<nint, void>)vt[2])((nint)assertFcn);
+			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[2])((nint)assertFcn);
 			#endif
 		}
 
@@ -89,7 +92,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2SetAssertFcn")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetAssertFcn([NativeName(NativeNameType.Param, "assertFcn")] [NativeName(NativeNameType.Type, "b2AssertFcn*")] delegate*<byte*, byte*, int, int>* assertFcn)
+		public static void SetAssertFcn([NativeName(NativeNameType.Param, "assertFcn")] [NativeName(NativeNameType.Type, "b2AssertFcn *")] delegate*<byte*, byte*, int, int>* assertFcn)
 		{
 			SetAssertFcnNative(assertFcn);
 		}
@@ -99,12 +102,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2GetVersion")]
 		[return: NativeName(NativeNameType.Type, "b2Version")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2Version GetVersionNative()
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Version>)vt[3])();
+			return ((delegate* unmanaged[Cdecl]<B2Version>)funcTable[3])();
 			#else
-			return (B2Version)((delegate* unmanaged[Cdecl]<B2Version>)vt[3])();
+			return (B2Version)((delegate* unmanaged[Cdecl]<B2Version>)funcTable[3])();
 			#endif
 		}
 
@@ -121,12 +125,13 @@ namespace Hexa.NET.Box2D
 
 		[NativeName(NativeNameType.Func, "b2CreateTimer")]
 		[return: NativeName(NativeNameType.Type, "b2Timer")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2Timer CreateTimerNative()
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Timer>)vt[4])();
+			return ((delegate* unmanaged[Cdecl]<B2Timer>)funcTable[4])();
 			#else
-			return (B2Timer)((delegate* unmanaged[Cdecl]<B2Timer>)vt[4])();
+			return (B2Timer)((delegate* unmanaged[Cdecl]<B2Timer>)funcTable[4])();
 			#endif
 		}
 
@@ -140,18 +145,19 @@ namespace Hexa.NET.Box2D
 
 		[NativeName(NativeNameType.Func, "b2GetTicks")]
 		[return: NativeName(NativeNameType.Type, "int64_t")]
-		internal static long GetTicksNative([NativeName(NativeNameType.Param, "timer")] [NativeName(NativeNameType.Type, "b2Timer*")] B2Timer* timer)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static long GetTicksNative([NativeName(NativeNameType.Param, "timer")] [NativeName(NativeNameType.Type, "b2Timer *")] B2Timer* timer)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Timer*, long>)vt[5])(timer);
+			return ((delegate* unmanaged[Cdecl]<B2Timer*, long>)funcTable[5])(timer);
 			#else
-			return (long)((delegate* unmanaged[Cdecl]<nint, long>)vt[5])((nint)timer);
+			return (long)((delegate* unmanaged[Cdecl]<nint, long>)funcTable[5])((nint)timer);
 			#endif
 		}
 
 		[NativeName(NativeNameType.Func, "b2GetTicks")]
 		[return: NativeName(NativeNameType.Type, "int64_t")]
-		public static long GetTicks([NativeName(NativeNameType.Param, "timer")] [NativeName(NativeNameType.Type, "b2Timer*")] B2Timer* timer)
+		public static long GetTicks([NativeName(NativeNameType.Param, "timer")] [NativeName(NativeNameType.Type, "b2Timer *")] B2Timer* timer)
 		{
 			long ret = GetTicksNative(timer);
 			return ret;
@@ -159,7 +165,7 @@ namespace Hexa.NET.Box2D
 
 		[NativeName(NativeNameType.Func, "b2GetTicks")]
 		[return: NativeName(NativeNameType.Type, "int64_t")]
-		public static long GetTicks([NativeName(NativeNameType.Param, "timer")] [NativeName(NativeNameType.Type, "b2Timer*")] ref B2Timer timer)
+		public static long GetTicks([NativeName(NativeNameType.Param, "timer")] [NativeName(NativeNameType.Type, "b2Timer *")] ref B2Timer timer)
 		{
 			fixed (B2Timer* ptimer = &timer)
 			{
@@ -170,18 +176,19 @@ namespace Hexa.NET.Box2D
 
 		[NativeName(NativeNameType.Func, "b2GetMilliseconds")]
 		[return: NativeName(NativeNameType.Type, "float")]
-		internal static float GetMillisecondsNative([NativeName(NativeNameType.Param, "timer")] [NativeName(NativeNameType.Type, "const b2Timer*")] B2Timer* timer)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static float GetMillisecondsNative([NativeName(NativeNameType.Param, "timer")] [NativeName(NativeNameType.Type, "b2Timer const *")] B2Timer* timer)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Timer*, float>)vt[6])(timer);
+			return ((delegate* unmanaged[Cdecl]<B2Timer*, float>)funcTable[6])(timer);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<nint, float>)vt[6])((nint)timer);
+			return (float)((delegate* unmanaged[Cdecl]<nint, float>)funcTable[6])((nint)timer);
 			#endif
 		}
 
 		[NativeName(NativeNameType.Func, "b2GetMilliseconds")]
 		[return: NativeName(NativeNameType.Type, "float")]
-		public static float GetMilliseconds([NativeName(NativeNameType.Param, "timer")] [NativeName(NativeNameType.Type, "const b2Timer*")] B2Timer* timer)
+		public static float GetMilliseconds([NativeName(NativeNameType.Param, "timer")] [NativeName(NativeNameType.Type, "b2Timer const *")] B2Timer* timer)
 		{
 			float ret = GetMillisecondsNative(timer);
 			return ret;
@@ -189,7 +196,7 @@ namespace Hexa.NET.Box2D
 
 		[NativeName(NativeNameType.Func, "b2GetMilliseconds")]
 		[return: NativeName(NativeNameType.Type, "float")]
-		public static float GetMilliseconds([NativeName(NativeNameType.Param, "timer")] [NativeName(NativeNameType.Type, "const b2Timer*")] ref B2Timer timer)
+		public static float GetMilliseconds([NativeName(NativeNameType.Param, "timer")] [NativeName(NativeNameType.Type, "b2Timer const *")] ref B2Timer timer)
 		{
 			fixed (B2Timer* ptimer = &timer)
 			{
@@ -200,18 +207,19 @@ namespace Hexa.NET.Box2D
 
 		[NativeName(NativeNameType.Func, "b2GetMillisecondsAndReset")]
 		[return: NativeName(NativeNameType.Type, "float")]
-		internal static float GetMillisecondsAndResetNative([NativeName(NativeNameType.Param, "timer")] [NativeName(NativeNameType.Type, "b2Timer*")] B2Timer* timer)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static float GetMillisecondsAndResetNative([NativeName(NativeNameType.Param, "timer")] [NativeName(NativeNameType.Type, "b2Timer *")] B2Timer* timer)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Timer*, float>)vt[7])(timer);
+			return ((delegate* unmanaged[Cdecl]<B2Timer*, float>)funcTable[7])(timer);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<nint, float>)vt[7])((nint)timer);
+			return (float)((delegate* unmanaged[Cdecl]<nint, float>)funcTable[7])((nint)timer);
 			#endif
 		}
 
 		[NativeName(NativeNameType.Func, "b2GetMillisecondsAndReset")]
 		[return: NativeName(NativeNameType.Type, "float")]
-		public static float GetMillisecondsAndReset([NativeName(NativeNameType.Param, "timer")] [NativeName(NativeNameType.Type, "b2Timer*")] B2Timer* timer)
+		public static float GetMillisecondsAndReset([NativeName(NativeNameType.Param, "timer")] [NativeName(NativeNameType.Type, "b2Timer *")] B2Timer* timer)
 		{
 			float ret = GetMillisecondsAndResetNative(timer);
 			return ret;
@@ -219,7 +227,7 @@ namespace Hexa.NET.Box2D
 
 		[NativeName(NativeNameType.Func, "b2GetMillisecondsAndReset")]
 		[return: NativeName(NativeNameType.Type, "float")]
-		public static float GetMillisecondsAndReset([NativeName(NativeNameType.Param, "timer")] [NativeName(NativeNameType.Type, "b2Timer*")] ref B2Timer timer)
+		public static float GetMillisecondsAndReset([NativeName(NativeNameType.Param, "timer")] [NativeName(NativeNameType.Type, "b2Timer *")] ref B2Timer timer)
 		{
 			fixed (B2Timer* ptimer = &timer)
 			{
@@ -230,12 +238,13 @@ namespace Hexa.NET.Box2D
 
 		[NativeName(NativeNameType.Func, "b2SleepMilliseconds")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void SleepMillisecondsNative([NativeName(NativeNameType.Param, "milliseconds")] [NativeName(NativeNameType.Type, "int")] int milliseconds)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<int, void>)vt[8])(milliseconds);
+			((delegate* unmanaged[Cdecl]<int, void>)funcTable[8])(milliseconds);
 			#else
-			((delegate* unmanaged[Cdecl]<int, void>)vt[8])(milliseconds);
+			((delegate* unmanaged[Cdecl]<int, void>)funcTable[8])(milliseconds);
 			#endif
 		}
 
@@ -248,12 +257,13 @@ namespace Hexa.NET.Box2D
 
 		[NativeName(NativeNameType.Func, "b2Yield")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void YieldNative()
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<void>)vt[9])();
+			((delegate* unmanaged[Cdecl]<void>)funcTable[9])();
 			#else
-			((delegate* unmanaged[Cdecl]<void>)vt[9])();
+			((delegate* unmanaged[Cdecl]<void>)funcTable[9])();
 			#endif
 		}
 
@@ -269,12 +279,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2IsValid")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte IsValidNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "float")] float a)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<float, byte>)vt[10])(a);
+			return ((delegate* unmanaged[Cdecl]<float, byte>)funcTable[10])(a);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<float, byte>)vt[10])(a);
+			return (byte)((delegate* unmanaged[Cdecl]<float, byte>)funcTable[10])(a);
 			#endif
 		}
 
@@ -294,12 +305,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Vec2_IsValid")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte Vec2IsValidNative([NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 v)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<Vector2, byte>)vt[11])(v);
+			return ((delegate* unmanaged[Cdecl]<Vector2, byte>)funcTable[11])(v);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<Vector2, byte>)vt[11])(v);
+			return (byte)((delegate* unmanaged[Cdecl]<Vector2, byte>)funcTable[11])(v);
 			#endif
 		}
 
@@ -319,12 +331,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Rot_IsValid")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte RotIsValidNative([NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "b2Rot")] B2Rot q)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Rot, byte>)vt[12])(q);
+			return ((delegate* unmanaged[Cdecl]<B2Rot, byte>)funcTable[12])(q);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2Rot, byte>)vt[12])(q);
+			return (byte)((delegate* unmanaged[Cdecl]<B2Rot, byte>)funcTable[12])(q);
 			#endif
 		}
 
@@ -344,12 +357,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2AABB_IsValid")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte AABBIsValidNative([NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2AABB, byte>)vt[13])(aabb);
+			return ((delegate* unmanaged[Cdecl]<B2AABB, byte>)funcTable[13])(aabb);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2AABB, byte>)vt[13])(aabb);
+			return (byte)((delegate* unmanaged[Cdecl]<B2AABB, byte>)funcTable[13])(aabb);
 			#endif
 		}
 
@@ -369,12 +383,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2Normalize")]
 		[return: NativeName(NativeNameType.Type, "b2Vec2")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static Vector2 NormalizeNative([NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 v)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<Vector2, Vector2>)vt[14])(v);
+			return ((delegate* unmanaged[Cdecl]<Vector2, Vector2>)funcTable[14])(v);
 			#else
-			return (Vector2)((delegate* unmanaged[Cdecl]<Vector2, Vector2>)vt[14])(v);
+			return (Vector2)((delegate* unmanaged[Cdecl]<Vector2, Vector2>)funcTable[14])(v);
 			#endif
 		}
 
@@ -394,12 +409,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2NormalizeChecked")]
 		[return: NativeName(NativeNameType.Type, "b2Vec2")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static Vector2 NormalizeCheckedNative([NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 v)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<Vector2, Vector2>)vt[15])(v);
+			return ((delegate* unmanaged[Cdecl]<Vector2, Vector2>)funcTable[15])(v);
 			#else
-			return (Vector2)((delegate* unmanaged[Cdecl]<Vector2, Vector2>)vt[15])(v);
+			return (Vector2)((delegate* unmanaged[Cdecl]<Vector2, Vector2>)funcTable[15])(v);
 			#endif
 		}
 
@@ -420,12 +436,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2GetLengthAndNormalize")]
 		[return: NativeName(NativeNameType.Type, "b2Vec2")]
-		internal static Vector2 GetLengthAndNormalizeNative([NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "float*")] float* length, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 v)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static Vector2 GetLengthAndNormalizeNative([NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "float *")] float* length, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 v)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<float*, Vector2, Vector2>)vt[16])(length, v);
+			return ((delegate* unmanaged[Cdecl]<float*, Vector2, Vector2>)funcTable[16])(length, v);
 			#else
-			return (Vector2)((delegate* unmanaged[Cdecl]<nint, Vector2, Vector2>)vt[16])((nint)length, v);
+			return (Vector2)((delegate* unmanaged[Cdecl]<nint, Vector2, Vector2>)funcTable[16])((nint)length, v);
 			#endif
 		}
 
@@ -435,7 +452,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2GetLengthAndNormalize")]
 		[return: NativeName(NativeNameType.Type, "b2Vec2")]
-		public static Vector2 GetLengthAndNormalize([NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "float*")] float* length, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 v)
+		public static Vector2 GetLengthAndNormalize([NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "float *")] float* length, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 v)
 		{
 			Vector2 ret = GetLengthAndNormalizeNative(length, v);
 			return ret;
@@ -447,7 +464,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2GetLengthAndNormalize")]
 		[return: NativeName(NativeNameType.Type, "b2Vec2")]
-		public static Vector2 GetLengthAndNormalize([NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "float*")] ref float length, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 v)
+		public static Vector2 GetLengthAndNormalize([NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "float *")] ref float length, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 v)
 		{
 			fixed (float* plength = &length)
 			{
@@ -464,12 +481,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2SetLengthUnitsPerMeter")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void SetLengthUnitsPerMeterNative([NativeName(NativeNameType.Param, "lengthUnits")] [NativeName(NativeNameType.Type, "float")] float lengthUnits)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<float, void>)vt[17])(lengthUnits);
+			((delegate* unmanaged[Cdecl]<float, void>)funcTable[17])(lengthUnits);
 			#else
-			((delegate* unmanaged[Cdecl]<float, void>)vt[17])(lengthUnits);
+			((delegate* unmanaged[Cdecl]<float, void>)funcTable[17])(lengthUnits);
 			#endif
 		}
 
@@ -491,12 +509,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2GetLengthUnitsPerMeter")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float GetLengthUnitsPerMeterNative()
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<float>)vt[18])();
+			return ((delegate* unmanaged[Cdecl]<float>)funcTable[18])();
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<float>)vt[18])();
+			return (float)((delegate* unmanaged[Cdecl]<float>)funcTable[18])();
 			#endif
 		}
 
@@ -516,12 +535,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2IsValidRay")]
 		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte IsValidRayNative([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] B2RayCastInput* input)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static byte IsValidRayNative([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] B2RayCastInput* input)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2RayCastInput*, byte>)vt[19])(input);
+			return ((delegate* unmanaged[Cdecl]<B2RayCastInput*, byte>)funcTable[19])(input);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<nint, byte>)vt[19])((nint)input);
+			return (byte)((delegate* unmanaged[Cdecl]<nint, byte>)funcTable[19])((nint)input);
 			#endif
 		}
 
@@ -530,7 +550,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2IsValidRay")]
 		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool IsValidRay([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] B2RayCastInput* input)
+		public static bool IsValidRay([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] B2RayCastInput* input)
 		{
 			byte ret = IsValidRayNative(input);
 			return ret != 0;
@@ -541,7 +561,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2IsValidRay")]
 		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool IsValidRay([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] ref B2RayCastInput input)
+		public static bool IsValidRay([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] ref B2RayCastInput input)
 		{
 			fixed (B2RayCastInput* pinput = &input)
 			{
@@ -556,12 +576,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MakePolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Polygon")]
-		internal static B2Polygon MakePolygonNative([NativeName(NativeNameType.Param, "hull")] [NativeName(NativeNameType.Type, "const b2Hull*")] B2Hull* hull, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2Polygon MakePolygonNative([NativeName(NativeNameType.Param, "hull")] [NativeName(NativeNameType.Type, "b2Hull const *")] B2Hull* hull, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Hull*, float, B2Polygon>)vt[20])(hull, radius);
+			return ((delegate* unmanaged[Cdecl]<B2Hull*, float, B2Polygon>)funcTable[20])(hull, radius);
 			#else
-			return (B2Polygon)((delegate* unmanaged[Cdecl]<nint, float, B2Polygon>)vt[20])((nint)hull, radius);
+			return (B2Polygon)((delegate* unmanaged[Cdecl]<nint, float, B2Polygon>)funcTable[20])((nint)hull, radius);
 			#endif
 		}
 
@@ -571,7 +592,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MakePolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Polygon")]
-		public static B2Polygon MakePolygon([NativeName(NativeNameType.Param, "hull")] [NativeName(NativeNameType.Type, "const b2Hull*")] B2Hull* hull, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius)
+		public static B2Polygon MakePolygon([NativeName(NativeNameType.Param, "hull")] [NativeName(NativeNameType.Type, "b2Hull const *")] B2Hull* hull, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius)
 		{
 			B2Polygon ret = MakePolygonNative(hull, radius);
 			return ret;
@@ -583,7 +604,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MakePolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Polygon")]
-		public static B2Polygon MakePolygon([NativeName(NativeNameType.Param, "hull")] [NativeName(NativeNameType.Type, "const b2Hull*")] ref B2Hull hull, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius)
+		public static B2Polygon MakePolygon([NativeName(NativeNameType.Param, "hull")] [NativeName(NativeNameType.Type, "b2Hull const *")] ref B2Hull hull, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius)
 		{
 			fixed (B2Hull* phull = &hull)
 			{
@@ -598,12 +619,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MakeOffsetPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Polygon")]
-		internal static B2Polygon MakeOffsetPolygonNative([NativeName(NativeNameType.Param, "hull")] [NativeName(NativeNameType.Type, "const b2Hull*")] B2Hull* hull, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2Polygon MakeOffsetPolygonNative([NativeName(NativeNameType.Param, "hull")] [NativeName(NativeNameType.Type, "b2Hull const *")] B2Hull* hull, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Hull*, float, B2Transform, B2Polygon>)vt[21])(hull, radius, transform);
+			return ((delegate* unmanaged[Cdecl]<B2Hull*, float, B2Transform, B2Polygon>)funcTable[21])(hull, radius, transform);
 			#else
-			return (B2Polygon)((delegate* unmanaged[Cdecl]<nint, float, B2Transform, B2Polygon>)vt[21])((nint)hull, radius, transform);
+			return (B2Polygon)((delegate* unmanaged[Cdecl]<nint, float, B2Transform, B2Polygon>)funcTable[21])((nint)hull, radius, transform);
 			#endif
 		}
 
@@ -613,7 +635,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MakeOffsetPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Polygon")]
-		public static B2Polygon MakeOffsetPolygon([NativeName(NativeNameType.Param, "hull")] [NativeName(NativeNameType.Type, "const b2Hull*")] B2Hull* hull, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
+		public static B2Polygon MakeOffsetPolygon([NativeName(NativeNameType.Param, "hull")] [NativeName(NativeNameType.Type, "b2Hull const *")] B2Hull* hull, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
 		{
 			B2Polygon ret = MakeOffsetPolygonNative(hull, radius, transform);
 			return ret;
@@ -625,7 +647,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MakeOffsetPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Polygon")]
-		public static B2Polygon MakeOffsetPolygon([NativeName(NativeNameType.Param, "hull")] [NativeName(NativeNameType.Type, "const b2Hull*")] ref B2Hull hull, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
+		public static B2Polygon MakeOffsetPolygon([NativeName(NativeNameType.Param, "hull")] [NativeName(NativeNameType.Type, "b2Hull const *")] ref B2Hull hull, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
 		{
 			fixed (B2Hull* phull = &hull)
 			{
@@ -639,12 +661,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MakeSquare")]
 		[return: NativeName(NativeNameType.Type, "b2Polygon")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2Polygon MakeSquareNative([NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "float")] float h)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<float, B2Polygon>)vt[22])(h);
+			return ((delegate* unmanaged[Cdecl]<float, B2Polygon>)funcTable[22])(h);
 			#else
-			return (B2Polygon)((delegate* unmanaged[Cdecl]<float, B2Polygon>)vt[22])(h);
+			return (B2Polygon)((delegate* unmanaged[Cdecl]<float, B2Polygon>)funcTable[22])(h);
 			#endif
 		}
 
@@ -664,12 +687,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MakeBox")]
 		[return: NativeName(NativeNameType.Type, "b2Polygon")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2Polygon MakeBoxNative([NativeName(NativeNameType.Param, "hx")] [NativeName(NativeNameType.Type, "float")] float hx, [NativeName(NativeNameType.Param, "hy")] [NativeName(NativeNameType.Type, "float")] float hy)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<float, float, B2Polygon>)vt[23])(hx, hy);
+			return ((delegate* unmanaged[Cdecl]<float, float, B2Polygon>)funcTable[23])(hx, hy);
 			#else
-			return (B2Polygon)((delegate* unmanaged[Cdecl]<float, float, B2Polygon>)vt[23])(hx, hy);
+			return (B2Polygon)((delegate* unmanaged[Cdecl]<float, float, B2Polygon>)funcTable[23])(hx, hy);
 			#endif
 		}
 
@@ -689,12 +713,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MakeRoundedBox")]
 		[return: NativeName(NativeNameType.Type, "b2Polygon")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2Polygon MakeRoundedBoxNative([NativeName(NativeNameType.Param, "hx")] [NativeName(NativeNameType.Type, "float")] float hx, [NativeName(NativeNameType.Param, "hy")] [NativeName(NativeNameType.Type, "float")] float hy, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<float, float, float, B2Polygon>)vt[24])(hx, hy, radius);
+			return ((delegate* unmanaged[Cdecl]<float, float, float, B2Polygon>)funcTable[24])(hx, hy, radius);
 			#else
-			return (B2Polygon)((delegate* unmanaged[Cdecl]<float, float, float, B2Polygon>)vt[24])(hx, hy, radius);
+			return (B2Polygon)((delegate* unmanaged[Cdecl]<float, float, float, B2Polygon>)funcTable[24])(hx, hy, radius);
 			#endif
 		}
 
@@ -714,12 +739,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MakeOffsetBox")]
 		[return: NativeName(NativeNameType.Type, "b2Polygon")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2Polygon MakeOffsetBoxNative([NativeName(NativeNameType.Param, "hx")] [NativeName(NativeNameType.Type, "float")] float hx, [NativeName(NativeNameType.Param, "hy")] [NativeName(NativeNameType.Type, "float")] float hy, [NativeName(NativeNameType.Param, "center")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 center, [NativeName(NativeNameType.Param, "angle")] [NativeName(NativeNameType.Type, "float")] float angle)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<float, float, Vector2, float, B2Polygon>)vt[25])(hx, hy, center, angle);
+			return ((delegate* unmanaged[Cdecl]<float, float, Vector2, float, B2Polygon>)funcTable[25])(hx, hy, center, angle);
 			#else
-			return (B2Polygon)((delegate* unmanaged[Cdecl]<float, float, Vector2, float, B2Polygon>)vt[25])(hx, hy, center, angle);
+			return (B2Polygon)((delegate* unmanaged[Cdecl]<float, float, Vector2, float, B2Polygon>)funcTable[25])(hx, hy, center, angle);
 			#endif
 		}
 
@@ -739,12 +765,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2TransformPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Polygon")]
-		internal static B2Polygon TransformPolygonNative([NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygon)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2Polygon TransformPolygonNative([NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygon)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Transform, B2Polygon*, B2Polygon>)vt[26])(transform, polygon);
+			return ((delegate* unmanaged[Cdecl]<B2Transform, B2Polygon*, B2Polygon>)funcTable[26])(transform, polygon);
 			#else
-			return (B2Polygon)((delegate* unmanaged[Cdecl]<B2Transform, nint, B2Polygon>)vt[26])(transform, (nint)polygon);
+			return (B2Polygon)((delegate* unmanaged[Cdecl]<B2Transform, nint, B2Polygon>)funcTable[26])(transform, (nint)polygon);
 			#endif
 		}
 
@@ -753,7 +780,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2TransformPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Polygon")]
-		public static B2Polygon TransformPolygon([NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygon)
+		public static B2Polygon TransformPolygon([NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygon)
 		{
 			B2Polygon ret = TransformPolygonNative(transform, polygon);
 			return ret;
@@ -764,7 +791,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2TransformPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Polygon")]
-		public static B2Polygon TransformPolygon([NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon polygon)
+		public static B2Polygon TransformPolygon([NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon polygon)
 		{
 			fixed (B2Polygon* ppolygon = &polygon)
 			{
@@ -778,12 +805,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputeCircleMass")]
 		[return: NativeName(NativeNameType.Type, "b2MassData")]
-		internal static B2MassData ComputeCircleMassNative([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* shape, [NativeName(NativeNameType.Param, "density")] [NativeName(NativeNameType.Type, "float")] float density)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2MassData ComputeCircleMassNative([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* shape, [NativeName(NativeNameType.Param, "density")] [NativeName(NativeNameType.Type, "float")] float density)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Circle*, float, B2MassData>)vt[27])(shape, density);
+			return ((delegate* unmanaged[Cdecl]<B2Circle*, float, B2MassData>)funcTable[27])(shape, density);
 			#else
-			return (B2MassData)((delegate* unmanaged[Cdecl]<nint, float, B2MassData>)vt[27])((nint)shape, density);
+			return (B2MassData)((delegate* unmanaged[Cdecl]<nint, float, B2MassData>)funcTable[27])((nint)shape, density);
 			#endif
 		}
 
@@ -792,7 +820,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputeCircleMass")]
 		[return: NativeName(NativeNameType.Type, "b2MassData")]
-		public static B2MassData ComputeCircleMass([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* shape, [NativeName(NativeNameType.Param, "density")] [NativeName(NativeNameType.Type, "float")] float density)
+		public static B2MassData ComputeCircleMass([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* shape, [NativeName(NativeNameType.Param, "density")] [NativeName(NativeNameType.Type, "float")] float density)
 		{
 			B2MassData ret = ComputeCircleMassNative(shape, density);
 			return ret;
@@ -803,7 +831,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputeCircleMass")]
 		[return: NativeName(NativeNameType.Type, "b2MassData")]
-		public static B2MassData ComputeCircleMass([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle shape, [NativeName(NativeNameType.Param, "density")] [NativeName(NativeNameType.Type, "float")] float density)
+		public static B2MassData ComputeCircleMass([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle shape, [NativeName(NativeNameType.Param, "density")] [NativeName(NativeNameType.Type, "float")] float density)
 		{
 			fixed (B2Circle* pshape = &shape)
 			{
@@ -817,12 +845,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputeCapsuleMass")]
 		[return: NativeName(NativeNameType.Type, "b2MassData")]
-		internal static B2MassData ComputeCapsuleMassNative([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* shape, [NativeName(NativeNameType.Param, "density")] [NativeName(NativeNameType.Type, "float")] float density)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2MassData ComputeCapsuleMassNative([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* shape, [NativeName(NativeNameType.Param, "density")] [NativeName(NativeNameType.Type, "float")] float density)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Capsule*, float, B2MassData>)vt[28])(shape, density);
+			return ((delegate* unmanaged[Cdecl]<B2Capsule*, float, B2MassData>)funcTable[28])(shape, density);
 			#else
-			return (B2MassData)((delegate* unmanaged[Cdecl]<nint, float, B2MassData>)vt[28])((nint)shape, density);
+			return (B2MassData)((delegate* unmanaged[Cdecl]<nint, float, B2MassData>)funcTable[28])((nint)shape, density);
 			#endif
 		}
 
@@ -831,7 +860,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputeCapsuleMass")]
 		[return: NativeName(NativeNameType.Type, "b2MassData")]
-		public static B2MassData ComputeCapsuleMass([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* shape, [NativeName(NativeNameType.Param, "density")] [NativeName(NativeNameType.Type, "float")] float density)
+		public static B2MassData ComputeCapsuleMass([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* shape, [NativeName(NativeNameType.Param, "density")] [NativeName(NativeNameType.Type, "float")] float density)
 		{
 			B2MassData ret = ComputeCapsuleMassNative(shape, density);
 			return ret;
@@ -842,7 +871,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputeCapsuleMass")]
 		[return: NativeName(NativeNameType.Type, "b2MassData")]
-		public static B2MassData ComputeCapsuleMass([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule shape, [NativeName(NativeNameType.Param, "density")] [NativeName(NativeNameType.Type, "float")] float density)
+		public static B2MassData ComputeCapsuleMass([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule shape, [NativeName(NativeNameType.Param, "density")] [NativeName(NativeNameType.Type, "float")] float density)
 		{
 			fixed (B2Capsule* pshape = &shape)
 			{
@@ -856,12 +885,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputePolygonMass")]
 		[return: NativeName(NativeNameType.Type, "b2MassData")]
-		internal static B2MassData ComputePolygonMassNative([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* shape, [NativeName(NativeNameType.Param, "density")] [NativeName(NativeNameType.Type, "float")] float density)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2MassData ComputePolygonMassNative([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* shape, [NativeName(NativeNameType.Param, "density")] [NativeName(NativeNameType.Type, "float")] float density)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Polygon*, float, B2MassData>)vt[29])(shape, density);
+			return ((delegate* unmanaged[Cdecl]<B2Polygon*, float, B2MassData>)funcTable[29])(shape, density);
 			#else
-			return (B2MassData)((delegate* unmanaged[Cdecl]<nint, float, B2MassData>)vt[29])((nint)shape, density);
+			return (B2MassData)((delegate* unmanaged[Cdecl]<nint, float, B2MassData>)funcTable[29])((nint)shape, density);
 			#endif
 		}
 
@@ -870,7 +900,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputePolygonMass")]
 		[return: NativeName(NativeNameType.Type, "b2MassData")]
-		public static B2MassData ComputePolygonMass([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* shape, [NativeName(NativeNameType.Param, "density")] [NativeName(NativeNameType.Type, "float")] float density)
+		public static B2MassData ComputePolygonMass([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* shape, [NativeName(NativeNameType.Param, "density")] [NativeName(NativeNameType.Type, "float")] float density)
 		{
 			B2MassData ret = ComputePolygonMassNative(shape, density);
 			return ret;
@@ -881,7 +911,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputePolygonMass")]
 		[return: NativeName(NativeNameType.Type, "b2MassData")]
-		public static B2MassData ComputePolygonMass([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon shape, [NativeName(NativeNameType.Param, "density")] [NativeName(NativeNameType.Type, "float")] float density)
+		public static B2MassData ComputePolygonMass([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon shape, [NativeName(NativeNameType.Param, "density")] [NativeName(NativeNameType.Type, "float")] float density)
 		{
 			fixed (B2Polygon* pshape = &shape)
 			{
@@ -895,12 +925,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputeCircleAABB")]
 		[return: NativeName(NativeNameType.Type, "b2AABB")]
-		internal static B2AABB ComputeCircleAABBNative([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2AABB ComputeCircleAABBNative([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Circle*, B2Transform, B2AABB>)vt[30])(shape, transform);
+			return ((delegate* unmanaged[Cdecl]<B2Circle*, B2Transform, B2AABB>)funcTable[30])(shape, transform);
 			#else
-			return (B2AABB)((delegate* unmanaged[Cdecl]<nint, B2Transform, B2AABB>)vt[30])((nint)shape, transform);
+			return (B2AABB)((delegate* unmanaged[Cdecl]<nint, B2Transform, B2AABB>)funcTable[30])((nint)shape, transform);
 			#endif
 		}
 
@@ -909,7 +940,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputeCircleAABB")]
 		[return: NativeName(NativeNameType.Type, "b2AABB")]
-		public static B2AABB ComputeCircleAABB([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
+		public static B2AABB ComputeCircleAABB([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
 		{
 			B2AABB ret = ComputeCircleAABBNative(shape, transform);
 			return ret;
@@ -920,7 +951,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputeCircleAABB")]
 		[return: NativeName(NativeNameType.Type, "b2AABB")]
-		public static B2AABB ComputeCircleAABB([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
+		public static B2AABB ComputeCircleAABB([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
 		{
 			fixed (B2Circle* pshape = &shape)
 			{
@@ -934,12 +965,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputeCapsuleAABB")]
 		[return: NativeName(NativeNameType.Type, "b2AABB")]
-		internal static B2AABB ComputeCapsuleAABBNative([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2AABB ComputeCapsuleAABBNative([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Capsule*, B2Transform, B2AABB>)vt[31])(shape, transform);
+			return ((delegate* unmanaged[Cdecl]<B2Capsule*, B2Transform, B2AABB>)funcTable[31])(shape, transform);
 			#else
-			return (B2AABB)((delegate* unmanaged[Cdecl]<nint, B2Transform, B2AABB>)vt[31])((nint)shape, transform);
+			return (B2AABB)((delegate* unmanaged[Cdecl]<nint, B2Transform, B2AABB>)funcTable[31])((nint)shape, transform);
 			#endif
 		}
 
@@ -948,7 +980,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputeCapsuleAABB")]
 		[return: NativeName(NativeNameType.Type, "b2AABB")]
-		public static B2AABB ComputeCapsuleAABB([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
+		public static B2AABB ComputeCapsuleAABB([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
 		{
 			B2AABB ret = ComputeCapsuleAABBNative(shape, transform);
 			return ret;
@@ -959,7 +991,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputeCapsuleAABB")]
 		[return: NativeName(NativeNameType.Type, "b2AABB")]
-		public static B2AABB ComputeCapsuleAABB([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
+		public static B2AABB ComputeCapsuleAABB([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
 		{
 			fixed (B2Capsule* pshape = &shape)
 			{
@@ -973,12 +1005,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputePolygonAABB")]
 		[return: NativeName(NativeNameType.Type, "b2AABB")]
-		internal static B2AABB ComputePolygonAABBNative([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2AABB ComputePolygonAABBNative([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Polygon*, B2Transform, B2AABB>)vt[32])(shape, transform);
+			return ((delegate* unmanaged[Cdecl]<B2Polygon*, B2Transform, B2AABB>)funcTable[32])(shape, transform);
 			#else
-			return (B2AABB)((delegate* unmanaged[Cdecl]<nint, B2Transform, B2AABB>)vt[32])((nint)shape, transform);
+			return (B2AABB)((delegate* unmanaged[Cdecl]<nint, B2Transform, B2AABB>)funcTable[32])((nint)shape, transform);
 			#endif
 		}
 
@@ -987,7 +1020,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputePolygonAABB")]
 		[return: NativeName(NativeNameType.Type, "b2AABB")]
-		public static B2AABB ComputePolygonAABB([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
+		public static B2AABB ComputePolygonAABB([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
 		{
 			B2AABB ret = ComputePolygonAABBNative(shape, transform);
 			return ret;
@@ -998,7 +1031,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputePolygonAABB")]
 		[return: NativeName(NativeNameType.Type, "b2AABB")]
-		public static B2AABB ComputePolygonAABB([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
+		public static B2AABB ComputePolygonAABB([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
 		{
 			fixed (B2Polygon* pshape = &shape)
 			{
@@ -1012,12 +1045,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputeSegmentAABB")]
 		[return: NativeName(NativeNameType.Type, "b2AABB")]
-		internal static B2AABB ComputeSegmentAABBNative([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Segment*")] B2Segment* shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2AABB ComputeSegmentAABBNative([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Segment const *")] B2Segment* shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Segment*, B2Transform, B2AABB>)vt[33])(shape, transform);
+			return ((delegate* unmanaged[Cdecl]<B2Segment*, B2Transform, B2AABB>)funcTable[33])(shape, transform);
 			#else
-			return (B2AABB)((delegate* unmanaged[Cdecl]<nint, B2Transform, B2AABB>)vt[33])((nint)shape, transform);
+			return (B2AABB)((delegate* unmanaged[Cdecl]<nint, B2Transform, B2AABB>)funcTable[33])((nint)shape, transform);
 			#endif
 		}
 
@@ -1026,7 +1060,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputeSegmentAABB")]
 		[return: NativeName(NativeNameType.Type, "b2AABB")]
-		public static B2AABB ComputeSegmentAABB([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Segment*")] B2Segment* shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
+		public static B2AABB ComputeSegmentAABB([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Segment const *")] B2Segment* shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
 		{
 			B2AABB ret = ComputeSegmentAABBNative(shape, transform);
 			return ret;
@@ -1037,7 +1071,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputeSegmentAABB")]
 		[return: NativeName(NativeNameType.Type, "b2AABB")]
-		public static B2AABB ComputeSegmentAABB([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Segment*")] ref B2Segment shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
+		public static B2AABB ComputeSegmentAABB([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Segment const *")] ref B2Segment shape, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform)
 		{
 			fixed (B2Segment* pshape = &shape)
 			{
@@ -1051,12 +1085,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2PointInCircle")]
 		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte PointInCircleNative([NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 point, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* shape)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static byte PointInCircleNative([NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 point, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* shape)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<Vector2, B2Circle*, byte>)vt[34])(point, shape);
+			return ((delegate* unmanaged[Cdecl]<Vector2, B2Circle*, byte>)funcTable[34])(point, shape);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<Vector2, nint, byte>)vt[34])(point, (nint)shape);
+			return (byte)((delegate* unmanaged[Cdecl]<Vector2, nint, byte>)funcTable[34])(point, (nint)shape);
 			#endif
 		}
 
@@ -1065,7 +1100,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2PointInCircle")]
 		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PointInCircle([NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 point, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* shape)
+		public static bool PointInCircle([NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 point, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* shape)
 		{
 			byte ret = PointInCircleNative(point, shape);
 			return ret != 0;
@@ -1076,7 +1111,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2PointInCircle")]
 		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PointInCircle([NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 point, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle shape)
+		public static bool PointInCircle([NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 point, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle shape)
 		{
 			fixed (B2Circle* pshape = &shape)
 			{
@@ -1090,12 +1125,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2PointInCapsule")]
 		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte PointInCapsuleNative([NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 point, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* shape)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static byte PointInCapsuleNative([NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 point, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* shape)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<Vector2, B2Capsule*, byte>)vt[35])(point, shape);
+			return ((delegate* unmanaged[Cdecl]<Vector2, B2Capsule*, byte>)funcTable[35])(point, shape);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<Vector2, nint, byte>)vt[35])(point, (nint)shape);
+			return (byte)((delegate* unmanaged[Cdecl]<Vector2, nint, byte>)funcTable[35])(point, (nint)shape);
 			#endif
 		}
 
@@ -1104,7 +1140,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2PointInCapsule")]
 		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PointInCapsule([NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 point, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* shape)
+		public static bool PointInCapsule([NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 point, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* shape)
 		{
 			byte ret = PointInCapsuleNative(point, shape);
 			return ret != 0;
@@ -1115,7 +1151,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2PointInCapsule")]
 		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PointInCapsule([NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 point, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule shape)
+		public static bool PointInCapsule([NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 point, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule shape)
 		{
 			fixed (B2Capsule* pshape = &shape)
 			{
@@ -1129,12 +1165,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2PointInPolygon")]
 		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte PointInPolygonNative([NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 point, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* shape)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static byte PointInPolygonNative([NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 point, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* shape)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<Vector2, B2Polygon*, byte>)vt[36])(point, shape);
+			return ((delegate* unmanaged[Cdecl]<Vector2, B2Polygon*, byte>)funcTable[36])(point, shape);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<Vector2, nint, byte>)vt[36])(point, (nint)shape);
+			return (byte)((delegate* unmanaged[Cdecl]<Vector2, nint, byte>)funcTable[36])(point, (nint)shape);
 			#endif
 		}
 
@@ -1143,7 +1180,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2PointInPolygon")]
 		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PointInPolygon([NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 point, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* shape)
+		public static bool PointInPolygon([NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 point, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* shape)
 		{
 			byte ret = PointInPolygonNative(point, shape);
 			return ret != 0;
@@ -1154,7 +1191,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2PointInPolygon")]
 		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PointInPolygon([NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 point, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon shape)
+		public static bool PointInPolygon([NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 point, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon shape)
 		{
 			fixed (B2Polygon* pshape = &shape)
 			{
@@ -1168,12 +1205,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RayCastCircle")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		internal static B2CastOutput RayCastCircleNative([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* shape)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2CastOutput RayCastCircleNative([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* shape)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2RayCastInput*, B2Circle*, B2CastOutput>)vt[37])(input, shape);
+			return ((delegate* unmanaged[Cdecl]<B2RayCastInput*, B2Circle*, B2CastOutput>)funcTable[37])(input, shape);
 			#else
-			return (B2CastOutput)((delegate* unmanaged[Cdecl]<nint, nint, B2CastOutput>)vt[37])((nint)input, (nint)shape);
+			return (B2CastOutput)((delegate* unmanaged[Cdecl]<nint, nint, B2CastOutput>)funcTable[37])((nint)input, (nint)shape);
 			#endif
 		}
 
@@ -1182,7 +1220,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RayCastCircle")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput RayCastCircle([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* shape)
+		public static B2CastOutput RayCastCircle([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* shape)
 		{
 			B2CastOutput ret = RayCastCircleNative(input, shape);
 			return ret;
@@ -1193,7 +1231,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RayCastCircle")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput RayCastCircle([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] ref B2RayCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* shape)
+		public static B2CastOutput RayCastCircle([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] ref B2RayCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* shape)
 		{
 			fixed (B2RayCastInput* pinput = &input)
 			{
@@ -1207,7 +1245,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RayCastCircle")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput RayCastCircle([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle shape)
+		public static B2CastOutput RayCastCircle([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle shape)
 		{
 			fixed (B2Circle* pshape = &shape)
 			{
@@ -1221,7 +1259,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RayCastCircle")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput RayCastCircle([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] ref B2RayCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle shape)
+		public static B2CastOutput RayCastCircle([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] ref B2RayCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle shape)
 		{
 			fixed (B2RayCastInput* pinput = &input)
 			{
@@ -1238,12 +1276,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RayCastCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		internal static B2CastOutput RayCastCapsuleNative([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* shape)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2CastOutput RayCastCapsuleNative([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* shape)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2RayCastInput*, B2Capsule*, B2CastOutput>)vt[38])(input, shape);
+			return ((delegate* unmanaged[Cdecl]<B2RayCastInput*, B2Capsule*, B2CastOutput>)funcTable[38])(input, shape);
 			#else
-			return (B2CastOutput)((delegate* unmanaged[Cdecl]<nint, nint, B2CastOutput>)vt[38])((nint)input, (nint)shape);
+			return (B2CastOutput)((delegate* unmanaged[Cdecl]<nint, nint, B2CastOutput>)funcTable[38])((nint)input, (nint)shape);
 			#endif
 		}
 
@@ -1252,7 +1291,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RayCastCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput RayCastCapsule([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* shape)
+		public static B2CastOutput RayCastCapsule([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* shape)
 		{
 			B2CastOutput ret = RayCastCapsuleNative(input, shape);
 			return ret;
@@ -1263,7 +1302,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RayCastCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput RayCastCapsule([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] ref B2RayCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* shape)
+		public static B2CastOutput RayCastCapsule([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] ref B2RayCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* shape)
 		{
 			fixed (B2RayCastInput* pinput = &input)
 			{
@@ -1277,7 +1316,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RayCastCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput RayCastCapsule([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule shape)
+		public static B2CastOutput RayCastCapsule([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule shape)
 		{
 			fixed (B2Capsule* pshape = &shape)
 			{
@@ -1291,7 +1330,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RayCastCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput RayCastCapsule([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] ref B2RayCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule shape)
+		public static B2CastOutput RayCastCapsule([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] ref B2RayCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule shape)
 		{
 			fixed (B2RayCastInput* pinput = &input)
 			{
@@ -1309,12 +1348,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RayCastSegment")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		internal static B2CastOutput RayCastSegmentNative([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Segment*")] B2Segment* shape, [NativeName(NativeNameType.Param, "oneSided")] [NativeName(NativeNameType.Type, "bool")] byte oneSided)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2CastOutput RayCastSegmentNative([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Segment const *")] B2Segment* shape, [NativeName(NativeNameType.Param, "oneSided")] [NativeName(NativeNameType.Type, "bool")] byte oneSided)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2RayCastInput*, B2Segment*, byte, B2CastOutput>)vt[39])(input, shape, oneSided);
+			return ((delegate* unmanaged[Cdecl]<B2RayCastInput*, B2Segment*, byte, B2CastOutput>)funcTable[39])(input, shape, oneSided);
 			#else
-			return (B2CastOutput)((delegate* unmanaged[Cdecl]<nint, nint, byte, B2CastOutput>)vt[39])((nint)input, (nint)shape, oneSided);
+			return (B2CastOutput)((delegate* unmanaged[Cdecl]<nint, nint, byte, B2CastOutput>)funcTable[39])((nint)input, (nint)shape, oneSided);
 			#endif
 		}
 
@@ -1324,7 +1364,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RayCastSegment")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput RayCastSegment([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Segment*")] B2Segment* shape, [NativeName(NativeNameType.Param, "oneSided")] [NativeName(NativeNameType.Type, "bool")] bool oneSided)
+		public static B2CastOutput RayCastSegment([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Segment const *")] B2Segment* shape, [NativeName(NativeNameType.Param, "oneSided")] [NativeName(NativeNameType.Type, "bool")] bool oneSided)
 		{
 			B2CastOutput ret = RayCastSegmentNative(input, shape, oneSided ? (byte)1 : (byte)0);
 			return ret;
@@ -1336,7 +1376,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RayCastSegment")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput RayCastSegment([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] ref B2RayCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Segment*")] B2Segment* shape, [NativeName(NativeNameType.Param, "oneSided")] [NativeName(NativeNameType.Type, "bool")] bool oneSided)
+		public static B2CastOutput RayCastSegment([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] ref B2RayCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Segment const *")] B2Segment* shape, [NativeName(NativeNameType.Param, "oneSided")] [NativeName(NativeNameType.Type, "bool")] bool oneSided)
 		{
 			fixed (B2RayCastInput* pinput = &input)
 			{
@@ -1351,7 +1391,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RayCastSegment")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput RayCastSegment([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Segment*")] ref B2Segment shape, [NativeName(NativeNameType.Param, "oneSided")] [NativeName(NativeNameType.Type, "bool")] bool oneSided)
+		public static B2CastOutput RayCastSegment([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Segment const *")] ref B2Segment shape, [NativeName(NativeNameType.Param, "oneSided")] [NativeName(NativeNameType.Type, "bool")] bool oneSided)
 		{
 			fixed (B2Segment* pshape = &shape)
 			{
@@ -1366,7 +1406,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RayCastSegment")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput RayCastSegment([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] ref B2RayCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Segment*")] ref B2Segment shape, [NativeName(NativeNameType.Param, "oneSided")] [NativeName(NativeNameType.Type, "bool")] bool oneSided)
+		public static B2CastOutput RayCastSegment([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] ref B2RayCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Segment const *")] ref B2Segment shape, [NativeName(NativeNameType.Param, "oneSided")] [NativeName(NativeNameType.Type, "bool")] bool oneSided)
 		{
 			fixed (B2RayCastInput* pinput = &input)
 			{
@@ -1383,12 +1423,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RayCastPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		internal static B2CastOutput RayCastPolygonNative([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* shape)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2CastOutput RayCastPolygonNative([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* shape)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2RayCastInput*, B2Polygon*, B2CastOutput>)vt[40])(input, shape);
+			return ((delegate* unmanaged[Cdecl]<B2RayCastInput*, B2Polygon*, B2CastOutput>)funcTable[40])(input, shape);
 			#else
-			return (B2CastOutput)((delegate* unmanaged[Cdecl]<nint, nint, B2CastOutput>)vt[40])((nint)input, (nint)shape);
+			return (B2CastOutput)((delegate* unmanaged[Cdecl]<nint, nint, B2CastOutput>)funcTable[40])((nint)input, (nint)shape);
 			#endif
 		}
 
@@ -1397,7 +1438,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RayCastPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput RayCastPolygon([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* shape)
+		public static B2CastOutput RayCastPolygon([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* shape)
 		{
 			B2CastOutput ret = RayCastPolygonNative(input, shape);
 			return ret;
@@ -1408,7 +1449,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RayCastPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput RayCastPolygon([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] ref B2RayCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* shape)
+		public static B2CastOutput RayCastPolygon([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] ref B2RayCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* shape)
 		{
 			fixed (B2RayCastInput* pinput = &input)
 			{
@@ -1422,7 +1463,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RayCastPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput RayCastPolygon([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon shape)
+		public static B2CastOutput RayCastPolygon([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon shape)
 		{
 			fixed (B2Polygon* pshape = &shape)
 			{
@@ -1436,7 +1477,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RayCastPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput RayCastPolygon([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] ref B2RayCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon shape)
+		public static B2CastOutput RayCastPolygon([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] ref B2RayCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon shape)
 		{
 			fixed (B2RayCastInput* pinput = &input)
 			{
@@ -1453,12 +1494,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCastCircle")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		internal static B2CastOutput ShapeCastCircleNative([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* shape)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2CastOutput ShapeCastCircleNative([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* shape)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeCastInput*, B2Circle*, B2CastOutput>)vt[41])(input, shape);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeCastInput*, B2Circle*, B2CastOutput>)funcTable[41])(input, shape);
 			#else
-			return (B2CastOutput)((delegate* unmanaged[Cdecl]<nint, nint, B2CastOutput>)vt[41])((nint)input, (nint)shape);
+			return (B2CastOutput)((delegate* unmanaged[Cdecl]<nint, nint, B2CastOutput>)funcTable[41])((nint)input, (nint)shape);
 			#endif
 		}
 
@@ -1467,7 +1509,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCastCircle")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput ShapeCastCircle([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* shape)
+		public static B2CastOutput ShapeCastCircle([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* shape)
 		{
 			B2CastOutput ret = ShapeCastCircleNative(input, shape);
 			return ret;
@@ -1478,7 +1520,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCastCircle")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput ShapeCastCircle([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] ref B2ShapeCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* shape)
+		public static B2CastOutput ShapeCastCircle([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] ref B2ShapeCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* shape)
 		{
 			fixed (B2ShapeCastInput* pinput = &input)
 			{
@@ -1492,7 +1534,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCastCircle")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput ShapeCastCircle([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle shape)
+		public static B2CastOutput ShapeCastCircle([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle shape)
 		{
 			fixed (B2Circle* pshape = &shape)
 			{
@@ -1506,7 +1548,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCastCircle")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput ShapeCastCircle([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] ref B2ShapeCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle shape)
+		public static B2CastOutput ShapeCastCircle([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] ref B2ShapeCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle shape)
 		{
 			fixed (B2ShapeCastInput* pinput = &input)
 			{
@@ -1523,12 +1565,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCastCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		internal static B2CastOutput ShapeCastCapsuleNative([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* shape)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2CastOutput ShapeCastCapsuleNative([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* shape)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeCastInput*, B2Capsule*, B2CastOutput>)vt[42])(input, shape);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeCastInput*, B2Capsule*, B2CastOutput>)funcTable[42])(input, shape);
 			#else
-			return (B2CastOutput)((delegate* unmanaged[Cdecl]<nint, nint, B2CastOutput>)vt[42])((nint)input, (nint)shape);
+			return (B2CastOutput)((delegate* unmanaged[Cdecl]<nint, nint, B2CastOutput>)funcTable[42])((nint)input, (nint)shape);
 			#endif
 		}
 
@@ -1537,7 +1580,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCastCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput ShapeCastCapsule([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* shape)
+		public static B2CastOutput ShapeCastCapsule([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* shape)
 		{
 			B2CastOutput ret = ShapeCastCapsuleNative(input, shape);
 			return ret;
@@ -1548,7 +1591,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCastCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput ShapeCastCapsule([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] ref B2ShapeCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* shape)
+		public static B2CastOutput ShapeCastCapsule([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] ref B2ShapeCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* shape)
 		{
 			fixed (B2ShapeCastInput* pinput = &input)
 			{
@@ -1562,7 +1605,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCastCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput ShapeCastCapsule([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule shape)
+		public static B2CastOutput ShapeCastCapsule([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule shape)
 		{
 			fixed (B2Capsule* pshape = &shape)
 			{
@@ -1576,7 +1619,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCastCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput ShapeCastCapsule([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] ref B2ShapeCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule shape)
+		public static B2CastOutput ShapeCastCapsule([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] ref B2ShapeCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule shape)
 		{
 			fixed (B2ShapeCastInput* pinput = &input)
 			{
@@ -1593,12 +1636,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCastSegment")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		internal static B2CastOutput ShapeCastSegmentNative([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Segment*")] B2Segment* shape)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2CastOutput ShapeCastSegmentNative([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Segment const *")] B2Segment* shape)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeCastInput*, B2Segment*, B2CastOutput>)vt[43])(input, shape);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeCastInput*, B2Segment*, B2CastOutput>)funcTable[43])(input, shape);
 			#else
-			return (B2CastOutput)((delegate* unmanaged[Cdecl]<nint, nint, B2CastOutput>)vt[43])((nint)input, (nint)shape);
+			return (B2CastOutput)((delegate* unmanaged[Cdecl]<nint, nint, B2CastOutput>)funcTable[43])((nint)input, (nint)shape);
 			#endif
 		}
 
@@ -1607,7 +1651,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCastSegment")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput ShapeCastSegment([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Segment*")] B2Segment* shape)
+		public static B2CastOutput ShapeCastSegment([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Segment const *")] B2Segment* shape)
 		{
 			B2CastOutput ret = ShapeCastSegmentNative(input, shape);
 			return ret;
@@ -1618,7 +1662,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCastSegment")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput ShapeCastSegment([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] ref B2ShapeCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Segment*")] B2Segment* shape)
+		public static B2CastOutput ShapeCastSegment([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] ref B2ShapeCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Segment const *")] B2Segment* shape)
 		{
 			fixed (B2ShapeCastInput* pinput = &input)
 			{
@@ -1632,7 +1676,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCastSegment")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput ShapeCastSegment([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Segment*")] ref B2Segment shape)
+		public static B2CastOutput ShapeCastSegment([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Segment const *")] ref B2Segment shape)
 		{
 			fixed (B2Segment* pshape = &shape)
 			{
@@ -1646,7 +1690,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCastSegment")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput ShapeCastSegment([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] ref B2ShapeCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Segment*")] ref B2Segment shape)
+		public static B2CastOutput ShapeCastSegment([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] ref B2ShapeCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Segment const *")] ref B2Segment shape)
 		{
 			fixed (B2ShapeCastInput* pinput = &input)
 			{
@@ -1663,12 +1707,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCastPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		internal static B2CastOutput ShapeCastPolygonNative([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* shape)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2CastOutput ShapeCastPolygonNative([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* shape)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeCastInput*, B2Polygon*, B2CastOutput>)vt[44])(input, shape);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeCastInput*, B2Polygon*, B2CastOutput>)funcTable[44])(input, shape);
 			#else
-			return (B2CastOutput)((delegate* unmanaged[Cdecl]<nint, nint, B2CastOutput>)vt[44])((nint)input, (nint)shape);
+			return (B2CastOutput)((delegate* unmanaged[Cdecl]<nint, nint, B2CastOutput>)funcTable[44])((nint)input, (nint)shape);
 			#endif
 		}
 
@@ -1677,7 +1722,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCastPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput ShapeCastPolygon([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* shape)
+		public static B2CastOutput ShapeCastPolygon([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* shape)
 		{
 			B2CastOutput ret = ShapeCastPolygonNative(input, shape);
 			return ret;
@@ -1688,7 +1733,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCastPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput ShapeCastPolygon([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] ref B2ShapeCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* shape)
+		public static B2CastOutput ShapeCastPolygon([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] ref B2ShapeCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* shape)
 		{
 			fixed (B2ShapeCastInput* pinput = &input)
 			{
@@ -1702,7 +1747,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCastPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput ShapeCastPolygon([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon shape)
+		public static B2CastOutput ShapeCastPolygon([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon shape)
 		{
 			fixed (B2Polygon* pshape = &shape)
 			{
@@ -1716,7 +1761,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCastPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput ShapeCastPolygon([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] ref B2ShapeCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon shape)
+		public static B2CastOutput ShapeCastPolygon([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] ref B2ShapeCastInput input, [NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon shape)
 		{
 			fixed (B2ShapeCastInput* pinput = &input)
 			{
@@ -1740,12 +1785,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputeHull")]
 		[return: NativeName(NativeNameType.Type, "b2Hull")]
-		internal static B2Hull ComputeHullNative([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const b2Vec2*")] Vector2* points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int32_t")] int count)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2Hull ComputeHullNative([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "b2Vec2 const *")] Vector2* points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int32_t")] int count)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<Vector2*, int, B2Hull>)vt[45])(points, count);
+			return ((delegate* unmanaged[Cdecl]<Vector2*, int, B2Hull>)funcTable[45])(points, count);
 			#else
-			return (B2Hull)((delegate* unmanaged[Cdecl]<nint, int, B2Hull>)vt[45])((nint)points, count);
+			return (B2Hull)((delegate* unmanaged[Cdecl]<nint, int, B2Hull>)funcTable[45])((nint)points, count);
 			#endif
 		}
 
@@ -1761,7 +1807,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputeHull")]
 		[return: NativeName(NativeNameType.Type, "b2Hull")]
-		public static B2Hull ComputeHull([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const b2Vec2*")] Vector2* points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int32_t")] int count)
+		public static B2Hull ComputeHull([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "b2Vec2 const *")] Vector2* points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int32_t")] int count)
 		{
 			B2Hull ret = ComputeHullNative(points, count);
 			return ret;
@@ -1779,7 +1825,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ComputeHull")]
 		[return: NativeName(NativeNameType.Type, "b2Hull")]
-		public static B2Hull ComputeHull([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const b2Vec2*")] ref Vector2 points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int32_t")] int count)
+		public static B2Hull ComputeHull([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "b2Vec2 const *")] ref Vector2 points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int32_t")] int count)
 		{
 			fixed (Vector2* ppoints = &points)
 			{
@@ -1796,12 +1842,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ValidateHull")]
 		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte ValidateHullNative([NativeName(NativeNameType.Param, "hull")] [NativeName(NativeNameType.Type, "const b2Hull*")] B2Hull* hull)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static byte ValidateHullNative([NativeName(NativeNameType.Param, "hull")] [NativeName(NativeNameType.Type, "b2Hull const *")] B2Hull* hull)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Hull*, byte>)vt[46])(hull);
+			return ((delegate* unmanaged[Cdecl]<B2Hull*, byte>)funcTable[46])(hull);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<nint, byte>)vt[46])((nint)hull);
+			return (byte)((delegate* unmanaged[Cdecl]<nint, byte>)funcTable[46])((nint)hull);
 			#endif
 		}
 
@@ -1813,7 +1860,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ValidateHull")]
 		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ValidateHull([NativeName(NativeNameType.Param, "hull")] [NativeName(NativeNameType.Type, "const b2Hull*")] B2Hull* hull)
+		public static bool ValidateHull([NativeName(NativeNameType.Param, "hull")] [NativeName(NativeNameType.Type, "b2Hull const *")] B2Hull* hull)
 		{
 			byte ret = ValidateHullNative(hull);
 			return ret != 0;
@@ -1827,7 +1874,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ValidateHull")]
 		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ValidateHull([NativeName(NativeNameType.Param, "hull")] [NativeName(NativeNameType.Type, "const b2Hull*")] ref B2Hull hull)
+		public static bool ValidateHull([NativeName(NativeNameType.Param, "hull")] [NativeName(NativeNameType.Type, "b2Hull const *")] ref B2Hull hull)
 		{
 			fixed (B2Hull* phull = &hull)
 			{
@@ -1841,12 +1888,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2SegmentDistance")]
 		[return: NativeName(NativeNameType.Type, "b2SegmentDistanceResult")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2SegmentDistanceResult SegmentDistanceNative([NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p1, [NativeName(NativeNameType.Param, "q1")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 q1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p2, [NativeName(NativeNameType.Param, "q2")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 q2)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<Vector2, Vector2, Vector2, Vector2, B2SegmentDistanceResult>)vt[47])(p1, q1, p2, q2);
+			return ((delegate* unmanaged[Cdecl]<Vector2, Vector2, Vector2, Vector2, B2SegmentDistanceResult>)funcTable[47])(p1, q1, p2, q2);
 			#else
-			return (B2SegmentDistanceResult)((delegate* unmanaged[Cdecl]<Vector2, Vector2, Vector2, Vector2, B2SegmentDistanceResult>)vt[47])(p1, q1, p2, q2);
+			return (B2SegmentDistanceResult)((delegate* unmanaged[Cdecl]<Vector2, Vector2, Vector2, Vector2, B2SegmentDistanceResult>)funcTable[47])(p1, q1, p2, q2);
 			#endif
 		}
 
@@ -1868,12 +1916,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeDistance")]
 		[return: NativeName(NativeNameType.Type, "b2DistanceOutput")]
-		internal static B2DistanceOutput ShapeDistanceNative([NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] B2DistanceCache* cache, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2DistanceInput*")] B2DistanceInput* input, [NativeName(NativeNameType.Param, "simplexes")] [NativeName(NativeNameType.Type, "b2Simplex*")] B2Simplex* simplexes, [NativeName(NativeNameType.Param, "simplexCapacity")] [NativeName(NativeNameType.Type, "int")] int simplexCapacity)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2DistanceOutput ShapeDistanceNative([NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] B2DistanceCache* cache, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2DistanceInput const *")] B2DistanceInput* input, [NativeName(NativeNameType.Param, "simplexes")] [NativeName(NativeNameType.Type, "b2Simplex *")] B2Simplex* simplexes, [NativeName(NativeNameType.Param, "simplexCapacity")] [NativeName(NativeNameType.Type, "int")] int simplexCapacity)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2DistanceCache*, B2DistanceInput*, B2Simplex*, int, B2DistanceOutput>)vt[48])(cache, input, simplexes, simplexCapacity);
+			return ((delegate* unmanaged[Cdecl]<B2DistanceCache*, B2DistanceInput*, B2Simplex*, int, B2DistanceOutput>)funcTable[48])(cache, input, simplexes, simplexCapacity);
 			#else
-			return (B2DistanceOutput)((delegate* unmanaged[Cdecl]<nint, nint, nint, int, B2DistanceOutput>)vt[48])((nint)cache, (nint)input, (nint)simplexes, simplexCapacity);
+			return (B2DistanceOutput)((delegate* unmanaged[Cdecl]<nint, nint, nint, int, B2DistanceOutput>)funcTable[48])((nint)cache, (nint)input, (nint)simplexes, simplexCapacity);
 			#endif
 		}
 
@@ -1884,7 +1933,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeDistance")]
 		[return: NativeName(NativeNameType.Type, "b2DistanceOutput")]
-		public static B2DistanceOutput ShapeDistance([NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] B2DistanceCache* cache, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2DistanceInput*")] B2DistanceInput* input, [NativeName(NativeNameType.Param, "simplexes")] [NativeName(NativeNameType.Type, "b2Simplex*")] B2Simplex* simplexes, [NativeName(NativeNameType.Param, "simplexCapacity")] [NativeName(NativeNameType.Type, "int")] int simplexCapacity)
+		public static B2DistanceOutput ShapeDistance([NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] B2DistanceCache* cache, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2DistanceInput const *")] B2DistanceInput* input, [NativeName(NativeNameType.Param, "simplexes")] [NativeName(NativeNameType.Type, "b2Simplex *")] B2Simplex* simplexes, [NativeName(NativeNameType.Param, "simplexCapacity")] [NativeName(NativeNameType.Type, "int")] int simplexCapacity)
 		{
 			B2DistanceOutput ret = ShapeDistanceNative(cache, input, simplexes, simplexCapacity);
 			return ret;
@@ -1897,7 +1946,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeDistance")]
 		[return: NativeName(NativeNameType.Type, "b2DistanceOutput")]
-		public static B2DistanceOutput ShapeDistance([NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] ref B2DistanceCache cache, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2DistanceInput*")] B2DistanceInput* input, [NativeName(NativeNameType.Param, "simplexes")] [NativeName(NativeNameType.Type, "b2Simplex*")] B2Simplex* simplexes, [NativeName(NativeNameType.Param, "simplexCapacity")] [NativeName(NativeNameType.Type, "int")] int simplexCapacity)
+		public static B2DistanceOutput ShapeDistance([NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] ref B2DistanceCache cache, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2DistanceInput const *")] B2DistanceInput* input, [NativeName(NativeNameType.Param, "simplexes")] [NativeName(NativeNameType.Type, "b2Simplex *")] B2Simplex* simplexes, [NativeName(NativeNameType.Param, "simplexCapacity")] [NativeName(NativeNameType.Type, "int")] int simplexCapacity)
 		{
 			fixed (B2DistanceCache* pcache = &cache)
 			{
@@ -1913,7 +1962,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeDistance")]
 		[return: NativeName(NativeNameType.Type, "b2DistanceOutput")]
-		public static B2DistanceOutput ShapeDistance([NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] B2DistanceCache* cache, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2DistanceInput*")] ref B2DistanceInput input, [NativeName(NativeNameType.Param, "simplexes")] [NativeName(NativeNameType.Type, "b2Simplex*")] B2Simplex* simplexes, [NativeName(NativeNameType.Param, "simplexCapacity")] [NativeName(NativeNameType.Type, "int")] int simplexCapacity)
+		public static B2DistanceOutput ShapeDistance([NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] B2DistanceCache* cache, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2DistanceInput const *")] ref B2DistanceInput input, [NativeName(NativeNameType.Param, "simplexes")] [NativeName(NativeNameType.Type, "b2Simplex *")] B2Simplex* simplexes, [NativeName(NativeNameType.Param, "simplexCapacity")] [NativeName(NativeNameType.Type, "int")] int simplexCapacity)
 		{
 			fixed (B2DistanceInput* pinput = &input)
 			{
@@ -1929,7 +1978,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeDistance")]
 		[return: NativeName(NativeNameType.Type, "b2DistanceOutput")]
-		public static B2DistanceOutput ShapeDistance([NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] ref B2DistanceCache cache, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2DistanceInput*")] ref B2DistanceInput input, [NativeName(NativeNameType.Param, "simplexes")] [NativeName(NativeNameType.Type, "b2Simplex*")] B2Simplex* simplexes, [NativeName(NativeNameType.Param, "simplexCapacity")] [NativeName(NativeNameType.Type, "int")] int simplexCapacity)
+		public static B2DistanceOutput ShapeDistance([NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] ref B2DistanceCache cache, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2DistanceInput const *")] ref B2DistanceInput input, [NativeName(NativeNameType.Param, "simplexes")] [NativeName(NativeNameType.Type, "b2Simplex *")] B2Simplex* simplexes, [NativeName(NativeNameType.Param, "simplexCapacity")] [NativeName(NativeNameType.Type, "int")] int simplexCapacity)
 		{
 			fixed (B2DistanceCache* pcache = &cache)
 			{
@@ -1948,7 +1997,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeDistance")]
 		[return: NativeName(NativeNameType.Type, "b2DistanceOutput")]
-		public static B2DistanceOutput ShapeDistance([NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] B2DistanceCache* cache, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2DistanceInput*")] B2DistanceInput* input, [NativeName(NativeNameType.Param, "simplexes")] [NativeName(NativeNameType.Type, "b2Simplex*")] ref B2Simplex simplexes, [NativeName(NativeNameType.Param, "simplexCapacity")] [NativeName(NativeNameType.Type, "int")] int simplexCapacity)
+		public static B2DistanceOutput ShapeDistance([NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] B2DistanceCache* cache, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2DistanceInput const *")] B2DistanceInput* input, [NativeName(NativeNameType.Param, "simplexes")] [NativeName(NativeNameType.Type, "b2Simplex *")] ref B2Simplex simplexes, [NativeName(NativeNameType.Param, "simplexCapacity")] [NativeName(NativeNameType.Type, "int")] int simplexCapacity)
 		{
 			fixed (B2Simplex* psimplexes = &simplexes)
 			{
@@ -1964,7 +2013,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeDistance")]
 		[return: NativeName(NativeNameType.Type, "b2DistanceOutput")]
-		public static B2DistanceOutput ShapeDistance([NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] ref B2DistanceCache cache, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2DistanceInput*")] B2DistanceInput* input, [NativeName(NativeNameType.Param, "simplexes")] [NativeName(NativeNameType.Type, "b2Simplex*")] ref B2Simplex simplexes, [NativeName(NativeNameType.Param, "simplexCapacity")] [NativeName(NativeNameType.Type, "int")] int simplexCapacity)
+		public static B2DistanceOutput ShapeDistance([NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] ref B2DistanceCache cache, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2DistanceInput const *")] B2DistanceInput* input, [NativeName(NativeNameType.Param, "simplexes")] [NativeName(NativeNameType.Type, "b2Simplex *")] ref B2Simplex simplexes, [NativeName(NativeNameType.Param, "simplexCapacity")] [NativeName(NativeNameType.Type, "int")] int simplexCapacity)
 		{
 			fixed (B2DistanceCache* pcache = &cache)
 			{
@@ -1983,7 +2032,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeDistance")]
 		[return: NativeName(NativeNameType.Type, "b2DistanceOutput")]
-		public static B2DistanceOutput ShapeDistance([NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] B2DistanceCache* cache, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2DistanceInput*")] ref B2DistanceInput input, [NativeName(NativeNameType.Param, "simplexes")] [NativeName(NativeNameType.Type, "b2Simplex*")] ref B2Simplex simplexes, [NativeName(NativeNameType.Param, "simplexCapacity")] [NativeName(NativeNameType.Type, "int")] int simplexCapacity)
+		public static B2DistanceOutput ShapeDistance([NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] B2DistanceCache* cache, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2DistanceInput const *")] ref B2DistanceInput input, [NativeName(NativeNameType.Param, "simplexes")] [NativeName(NativeNameType.Type, "b2Simplex *")] ref B2Simplex simplexes, [NativeName(NativeNameType.Param, "simplexCapacity")] [NativeName(NativeNameType.Type, "int")] int simplexCapacity)
 		{
 			fixed (B2DistanceInput* pinput = &input)
 			{
@@ -2002,7 +2051,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeDistance")]
 		[return: NativeName(NativeNameType.Type, "b2DistanceOutput")]
-		public static B2DistanceOutput ShapeDistance([NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] ref B2DistanceCache cache, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2DistanceInput*")] ref B2DistanceInput input, [NativeName(NativeNameType.Param, "simplexes")] [NativeName(NativeNameType.Type, "b2Simplex*")] ref B2Simplex simplexes, [NativeName(NativeNameType.Param, "simplexCapacity")] [NativeName(NativeNameType.Type, "int")] int simplexCapacity)
+		public static B2DistanceOutput ShapeDistance([NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] ref B2DistanceCache cache, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2DistanceInput const *")] ref B2DistanceInput input, [NativeName(NativeNameType.Param, "simplexes")] [NativeName(NativeNameType.Type, "b2Simplex *")] ref B2Simplex simplexes, [NativeName(NativeNameType.Param, "simplexCapacity")] [NativeName(NativeNameType.Type, "int")] int simplexCapacity)
 		{
 			fixed (B2DistanceCache* pcache = &cache)
 			{
@@ -2022,12 +2071,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCast")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		internal static B2CastOutput ShapeCastNative([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastPairInput*")] B2ShapeCastPairInput* input)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2CastOutput ShapeCastNative([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastPairInput const *")] B2ShapeCastPairInput* input)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeCastPairInput*, B2CastOutput>)vt[49])(input);
+			return ((delegate* unmanaged[Cdecl]<B2ShapeCastPairInput*, B2CastOutput>)funcTable[49])(input);
 			#else
-			return (B2CastOutput)((delegate* unmanaged[Cdecl]<nint, B2CastOutput>)vt[49])((nint)input);
+			return (B2CastOutput)((delegate* unmanaged[Cdecl]<nint, B2CastOutput>)funcTable[49])((nint)input);
 			#endif
 		}
 
@@ -2036,7 +2086,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCast")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput ShapeCast([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastPairInput*")] B2ShapeCastPairInput* input)
+		public static B2CastOutput ShapeCast([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastPairInput const *")] B2ShapeCastPairInput* input)
 		{
 			B2CastOutput ret = ShapeCastNative(input);
 			return ret;
@@ -2047,7 +2097,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2ShapeCast")]
 		[return: NativeName(NativeNameType.Type, "b2CastOutput")]
-		public static B2CastOutput ShapeCast([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastPairInput*")] ref B2ShapeCastPairInput input)
+		public static B2CastOutput ShapeCast([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastPairInput const *")] ref B2ShapeCastPairInput input)
 		{
 			fixed (B2ShapeCastPairInput* pinput = &input)
 			{
@@ -2061,12 +2111,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MakeProxy")]
 		[return: NativeName(NativeNameType.Type, "b2DistanceProxy")]
-		internal static B2DistanceProxy MakeProxyNative([NativeName(NativeNameType.Param, "vertices")] [NativeName(NativeNameType.Type, "const b2Vec2*")] Vector2* vertices, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int32_t")] int count, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2DistanceProxy MakeProxyNative([NativeName(NativeNameType.Param, "vertices")] [NativeName(NativeNameType.Type, "b2Vec2 const *")] Vector2* vertices, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int32_t")] int count, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<Vector2*, int, float, B2DistanceProxy>)vt[50])(vertices, count, radius);
+			return ((delegate* unmanaged[Cdecl]<Vector2*, int, float, B2DistanceProxy>)funcTable[50])(vertices, count, radius);
 			#else
-			return (B2DistanceProxy)((delegate* unmanaged[Cdecl]<nint, int, float, B2DistanceProxy>)vt[50])((nint)vertices, count, radius);
+			return (B2DistanceProxy)((delegate* unmanaged[Cdecl]<nint, int, float, B2DistanceProxy>)funcTable[50])((nint)vertices, count, radius);
 			#endif
 		}
 
@@ -2075,7 +2126,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MakeProxy")]
 		[return: NativeName(NativeNameType.Type, "b2DistanceProxy")]
-		public static B2DistanceProxy MakeProxy([NativeName(NativeNameType.Param, "vertices")] [NativeName(NativeNameType.Type, "const b2Vec2*")] Vector2* vertices, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int32_t")] int count, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius)
+		public static B2DistanceProxy MakeProxy([NativeName(NativeNameType.Param, "vertices")] [NativeName(NativeNameType.Type, "b2Vec2 const *")] Vector2* vertices, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int32_t")] int count, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius)
 		{
 			B2DistanceProxy ret = MakeProxyNative(vertices, count, radius);
 			return ret;
@@ -2086,7 +2137,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2MakeProxy")]
 		[return: NativeName(NativeNameType.Type, "b2DistanceProxy")]
-		public static B2DistanceProxy MakeProxy([NativeName(NativeNameType.Param, "vertices")] [NativeName(NativeNameType.Type, "const b2Vec2*")] ref Vector2 vertices, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int32_t")] int count, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius)
+		public static B2DistanceProxy MakeProxy([NativeName(NativeNameType.Param, "vertices")] [NativeName(NativeNameType.Type, "b2Vec2 const *")] ref Vector2 vertices, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int32_t")] int count, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius)
 		{
 			fixed (Vector2* pvertices = &vertices)
 			{
@@ -2100,12 +2151,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2GetSweepTransform")]
 		[return: NativeName(NativeNameType.Type, "b2Transform")]
-		internal static B2Transform GetSweepTransformNative([NativeName(NativeNameType.Param, "sweep")] [NativeName(NativeNameType.Type, "const b2Sweep*")] B2Sweep* sweep, [NativeName(NativeNameType.Param, "time")] [NativeName(NativeNameType.Type, "float")] float time)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2Transform GetSweepTransformNative([NativeName(NativeNameType.Param, "sweep")] [NativeName(NativeNameType.Type, "b2Sweep const *")] B2Sweep* sweep, [NativeName(NativeNameType.Param, "time")] [NativeName(NativeNameType.Type, "float")] float time)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Sweep*, float, B2Transform>)vt[51])(sweep, time);
+			return ((delegate* unmanaged[Cdecl]<B2Sweep*, float, B2Transform>)funcTable[51])(sweep, time);
 			#else
-			return (B2Transform)((delegate* unmanaged[Cdecl]<nint, float, B2Transform>)vt[51])((nint)sweep, time);
+			return (B2Transform)((delegate* unmanaged[Cdecl]<nint, float, B2Transform>)funcTable[51])((nint)sweep, time);
 			#endif
 		}
 
@@ -2114,7 +2166,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2GetSweepTransform")]
 		[return: NativeName(NativeNameType.Type, "b2Transform")]
-		public static B2Transform GetSweepTransform([NativeName(NativeNameType.Param, "sweep")] [NativeName(NativeNameType.Type, "const b2Sweep*")] B2Sweep* sweep, [NativeName(NativeNameType.Param, "time")] [NativeName(NativeNameType.Type, "float")] float time)
+		public static B2Transform GetSweepTransform([NativeName(NativeNameType.Param, "sweep")] [NativeName(NativeNameType.Type, "b2Sweep const *")] B2Sweep* sweep, [NativeName(NativeNameType.Param, "time")] [NativeName(NativeNameType.Type, "float")] float time)
 		{
 			B2Transform ret = GetSweepTransformNative(sweep, time);
 			return ret;
@@ -2125,7 +2177,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2GetSweepTransform")]
 		[return: NativeName(NativeNameType.Type, "b2Transform")]
-		public static B2Transform GetSweepTransform([NativeName(NativeNameType.Param, "sweep")] [NativeName(NativeNameType.Type, "const b2Sweep*")] ref B2Sweep sweep, [NativeName(NativeNameType.Param, "time")] [NativeName(NativeNameType.Type, "float")] float time)
+		public static B2Transform GetSweepTransform([NativeName(NativeNameType.Param, "sweep")] [NativeName(NativeNameType.Type, "b2Sweep const *")] ref B2Sweep sweep, [NativeName(NativeNameType.Param, "time")] [NativeName(NativeNameType.Type, "float")] float time)
 		{
 			fixed (B2Sweep* psweep = &sweep)
 			{
@@ -2142,12 +2194,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2TimeOfImpact")]
 		[return: NativeName(NativeNameType.Type, "b2TOIOutput")]
-		internal static B2TOIOutput TimeOfImpactNative([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2TOIInput*")] B2TOIInput* input)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2TOIOutput TimeOfImpactNative([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2TOIInput const *")] B2TOIInput* input)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2TOIInput*, B2TOIOutput>)vt[52])(input);
+			return ((delegate* unmanaged[Cdecl]<B2TOIInput*, B2TOIOutput>)funcTable[52])(input);
 			#else
-			return (B2TOIOutput)((delegate* unmanaged[Cdecl]<nint, B2TOIOutput>)vt[52])((nint)input);
+			return (B2TOIOutput)((delegate* unmanaged[Cdecl]<nint, B2TOIOutput>)funcTable[52])((nint)input);
 			#endif
 		}
 
@@ -2159,7 +2212,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2TimeOfImpact")]
 		[return: NativeName(NativeNameType.Type, "b2TOIOutput")]
-		public static B2TOIOutput TimeOfImpact([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2TOIInput*")] B2TOIInput* input)
+		public static B2TOIOutput TimeOfImpact([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2TOIInput const *")] B2TOIInput* input)
 		{
 			B2TOIOutput ret = TimeOfImpactNative(input);
 			return ret;
@@ -2173,7 +2226,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2TimeOfImpact")]
 		[return: NativeName(NativeNameType.Type, "b2TOIOutput")]
-		public static B2TOIOutput TimeOfImpact([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2TOIInput*")] ref B2TOIInput input)
+		public static B2TOIOutput TimeOfImpact([NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2TOIInput const *")] ref B2TOIInput input)
 		{
 			fixed (B2TOIInput* pinput = &input)
 			{
@@ -2187,12 +2240,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideCircles")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		internal static B2Manifold CollideCirclesNative([NativeName(NativeNameType.Param, "circleA")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2Manifold CollideCirclesNative([NativeName(NativeNameType.Param, "circleA")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Circle*, B2Transform, B2Circle*, B2Transform, B2Manifold>)vt[53])(circleA, xfA, circleB, xfB);
+			return ((delegate* unmanaged[Cdecl]<B2Circle*, B2Transform, B2Circle*, B2Transform, B2Manifold>)funcTable[53])(circleA, xfA, circleB, xfB);
 			#else
-			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, B2Manifold>)vt[53])((nint)circleA, xfA, (nint)circleB, xfB);
+			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, B2Manifold>)funcTable[53])((nint)circleA, xfA, (nint)circleB, xfB);
 			#endif
 		}
 
@@ -2201,7 +2255,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideCircles")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideCircles([NativeName(NativeNameType.Param, "circleA")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideCircles([NativeName(NativeNameType.Param, "circleA")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			B2Manifold ret = CollideCirclesNative(circleA, xfA, circleB, xfB);
 			return ret;
@@ -2212,7 +2266,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideCircles")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideCircles([NativeName(NativeNameType.Param, "circleA")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle circleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideCircles([NativeName(NativeNameType.Param, "circleA")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle circleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Circle* pcircleA = &circleA)
 			{
@@ -2226,7 +2280,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideCircles")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideCircles([NativeName(NativeNameType.Param, "circleA")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideCircles([NativeName(NativeNameType.Param, "circleA")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Circle* pcircleB = &circleB)
 			{
@@ -2240,7 +2294,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideCircles")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideCircles([NativeName(NativeNameType.Param, "circleA")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle circleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideCircles([NativeName(NativeNameType.Param, "circleA")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle circleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Circle* pcircleA = &circleA)
 			{
@@ -2257,12 +2311,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideCapsuleAndCircle")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		internal static B2Manifold CollideCapsuleAndCircleNative([NativeName(NativeNameType.Param, "capsuleA")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsuleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2Manifold CollideCapsuleAndCircleNative([NativeName(NativeNameType.Param, "capsuleA")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsuleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Capsule*, B2Transform, B2Circle*, B2Transform, B2Manifold>)vt[54])(capsuleA, xfA, circleB, xfB);
+			return ((delegate* unmanaged[Cdecl]<B2Capsule*, B2Transform, B2Circle*, B2Transform, B2Manifold>)funcTable[54])(capsuleA, xfA, circleB, xfB);
 			#else
-			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, B2Manifold>)vt[54])((nint)capsuleA, xfA, (nint)circleB, xfB);
+			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, B2Manifold>)funcTable[54])((nint)capsuleA, xfA, (nint)circleB, xfB);
 			#endif
 		}
 
@@ -2271,7 +2326,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideCapsuleAndCircle")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideCapsuleAndCircle([NativeName(NativeNameType.Param, "capsuleA")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsuleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideCapsuleAndCircle([NativeName(NativeNameType.Param, "capsuleA")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsuleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			B2Manifold ret = CollideCapsuleAndCircleNative(capsuleA, xfA, circleB, xfB);
 			return ret;
@@ -2282,7 +2337,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideCapsuleAndCircle")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideCapsuleAndCircle([NativeName(NativeNameType.Param, "capsuleA")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule capsuleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideCapsuleAndCircle([NativeName(NativeNameType.Param, "capsuleA")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule capsuleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Capsule* pcapsuleA = &capsuleA)
 			{
@@ -2296,7 +2351,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideCapsuleAndCircle")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideCapsuleAndCircle([NativeName(NativeNameType.Param, "capsuleA")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsuleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideCapsuleAndCircle([NativeName(NativeNameType.Param, "capsuleA")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsuleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Circle* pcircleB = &circleB)
 			{
@@ -2310,7 +2365,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideCapsuleAndCircle")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideCapsuleAndCircle([NativeName(NativeNameType.Param, "capsuleA")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule capsuleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideCapsuleAndCircle([NativeName(NativeNameType.Param, "capsuleA")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule capsuleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Capsule* pcapsuleA = &capsuleA)
 			{
@@ -2327,12 +2382,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSegmentAndCircle")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		internal static B2Manifold CollideSegmentAndCircleNative([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "const b2Segment*")] B2Segment* segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2Manifold CollideSegmentAndCircleNative([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "b2Segment const *")] B2Segment* segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Segment*, B2Transform, B2Circle*, B2Transform, B2Manifold>)vt[55])(segmentA, xfA, circleB, xfB);
+			return ((delegate* unmanaged[Cdecl]<B2Segment*, B2Transform, B2Circle*, B2Transform, B2Manifold>)funcTable[55])(segmentA, xfA, circleB, xfB);
 			#else
-			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, B2Manifold>)vt[55])((nint)segmentA, xfA, (nint)circleB, xfB);
+			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, B2Manifold>)funcTable[55])((nint)segmentA, xfA, (nint)circleB, xfB);
 			#endif
 		}
 
@@ -2341,7 +2397,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSegmentAndCircle")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSegmentAndCircle([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "const b2Segment*")] B2Segment* segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideSegmentAndCircle([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "b2Segment const *")] B2Segment* segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			B2Manifold ret = CollideSegmentAndCircleNative(segmentA, xfA, circleB, xfB);
 			return ret;
@@ -2352,7 +2408,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSegmentAndCircle")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSegmentAndCircle([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "const b2Segment*")] ref B2Segment segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideSegmentAndCircle([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "b2Segment const *")] ref B2Segment segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Segment* psegmentA = &segmentA)
 			{
@@ -2366,7 +2422,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSegmentAndCircle")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSegmentAndCircle([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "const b2Segment*")] B2Segment* segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideSegmentAndCircle([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "b2Segment const *")] B2Segment* segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Circle* pcircleB = &circleB)
 			{
@@ -2380,7 +2436,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSegmentAndCircle")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSegmentAndCircle([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "const b2Segment*")] ref B2Segment segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideSegmentAndCircle([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "b2Segment const *")] ref B2Segment segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Segment* psegmentA = &segmentA)
 			{
@@ -2397,12 +2453,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollidePolygonAndCircle")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		internal static B2Manifold CollidePolygonAndCircleNative([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2Manifold CollidePolygonAndCircleNative([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Polygon*, B2Transform, B2Circle*, B2Transform, B2Manifold>)vt[56])(polygonA, xfA, circleB, xfB);
+			return ((delegate* unmanaged[Cdecl]<B2Polygon*, B2Transform, B2Circle*, B2Transform, B2Manifold>)funcTable[56])(polygonA, xfA, circleB, xfB);
 			#else
-			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, B2Manifold>)vt[56])((nint)polygonA, xfA, (nint)circleB, xfB);
+			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, B2Manifold>)funcTable[56])((nint)polygonA, xfA, (nint)circleB, xfB);
 			#endif
 		}
 
@@ -2411,7 +2468,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollidePolygonAndCircle")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollidePolygonAndCircle([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollidePolygonAndCircle([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			B2Manifold ret = CollidePolygonAndCircleNative(polygonA, xfA, circleB, xfB);
 			return ret;
@@ -2422,7 +2479,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollidePolygonAndCircle")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollidePolygonAndCircle([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollidePolygonAndCircle([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Polygon* ppolygonA = &polygonA)
 			{
@@ -2436,7 +2493,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollidePolygonAndCircle")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollidePolygonAndCircle([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollidePolygonAndCircle([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Circle* pcircleB = &circleB)
 			{
@@ -2450,7 +2507,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollidePolygonAndCircle")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollidePolygonAndCircle([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollidePolygonAndCircle([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Polygon* ppolygonA = &polygonA)
 			{
@@ -2467,12 +2524,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideCapsules")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		internal static B2Manifold CollideCapsulesNative([NativeName(NativeNameType.Param, "capsuleA")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsuleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2Manifold CollideCapsulesNative([NativeName(NativeNameType.Param, "capsuleA")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsuleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Capsule*, B2Transform, B2Capsule*, B2Transform, B2Manifold>)vt[57])(capsuleA, xfA, capsuleB, xfB);
+			return ((delegate* unmanaged[Cdecl]<B2Capsule*, B2Transform, B2Capsule*, B2Transform, B2Manifold>)funcTable[57])(capsuleA, xfA, capsuleB, xfB);
 			#else
-			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, B2Manifold>)vt[57])((nint)capsuleA, xfA, (nint)capsuleB, xfB);
+			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, B2Manifold>)funcTable[57])((nint)capsuleA, xfA, (nint)capsuleB, xfB);
 			#endif
 		}
 
@@ -2481,7 +2539,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideCapsules")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideCapsules([NativeName(NativeNameType.Param, "capsuleA")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsuleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideCapsules([NativeName(NativeNameType.Param, "capsuleA")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsuleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			B2Manifold ret = CollideCapsulesNative(capsuleA, xfA, capsuleB, xfB);
 			return ret;
@@ -2492,7 +2550,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideCapsules")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideCapsules([NativeName(NativeNameType.Param, "capsuleA")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule capsuleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideCapsules([NativeName(NativeNameType.Param, "capsuleA")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule capsuleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Capsule* pcapsuleA = &capsuleA)
 			{
@@ -2506,7 +2564,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideCapsules")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideCapsules([NativeName(NativeNameType.Param, "capsuleA")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsuleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideCapsules([NativeName(NativeNameType.Param, "capsuleA")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsuleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Capsule* pcapsuleB = &capsuleB)
 			{
@@ -2520,7 +2578,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideCapsules")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideCapsules([NativeName(NativeNameType.Param, "capsuleA")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule capsuleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideCapsules([NativeName(NativeNameType.Param, "capsuleA")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule capsuleA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Capsule* pcapsuleA = &capsuleA)
 			{
@@ -2537,12 +2595,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSegmentAndCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		internal static B2Manifold CollideSegmentAndCapsuleNative([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "const b2Segment*")] B2Segment* segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2Manifold CollideSegmentAndCapsuleNative([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "b2Segment const *")] B2Segment* segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Segment*, B2Transform, B2Capsule*, B2Transform, B2Manifold>)vt[58])(segmentA, xfA, capsuleB, xfB);
+			return ((delegate* unmanaged[Cdecl]<B2Segment*, B2Transform, B2Capsule*, B2Transform, B2Manifold>)funcTable[58])(segmentA, xfA, capsuleB, xfB);
 			#else
-			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, B2Manifold>)vt[58])((nint)segmentA, xfA, (nint)capsuleB, xfB);
+			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, B2Manifold>)funcTable[58])((nint)segmentA, xfA, (nint)capsuleB, xfB);
 			#endif
 		}
 
@@ -2551,7 +2610,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSegmentAndCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSegmentAndCapsule([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "const b2Segment*")] B2Segment* segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideSegmentAndCapsule([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "b2Segment const *")] B2Segment* segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			B2Manifold ret = CollideSegmentAndCapsuleNative(segmentA, xfA, capsuleB, xfB);
 			return ret;
@@ -2562,7 +2621,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSegmentAndCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSegmentAndCapsule([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "const b2Segment*")] ref B2Segment segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideSegmentAndCapsule([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "b2Segment const *")] ref B2Segment segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Segment* psegmentA = &segmentA)
 			{
@@ -2576,7 +2635,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSegmentAndCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSegmentAndCapsule([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "const b2Segment*")] B2Segment* segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideSegmentAndCapsule([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "b2Segment const *")] B2Segment* segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Capsule* pcapsuleB = &capsuleB)
 			{
@@ -2590,7 +2649,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSegmentAndCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSegmentAndCapsule([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "const b2Segment*")] ref B2Segment segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideSegmentAndCapsule([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "b2Segment const *")] ref B2Segment segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Segment* psegmentA = &segmentA)
 			{
@@ -2607,12 +2666,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollidePolygonAndCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		internal static B2Manifold CollidePolygonAndCapsuleNative([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2Manifold CollidePolygonAndCapsuleNative([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Polygon*, B2Transform, B2Capsule*, B2Transform, B2Manifold>)vt[59])(polygonA, xfA, capsuleB, xfB);
+			return ((delegate* unmanaged[Cdecl]<B2Polygon*, B2Transform, B2Capsule*, B2Transform, B2Manifold>)funcTable[59])(polygonA, xfA, capsuleB, xfB);
 			#else
-			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, B2Manifold>)vt[59])((nint)polygonA, xfA, (nint)capsuleB, xfB);
+			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, B2Manifold>)funcTable[59])((nint)polygonA, xfA, (nint)capsuleB, xfB);
 			#endif
 		}
 
@@ -2621,7 +2681,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollidePolygonAndCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollidePolygonAndCapsule([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollidePolygonAndCapsule([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			B2Manifold ret = CollidePolygonAndCapsuleNative(polygonA, xfA, capsuleB, xfB);
 			return ret;
@@ -2632,7 +2692,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollidePolygonAndCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollidePolygonAndCapsule([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollidePolygonAndCapsule([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Polygon* ppolygonA = &polygonA)
 			{
@@ -2646,7 +2706,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollidePolygonAndCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollidePolygonAndCapsule([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollidePolygonAndCapsule([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Capsule* pcapsuleB = &capsuleB)
 			{
@@ -2660,7 +2720,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollidePolygonAndCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollidePolygonAndCapsule([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollidePolygonAndCapsule([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Polygon* ppolygonA = &polygonA)
 			{
@@ -2677,12 +2737,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollidePolygons")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		internal static B2Manifold CollidePolygonsNative([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2Manifold CollidePolygonsNative([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Polygon*, B2Transform, B2Polygon*, B2Transform, B2Manifold>)vt[60])(polygonA, xfA, polygonB, xfB);
+			return ((delegate* unmanaged[Cdecl]<B2Polygon*, B2Transform, B2Polygon*, B2Transform, B2Manifold>)funcTable[60])(polygonA, xfA, polygonB, xfB);
 			#else
-			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, B2Manifold>)vt[60])((nint)polygonA, xfA, (nint)polygonB, xfB);
+			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, B2Manifold>)funcTable[60])((nint)polygonA, xfA, (nint)polygonB, xfB);
 			#endif
 		}
 
@@ -2691,7 +2752,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollidePolygons")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollidePolygons([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollidePolygons([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			B2Manifold ret = CollidePolygonsNative(polygonA, xfA, polygonB, xfB);
 			return ret;
@@ -2702,7 +2763,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollidePolygons")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollidePolygons([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollidePolygons([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Polygon* ppolygonA = &polygonA)
 			{
@@ -2716,7 +2777,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollidePolygons")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollidePolygons([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollidePolygons([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Polygon* ppolygonB = &polygonB)
 			{
@@ -2730,7 +2791,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollidePolygons")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollidePolygons([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollidePolygons([NativeName(NativeNameType.Param, "polygonA")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon polygonA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Polygon* ppolygonA = &polygonA)
 			{
@@ -2747,12 +2808,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSegmentAndPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		internal static B2Manifold CollideSegmentAndPolygonNative([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "const b2Segment*")] B2Segment* segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2Manifold CollideSegmentAndPolygonNative([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "b2Segment const *")] B2Segment* segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Segment*, B2Transform, B2Polygon*, B2Transform, B2Manifold>)vt[61])(segmentA, xfA, polygonB, xfB);
+			return ((delegate* unmanaged[Cdecl]<B2Segment*, B2Transform, B2Polygon*, B2Transform, B2Manifold>)funcTable[61])(segmentA, xfA, polygonB, xfB);
 			#else
-			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, B2Manifold>)vt[61])((nint)segmentA, xfA, (nint)polygonB, xfB);
+			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, B2Manifold>)funcTable[61])((nint)segmentA, xfA, (nint)polygonB, xfB);
 			#endif
 		}
 
@@ -2761,7 +2823,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSegmentAndPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSegmentAndPolygon([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "const b2Segment*")] B2Segment* segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideSegmentAndPolygon([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "b2Segment const *")] B2Segment* segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			B2Manifold ret = CollideSegmentAndPolygonNative(segmentA, xfA, polygonB, xfB);
 			return ret;
@@ -2772,7 +2834,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSegmentAndPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSegmentAndPolygon([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "const b2Segment*")] ref B2Segment segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideSegmentAndPolygon([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "b2Segment const *")] ref B2Segment segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Segment* psegmentA = &segmentA)
 			{
@@ -2786,7 +2848,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSegmentAndPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSegmentAndPolygon([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "const b2Segment*")] B2Segment* segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideSegmentAndPolygon([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "b2Segment const *")] B2Segment* segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Polygon* ppolygonB = &polygonB)
 			{
@@ -2800,7 +2862,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSegmentAndPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSegmentAndPolygon([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "const b2Segment*")] ref B2Segment segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideSegmentAndPolygon([NativeName(NativeNameType.Param, "segmentA")] [NativeName(NativeNameType.Type, "b2Segment const *")] ref B2Segment segmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Segment* psegmentA = &segmentA)
 			{
@@ -2817,12 +2879,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndCircle")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		internal static B2Manifold CollideSmoothSegmentAndCircleNative([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2Manifold CollideSmoothSegmentAndCircleNative([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2SmoothSegment*, B2Transform, B2Circle*, B2Transform, B2Manifold>)vt[62])(smoothSegmentA, xfA, circleB, xfB);
+			return ((delegate* unmanaged[Cdecl]<B2SmoothSegment*, B2Transform, B2Circle*, B2Transform, B2Manifold>)funcTable[62])(smoothSegmentA, xfA, circleB, xfB);
 			#else
-			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, B2Manifold>)vt[62])((nint)smoothSegmentA, xfA, (nint)circleB, xfB);
+			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, B2Manifold>)funcTable[62])((nint)smoothSegmentA, xfA, (nint)circleB, xfB);
 			#endif
 		}
 
@@ -2831,7 +2894,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndCircle")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSmoothSegmentAndCircle([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideSmoothSegmentAndCircle([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			B2Manifold ret = CollideSmoothSegmentAndCircleNative(smoothSegmentA, xfA, circleB, xfB);
 			return ret;
@@ -2842,7 +2905,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndCircle")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSmoothSegmentAndCircle([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] ref B2SmoothSegment smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideSmoothSegmentAndCircle([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] ref B2SmoothSegment smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2SmoothSegment* psmoothSegmentA = &smoothSegmentA)
 			{
@@ -2856,7 +2919,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndCircle")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSmoothSegmentAndCircle([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideSmoothSegmentAndCircle([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2Circle* pcircleB = &circleB)
 			{
@@ -2870,7 +2933,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndCircle")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSmoothSegmentAndCircle([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] ref B2SmoothSegment smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
+		public static B2Manifold CollideSmoothSegmentAndCircle([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] ref B2SmoothSegment smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "circleB")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle circleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB)
 		{
 			fixed (B2SmoothSegment* psmoothSegmentA = &smoothSegmentA)
 			{
@@ -2887,12 +2950,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		internal static B2Manifold CollideSmoothSegmentAndCapsuleNative([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] B2DistanceCache* cache)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2Manifold CollideSmoothSegmentAndCapsuleNative([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] B2DistanceCache* cache)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2SmoothSegment*, B2Transform, B2Capsule*, B2Transform, B2DistanceCache*, B2Manifold>)vt[63])(smoothSegmentA, xfA, capsuleB, xfB, cache);
+			return ((delegate* unmanaged[Cdecl]<B2SmoothSegment*, B2Transform, B2Capsule*, B2Transform, B2DistanceCache*, B2Manifold>)funcTable[63])(smoothSegmentA, xfA, capsuleB, xfB, cache);
 			#else
-			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, nint, B2Manifold>)vt[63])((nint)smoothSegmentA, xfA, (nint)capsuleB, xfB, (nint)cache);
+			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, nint, B2Manifold>)funcTable[63])((nint)smoothSegmentA, xfA, (nint)capsuleB, xfB, (nint)cache);
 			#endif
 		}
 
@@ -2901,7 +2965,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSmoothSegmentAndCapsule([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] B2DistanceCache* cache)
+		public static B2Manifold CollideSmoothSegmentAndCapsule([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] B2DistanceCache* cache)
 		{
 			B2Manifold ret = CollideSmoothSegmentAndCapsuleNative(smoothSegmentA, xfA, capsuleB, xfB, cache);
 			return ret;
@@ -2912,7 +2976,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSmoothSegmentAndCapsule([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] ref B2SmoothSegment smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] B2DistanceCache* cache)
+		public static B2Manifold CollideSmoothSegmentAndCapsule([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] ref B2SmoothSegment smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] B2DistanceCache* cache)
 		{
 			fixed (B2SmoothSegment* psmoothSegmentA = &smoothSegmentA)
 			{
@@ -2926,7 +2990,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSmoothSegmentAndCapsule([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] B2DistanceCache* cache)
+		public static B2Manifold CollideSmoothSegmentAndCapsule([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] B2DistanceCache* cache)
 		{
 			fixed (B2Capsule* pcapsuleB = &capsuleB)
 			{
@@ -2940,7 +3004,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSmoothSegmentAndCapsule([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] ref B2SmoothSegment smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] B2DistanceCache* cache)
+		public static B2Manifold CollideSmoothSegmentAndCapsule([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] ref B2SmoothSegment smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] B2DistanceCache* cache)
 		{
 			fixed (B2SmoothSegment* psmoothSegmentA = &smoothSegmentA)
 			{
@@ -2957,7 +3021,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSmoothSegmentAndCapsule([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] ref B2DistanceCache cache)
+		public static B2Manifold CollideSmoothSegmentAndCapsule([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] ref B2DistanceCache cache)
 		{
 			fixed (B2DistanceCache* pcache = &cache)
 			{
@@ -2971,7 +3035,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSmoothSegmentAndCapsule([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] ref B2SmoothSegment smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] ref B2DistanceCache cache)
+		public static B2Manifold CollideSmoothSegmentAndCapsule([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] ref B2SmoothSegment smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] ref B2DistanceCache cache)
 		{
 			fixed (B2SmoothSegment* psmoothSegmentA = &smoothSegmentA)
 			{
@@ -2988,7 +3052,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSmoothSegmentAndCapsule([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] ref B2DistanceCache cache)
+		public static B2Manifold CollideSmoothSegmentAndCapsule([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] ref B2DistanceCache cache)
 		{
 			fixed (B2Capsule* pcapsuleB = &capsuleB)
 			{
@@ -3005,7 +3069,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndCapsule")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSmoothSegmentAndCapsule([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] ref B2SmoothSegment smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] ref B2DistanceCache cache)
+		public static B2Manifold CollideSmoothSegmentAndCapsule([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] ref B2SmoothSegment smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "capsuleB")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule capsuleB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] ref B2DistanceCache cache)
 		{
 			fixed (B2SmoothSegment* psmoothSegmentA = &smoothSegmentA)
 			{
@@ -3025,12 +3089,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		internal static B2Manifold CollideSmoothSegmentAndPolygonNative([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] B2DistanceCache* cache)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2Manifold CollideSmoothSegmentAndPolygonNative([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] B2DistanceCache* cache)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2SmoothSegment*, B2Transform, B2Polygon*, B2Transform, B2DistanceCache*, B2Manifold>)vt[64])(smoothSegmentA, xfA, polygonB, xfB, cache);
+			return ((delegate* unmanaged[Cdecl]<B2SmoothSegment*, B2Transform, B2Polygon*, B2Transform, B2DistanceCache*, B2Manifold>)funcTable[64])(smoothSegmentA, xfA, polygonB, xfB, cache);
 			#else
-			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, nint, B2Manifold>)vt[64])((nint)smoothSegmentA, xfA, (nint)polygonB, xfB, (nint)cache);
+			return (B2Manifold)((delegate* unmanaged[Cdecl]<nint, B2Transform, nint, B2Transform, nint, B2Manifold>)funcTable[64])((nint)smoothSegmentA, xfA, (nint)polygonB, xfB, (nint)cache);
 			#endif
 		}
 
@@ -3039,7 +3104,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSmoothSegmentAndPolygon([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] B2DistanceCache* cache)
+		public static B2Manifold CollideSmoothSegmentAndPolygon([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] B2DistanceCache* cache)
 		{
 			B2Manifold ret = CollideSmoothSegmentAndPolygonNative(smoothSegmentA, xfA, polygonB, xfB, cache);
 			return ret;
@@ -3050,7 +3115,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSmoothSegmentAndPolygon([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] ref B2SmoothSegment smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] B2DistanceCache* cache)
+		public static B2Manifold CollideSmoothSegmentAndPolygon([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] ref B2SmoothSegment smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] B2DistanceCache* cache)
 		{
 			fixed (B2SmoothSegment* psmoothSegmentA = &smoothSegmentA)
 			{
@@ -3064,7 +3129,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSmoothSegmentAndPolygon([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] B2DistanceCache* cache)
+		public static B2Manifold CollideSmoothSegmentAndPolygon([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] B2DistanceCache* cache)
 		{
 			fixed (B2Polygon* ppolygonB = &polygonB)
 			{
@@ -3078,7 +3143,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSmoothSegmentAndPolygon([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] ref B2SmoothSegment smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] B2DistanceCache* cache)
+		public static B2Manifold CollideSmoothSegmentAndPolygon([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] ref B2SmoothSegment smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] B2DistanceCache* cache)
 		{
 			fixed (B2SmoothSegment* psmoothSegmentA = &smoothSegmentA)
 			{
@@ -3095,7 +3160,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSmoothSegmentAndPolygon([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] ref B2DistanceCache cache)
+		public static B2Manifold CollideSmoothSegmentAndPolygon([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] ref B2DistanceCache cache)
 		{
 			fixed (B2DistanceCache* pcache = &cache)
 			{
@@ -3109,7 +3174,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSmoothSegmentAndPolygon([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] ref B2SmoothSegment smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] ref B2DistanceCache cache)
+		public static B2Manifold CollideSmoothSegmentAndPolygon([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] ref B2SmoothSegment smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] ref B2DistanceCache cache)
 		{
 			fixed (B2SmoothSegment* psmoothSegmentA = &smoothSegmentA)
 			{
@@ -3126,7 +3191,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSmoothSegmentAndPolygon([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] ref B2DistanceCache cache)
+		public static B2Manifold CollideSmoothSegmentAndPolygon([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] B2SmoothSegment* smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] ref B2DistanceCache cache)
 		{
 			fixed (B2Polygon* ppolygonB = &polygonB)
 			{
@@ -3143,7 +3208,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CollideSmoothSegmentAndPolygon")]
 		[return: NativeName(NativeNameType.Type, "b2Manifold")]
-		public static B2Manifold CollideSmoothSegmentAndPolygon([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "const b2SmoothSegment*")] ref B2SmoothSegment smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache*")] ref B2DistanceCache cache)
+		public static B2Manifold CollideSmoothSegmentAndPolygon([NativeName(NativeNameType.Param, "smoothSegmentA")] [NativeName(NativeNameType.Type, "b2SmoothSegment const *")] ref B2SmoothSegment smoothSegmentA, [NativeName(NativeNameType.Param, "xfA")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfA, [NativeName(NativeNameType.Param, "polygonB")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon polygonB, [NativeName(NativeNameType.Param, "xfB")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform xfB, [NativeName(NativeNameType.Param, "cache")] [NativeName(NativeNameType.Type, "b2DistanceCache *")] ref B2DistanceCache cache)
 		{
 			fixed (B2SmoothSegment* psmoothSegmentA = &smoothSegmentA)
 			{
@@ -3163,12 +3228,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_Create")]
 		[return: NativeName(NativeNameType.Type, "b2DynamicTree")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2DynamicTree DynamicTreeCreateNative()
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2DynamicTree>)vt[65])();
+			return ((delegate* unmanaged[Cdecl]<B2DynamicTree>)funcTable[65])();
 			#else
-			return (B2DynamicTree)((delegate* unmanaged[Cdecl]<B2DynamicTree>)vt[65])();
+			return (B2DynamicTree)((delegate* unmanaged[Cdecl]<B2DynamicTree>)funcTable[65])();
 			#endif
 		}
 
@@ -3188,12 +3254,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_Destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void DynamicTreeDestroyNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] B2DynamicTree* tree)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void DynamicTreeDestroyNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] B2DynamicTree* tree)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2DynamicTree*, void>)vt[66])(tree);
+			((delegate* unmanaged[Cdecl]<B2DynamicTree*, void>)funcTable[66])(tree);
 			#else
-			((delegate* unmanaged[Cdecl]<nint, void>)vt[66])((nint)tree);
+			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[66])((nint)tree);
 			#endif
 		}
 
@@ -3202,7 +3269,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_Destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeDestroy([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] B2DynamicTree* tree)
+		public static void DynamicTreeDestroy([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] B2DynamicTree* tree)
 		{
 			DynamicTreeDestroyNative(tree);
 		}
@@ -3212,7 +3279,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_Destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeDestroy([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] ref B2DynamicTree tree)
+		public static void DynamicTreeDestroy([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] ref B2DynamicTree tree)
 		{
 			fixed (B2DynamicTree* ptree = &tree)
 			{
@@ -3225,12 +3292,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_CreateProxy")]
 		[return: NativeName(NativeNameType.Type, "int32_t")]
-		internal static int DynamicTreeCreateProxyNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb, [NativeName(NativeNameType.Param, "categoryBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint categoryBits, [NativeName(NativeNameType.Param, "userData")] [NativeName(NativeNameType.Type, "int32_t")] int userData)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static int DynamicTreeCreateProxyNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb, [NativeName(NativeNameType.Param, "categoryBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint categoryBits, [NativeName(NativeNameType.Param, "userData")] [NativeName(NativeNameType.Type, "int32_t")] int userData)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2DynamicTree*, B2AABB, uint, int, int>)vt[67])(tree, aabb, categoryBits, userData);
+			return ((delegate* unmanaged[Cdecl]<B2DynamicTree*, B2AABB, uint, int, int>)funcTable[67])(tree, aabb, categoryBits, userData);
 			#else
-			return (int)((delegate* unmanaged[Cdecl]<nint, B2AABB, uint, int, int>)vt[67])((nint)tree, aabb, categoryBits, userData);
+			return (int)((delegate* unmanaged[Cdecl]<nint, B2AABB, uint, int, int>)funcTable[67])((nint)tree, aabb, categoryBits, userData);
 			#endif
 		}
 
@@ -3239,7 +3307,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_CreateProxy")]
 		[return: NativeName(NativeNameType.Type, "int32_t")]
-		public static int DynamicTreeCreateProxy([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb, [NativeName(NativeNameType.Param, "categoryBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint categoryBits, [NativeName(NativeNameType.Param, "userData")] [NativeName(NativeNameType.Type, "int32_t")] int userData)
+		public static int DynamicTreeCreateProxy([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb, [NativeName(NativeNameType.Param, "categoryBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint categoryBits, [NativeName(NativeNameType.Param, "userData")] [NativeName(NativeNameType.Type, "int32_t")] int userData)
 		{
 			int ret = DynamicTreeCreateProxyNative(tree, aabb, categoryBits, userData);
 			return ret;
@@ -3250,7 +3318,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_CreateProxy")]
 		[return: NativeName(NativeNameType.Type, "int32_t")]
-		public static int DynamicTreeCreateProxy([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] ref B2DynamicTree tree, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb, [NativeName(NativeNameType.Param, "categoryBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint categoryBits, [NativeName(NativeNameType.Param, "userData")] [NativeName(NativeNameType.Type, "int32_t")] int userData)
+		public static int DynamicTreeCreateProxy([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] ref B2DynamicTree tree, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb, [NativeName(NativeNameType.Param, "categoryBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint categoryBits, [NativeName(NativeNameType.Param, "userData")] [NativeName(NativeNameType.Type, "int32_t")] int userData)
 		{
 			fixed (B2DynamicTree* ptree = &tree)
 			{
@@ -3264,12 +3332,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_DestroyProxy")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void DynamicTreeDestroyProxyNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "proxyId")] [NativeName(NativeNameType.Type, "int32_t")] int proxyId)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void DynamicTreeDestroyProxyNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "proxyId")] [NativeName(NativeNameType.Type, "int32_t")] int proxyId)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2DynamicTree*, int, void>)vt[68])(tree, proxyId);
+			((delegate* unmanaged[Cdecl]<B2DynamicTree*, int, void>)funcTable[68])(tree, proxyId);
 			#else
-			((delegate* unmanaged[Cdecl]<nint, int, void>)vt[68])((nint)tree, proxyId);
+			((delegate* unmanaged[Cdecl]<nint, int, void>)funcTable[68])((nint)tree, proxyId);
 			#endif
 		}
 
@@ -3278,7 +3347,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_DestroyProxy")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeDestroyProxy([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "proxyId")] [NativeName(NativeNameType.Type, "int32_t")] int proxyId)
+		public static void DynamicTreeDestroyProxy([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "proxyId")] [NativeName(NativeNameType.Type, "int32_t")] int proxyId)
 		{
 			DynamicTreeDestroyProxyNative(tree, proxyId);
 		}
@@ -3288,7 +3357,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_DestroyProxy")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeDestroyProxy([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] ref B2DynamicTree tree, [NativeName(NativeNameType.Param, "proxyId")] [NativeName(NativeNameType.Type, "int32_t")] int proxyId)
+		public static void DynamicTreeDestroyProxy([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] ref B2DynamicTree tree, [NativeName(NativeNameType.Param, "proxyId")] [NativeName(NativeNameType.Type, "int32_t")] int proxyId)
 		{
 			fixed (B2DynamicTree* ptree = &tree)
 			{
@@ -3301,12 +3370,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_MoveProxy")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void DynamicTreeMoveProxyNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "proxyId")] [NativeName(NativeNameType.Type, "int32_t")] int proxyId, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void DynamicTreeMoveProxyNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "proxyId")] [NativeName(NativeNameType.Type, "int32_t")] int proxyId, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2DynamicTree*, int, B2AABB, void>)vt[69])(tree, proxyId, aabb);
+			((delegate* unmanaged[Cdecl]<B2DynamicTree*, int, B2AABB, void>)funcTable[69])(tree, proxyId, aabb);
 			#else
-			((delegate* unmanaged[Cdecl]<nint, int, B2AABB, void>)vt[69])((nint)tree, proxyId, aabb);
+			((delegate* unmanaged[Cdecl]<nint, int, B2AABB, void>)funcTable[69])((nint)tree, proxyId, aabb);
 			#endif
 		}
 
@@ -3315,7 +3385,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_MoveProxy")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeMoveProxy([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "proxyId")] [NativeName(NativeNameType.Type, "int32_t")] int proxyId, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb)
+		public static void DynamicTreeMoveProxy([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "proxyId")] [NativeName(NativeNameType.Type, "int32_t")] int proxyId, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb)
 		{
 			DynamicTreeMoveProxyNative(tree, proxyId, aabb);
 		}
@@ -3325,7 +3395,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_MoveProxy")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeMoveProxy([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] ref B2DynamicTree tree, [NativeName(NativeNameType.Param, "proxyId")] [NativeName(NativeNameType.Type, "int32_t")] int proxyId, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb)
+		public static void DynamicTreeMoveProxy([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] ref B2DynamicTree tree, [NativeName(NativeNameType.Param, "proxyId")] [NativeName(NativeNameType.Type, "int32_t")] int proxyId, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb)
 		{
 			fixed (B2DynamicTree* ptree = &tree)
 			{
@@ -3338,12 +3408,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_EnlargeProxy")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void DynamicTreeEnlargeProxyNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "proxyId")] [NativeName(NativeNameType.Type, "int32_t")] int proxyId, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void DynamicTreeEnlargeProxyNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "proxyId")] [NativeName(NativeNameType.Type, "int32_t")] int proxyId, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2DynamicTree*, int, B2AABB, void>)vt[70])(tree, proxyId, aabb);
+			((delegate* unmanaged[Cdecl]<B2DynamicTree*, int, B2AABB, void>)funcTable[70])(tree, proxyId, aabb);
 			#else
-			((delegate* unmanaged[Cdecl]<nint, int, B2AABB, void>)vt[70])((nint)tree, proxyId, aabb);
+			((delegate* unmanaged[Cdecl]<nint, int, B2AABB, void>)funcTable[70])((nint)tree, proxyId, aabb);
 			#endif
 		}
 
@@ -3352,7 +3423,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_EnlargeProxy")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeEnlargeProxy([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "proxyId")] [NativeName(NativeNameType.Type, "int32_t")] int proxyId, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb)
+		public static void DynamicTreeEnlargeProxy([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "proxyId")] [NativeName(NativeNameType.Type, "int32_t")] int proxyId, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb)
 		{
 			DynamicTreeEnlargeProxyNative(tree, proxyId, aabb);
 		}
@@ -3362,7 +3433,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_EnlargeProxy")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeEnlargeProxy([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] ref B2DynamicTree tree, [NativeName(NativeNameType.Param, "proxyId")] [NativeName(NativeNameType.Type, "int32_t")] int proxyId, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb)
+		public static void DynamicTreeEnlargeProxy([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] ref B2DynamicTree tree, [NativeName(NativeNameType.Param, "proxyId")] [NativeName(NativeNameType.Type, "int32_t")] int proxyId, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb)
 		{
 			fixed (B2DynamicTree* ptree = &tree)
 			{
@@ -3376,12 +3447,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_Query")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void DynamicTreeQueryNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeQueryCallbackFcn*")] delegate*<int, int, void*, bool>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void DynamicTreeQueryNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeQueryCallbackFcn *")] delegate*<int, int, void*, bool>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2DynamicTree*, B2AABB, uint, delegate*<int, int, void*, bool>*, void*, void>)vt[71])(tree, aabb, maskBits, callback, context);
+			((delegate* unmanaged[Cdecl]<B2DynamicTree*, B2AABB, uint, delegate*<int, int, void*, bool>*, void*, void>)funcTable[71])(tree, aabb, maskBits, callback, context);
 			#else
-			((delegate* unmanaged[Cdecl]<nint, B2AABB, uint, nint, nint, void>)vt[71])((nint)tree, aabb, maskBits, (nint)callback, (nint)context);
+			((delegate* unmanaged[Cdecl]<nint, B2AABB, uint, nint, nint, void>)funcTable[71])((nint)tree, aabb, maskBits, (nint)callback, (nint)context);
 			#endif
 		}
 
@@ -3391,7 +3463,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_Query")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeQuery([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeQueryCallbackFcn*")] delegate*<int, int, void*, bool>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void DynamicTreeQuery([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeQueryCallbackFcn *")] delegate*<int, int, void*, bool>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			DynamicTreeQueryNative(tree, aabb, maskBits, callback, context);
 		}
@@ -3402,7 +3474,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_Query")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeQuery([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] ref B2DynamicTree tree, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeQueryCallbackFcn*")] delegate*<int, int, void*, bool>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void DynamicTreeQuery([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] ref B2DynamicTree tree, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeQueryCallbackFcn *")] delegate*<int, int, void*, bool>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			fixed (B2DynamicTree* ptree = &tree)
 			{
@@ -3421,12 +3493,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_RayCast")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void DynamicTreeRayCastNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeRayCastCallbackFcn*")] delegate*<B2RayCastInput*, int, int, void*, float>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void DynamicTreeRayCastNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeRayCastCallbackFcn *")] delegate*<B2RayCastInput*, int, int, void*, float>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2DynamicTree*, B2RayCastInput*, uint, delegate*<B2RayCastInput*, int, int, void*, float>*, void*, void>)vt[72])(tree, input, maskBits, callback, context);
+			((delegate* unmanaged[Cdecl]<B2DynamicTree*, B2RayCastInput*, uint, delegate*<B2RayCastInput*, int, int, void*, float>*, void*, void>)funcTable[72])(tree, input, maskBits, callback, context);
 			#else
-			((delegate* unmanaged[Cdecl]<nint, nint, uint, nint, nint, void>)vt[72])((nint)tree, (nint)input, maskBits, (nint)callback, (nint)context);
+			((delegate* unmanaged[Cdecl]<nint, nint, uint, nint, nint, void>)funcTable[72])((nint)tree, (nint)input, maskBits, (nint)callback, (nint)context);
 			#endif
 		}
 
@@ -3441,7 +3514,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_RayCast")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeRayCast([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeRayCastCallbackFcn*")] delegate*<B2RayCastInput*, int, int, void*, float>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void DynamicTreeRayCast([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeRayCastCallbackFcn *")] delegate*<B2RayCastInput*, int, int, void*, float>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			DynamicTreeRayCastNative(tree, input, maskBits, callback, context);
 		}
@@ -3457,7 +3530,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_RayCast")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeRayCast([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] ref B2DynamicTree tree, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeRayCastCallbackFcn*")] delegate*<B2RayCastInput*, int, int, void*, float>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void DynamicTreeRayCast([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] ref B2DynamicTree tree, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] B2RayCastInput* input, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeRayCastCallbackFcn *")] delegate*<B2RayCastInput*, int, int, void*, float>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			fixed (B2DynamicTree* ptree = &tree)
 			{
@@ -3476,7 +3549,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_RayCast")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeRayCast([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] ref B2RayCastInput input, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeRayCastCallbackFcn*")] delegate*<B2RayCastInput*, int, int, void*, float>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void DynamicTreeRayCast([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] ref B2RayCastInput input, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeRayCastCallbackFcn *")] delegate*<B2RayCastInput*, int, int, void*, float>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			fixed (B2RayCastInput* pinput = &input)
 			{
@@ -3495,7 +3568,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_RayCast")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeRayCast([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] ref B2DynamicTree tree, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2RayCastInput*")] ref B2RayCastInput input, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeRayCastCallbackFcn*")] delegate*<B2RayCastInput*, int, int, void*, float>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void DynamicTreeRayCast([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] ref B2DynamicTree tree, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2RayCastInput const *")] ref B2RayCastInput input, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeRayCastCallbackFcn *")] delegate*<B2RayCastInput*, int, int, void*, float>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			fixed (B2DynamicTree* ptree = &tree)
 			{
@@ -3516,12 +3589,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_ShapeCast")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void DynamicTreeShapeCastNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeShapeCastCallbackFcn*")] delegate*<B2ShapeCastInput*, int, int, void*, float>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void DynamicTreeShapeCastNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeShapeCastCallbackFcn *")] delegate*<B2ShapeCastInput*, int, int, void*, float>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2DynamicTree*, B2ShapeCastInput*, uint, delegate*<B2ShapeCastInput*, int, int, void*, float>*, void*, void>)vt[73])(tree, input, maskBits, callback, context);
+			((delegate* unmanaged[Cdecl]<B2DynamicTree*, B2ShapeCastInput*, uint, delegate*<B2ShapeCastInput*, int, int, void*, float>*, void*, void>)funcTable[73])(tree, input, maskBits, callback, context);
 			#else
-			((delegate* unmanaged[Cdecl]<nint, nint, uint, nint, nint, void>)vt[73])((nint)tree, (nint)input, maskBits, (nint)callback, (nint)context);
+			((delegate* unmanaged[Cdecl]<nint, nint, uint, nint, nint, void>)funcTable[73])((nint)tree, (nint)input, maskBits, (nint)callback, (nint)context);
 			#endif
 		}
 
@@ -3535,7 +3609,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_ShapeCast")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeShapeCast([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeShapeCastCallbackFcn*")] delegate*<B2ShapeCastInput*, int, int, void*, float>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void DynamicTreeShapeCast([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeShapeCastCallbackFcn *")] delegate*<B2ShapeCastInput*, int, int, void*, float>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			DynamicTreeShapeCastNative(tree, input, maskBits, callback, context);
 		}
@@ -3550,7 +3624,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_ShapeCast")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeShapeCast([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] ref B2DynamicTree tree, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeShapeCastCallbackFcn*")] delegate*<B2ShapeCastInput*, int, int, void*, float>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void DynamicTreeShapeCast([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] ref B2DynamicTree tree, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] B2ShapeCastInput* input, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeShapeCastCallbackFcn *")] delegate*<B2ShapeCastInput*, int, int, void*, float>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			fixed (B2DynamicTree* ptree = &tree)
 			{
@@ -3568,7 +3642,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_ShapeCast")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeShapeCast([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] ref B2ShapeCastInput input, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeShapeCastCallbackFcn*")] delegate*<B2ShapeCastInput*, int, int, void*, float>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void DynamicTreeShapeCast([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] ref B2ShapeCastInput input, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeShapeCastCallbackFcn *")] delegate*<B2ShapeCastInput*, int, int, void*, float>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			fixed (B2ShapeCastInput* pinput = &input)
 			{
@@ -3586,7 +3660,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_ShapeCast")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeShapeCast([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] ref B2DynamicTree tree, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "const b2ShapeCastInput*")] ref B2ShapeCastInput input, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeShapeCastCallbackFcn*")] delegate*<B2ShapeCastInput*, int, int, void*, float>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void DynamicTreeShapeCast([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] ref B2DynamicTree tree, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "b2ShapeCastInput const *")] ref B2ShapeCastInput input, [NativeName(NativeNameType.Param, "maskBits")] [NativeName(NativeNameType.Type, "uint32_t")] uint maskBits, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "b2TreeShapeCastCallbackFcn *")] delegate*<B2ShapeCastInput*, int, int, void*, float>* callback, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			fixed (B2DynamicTree* ptree = &tree)
 			{
@@ -3602,12 +3676,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_Validate")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void DynamicTreeValidateNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] B2DynamicTree* tree)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void DynamicTreeValidateNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] B2DynamicTree* tree)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2DynamicTree*, void>)vt[74])(tree);
+			((delegate* unmanaged[Cdecl]<B2DynamicTree*, void>)funcTable[74])(tree);
 			#else
-			((delegate* unmanaged[Cdecl]<nint, void>)vt[74])((nint)tree);
+			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[74])((nint)tree);
 			#endif
 		}
 
@@ -3616,7 +3691,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_Validate")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeValidate([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] B2DynamicTree* tree)
+		public static void DynamicTreeValidate([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] B2DynamicTree* tree)
 		{
 			DynamicTreeValidateNative(tree);
 		}
@@ -3626,7 +3701,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_Validate")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeValidate([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] ref B2DynamicTree tree)
+		public static void DynamicTreeValidate([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] ref B2DynamicTree tree)
 		{
 			fixed (B2DynamicTree* ptree = &tree)
 			{
@@ -3640,12 +3715,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_GetHeight")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		internal static int DynamicTreeGetHeightNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] B2DynamicTree* tree)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static int DynamicTreeGetHeightNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] B2DynamicTree* tree)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2DynamicTree*, int>)vt[75])(tree);
+			return ((delegate* unmanaged[Cdecl]<B2DynamicTree*, int>)funcTable[75])(tree);
 			#else
-			return (int)((delegate* unmanaged[Cdecl]<nint, int>)vt[75])((nint)tree);
+			return (int)((delegate* unmanaged[Cdecl]<nint, int>)funcTable[75])((nint)tree);
 			#endif
 		}
 
@@ -3655,7 +3731,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_GetHeight")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int DynamicTreeGetHeight([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] B2DynamicTree* tree)
+		public static int DynamicTreeGetHeight([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] B2DynamicTree* tree)
 		{
 			int ret = DynamicTreeGetHeightNative(tree);
 			return ret;
@@ -3667,7 +3743,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_GetHeight")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int DynamicTreeGetHeight([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] ref B2DynamicTree tree)
+		public static int DynamicTreeGetHeight([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] ref B2DynamicTree tree)
 		{
 			fixed (B2DynamicTree* ptree = &tree)
 			{
@@ -3681,12 +3757,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_GetMaxBalance")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		internal static int DynamicTreeGetMaxBalanceNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] B2DynamicTree* tree)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static int DynamicTreeGetMaxBalanceNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] B2DynamicTree* tree)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2DynamicTree*, int>)vt[76])(tree);
+			return ((delegate* unmanaged[Cdecl]<B2DynamicTree*, int>)funcTable[76])(tree);
 			#else
-			return (int)((delegate* unmanaged[Cdecl]<nint, int>)vt[76])((nint)tree);
+			return (int)((delegate* unmanaged[Cdecl]<nint, int>)funcTable[76])((nint)tree);
 			#endif
 		}
 
@@ -3695,7 +3772,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_GetMaxBalance")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int DynamicTreeGetMaxBalance([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] B2DynamicTree* tree)
+		public static int DynamicTreeGetMaxBalance([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] B2DynamicTree* tree)
 		{
 			int ret = DynamicTreeGetMaxBalanceNative(tree);
 			return ret;
@@ -3706,7 +3783,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_GetMaxBalance")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int DynamicTreeGetMaxBalance([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] ref B2DynamicTree tree)
+		public static int DynamicTreeGetMaxBalance([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] ref B2DynamicTree tree)
 		{
 			fixed (B2DynamicTree* ptree = &tree)
 			{
@@ -3720,12 +3797,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_GetAreaRatio")]
 		[return: NativeName(NativeNameType.Type, "float")]
-		internal static float DynamicTreeGetAreaRatioNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] B2DynamicTree* tree)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static float DynamicTreeGetAreaRatioNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] B2DynamicTree* tree)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2DynamicTree*, float>)vt[77])(tree);
+			return ((delegate* unmanaged[Cdecl]<B2DynamicTree*, float>)funcTable[77])(tree);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<nint, float>)vt[77])((nint)tree);
+			return (float)((delegate* unmanaged[Cdecl]<nint, float>)funcTable[77])((nint)tree);
 			#endif
 		}
 
@@ -3734,7 +3812,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_GetAreaRatio")]
 		[return: NativeName(NativeNameType.Type, "float")]
-		public static float DynamicTreeGetAreaRatio([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] B2DynamicTree* tree)
+		public static float DynamicTreeGetAreaRatio([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] B2DynamicTree* tree)
 		{
 			float ret = DynamicTreeGetAreaRatioNative(tree);
 			return ret;
@@ -3745,7 +3823,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_GetAreaRatio")]
 		[return: NativeName(NativeNameType.Type, "float")]
-		public static float DynamicTreeGetAreaRatio([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] ref B2DynamicTree tree)
+		public static float DynamicTreeGetAreaRatio([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] ref B2DynamicTree tree)
 		{
 			fixed (B2DynamicTree* ptree = &tree)
 			{
@@ -3759,12 +3837,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_RebuildBottomUp")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void DynamicTreeRebuildBottomUpNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] B2DynamicTree* tree)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void DynamicTreeRebuildBottomUpNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] B2DynamicTree* tree)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2DynamicTree*, void>)vt[78])(tree);
+			((delegate* unmanaged[Cdecl]<B2DynamicTree*, void>)funcTable[78])(tree);
 			#else
-			((delegate* unmanaged[Cdecl]<nint, void>)vt[78])((nint)tree);
+			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[78])((nint)tree);
 			#endif
 		}
 
@@ -3773,7 +3852,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_RebuildBottomUp")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeRebuildBottomUp([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] B2DynamicTree* tree)
+		public static void DynamicTreeRebuildBottomUp([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] B2DynamicTree* tree)
 		{
 			DynamicTreeRebuildBottomUpNative(tree);
 		}
@@ -3783,7 +3862,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_RebuildBottomUp")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeRebuildBottomUp([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] ref B2DynamicTree tree)
+		public static void DynamicTreeRebuildBottomUp([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] ref B2DynamicTree tree)
 		{
 			fixed (B2DynamicTree* ptree = &tree)
 			{
@@ -3796,12 +3875,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_GetProxyCount")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		internal static int DynamicTreeGetProxyCountNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] B2DynamicTree* tree)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static int DynamicTreeGetProxyCountNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] B2DynamicTree* tree)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2DynamicTree*, int>)vt[79])(tree);
+			return ((delegate* unmanaged[Cdecl]<B2DynamicTree*, int>)funcTable[79])(tree);
 			#else
-			return (int)((delegate* unmanaged[Cdecl]<nint, int>)vt[79])((nint)tree);
+			return (int)((delegate* unmanaged[Cdecl]<nint, int>)funcTable[79])((nint)tree);
 			#endif
 		}
 
@@ -3810,7 +3890,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_GetProxyCount")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int DynamicTreeGetProxyCount([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] B2DynamicTree* tree)
+		public static int DynamicTreeGetProxyCount([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] B2DynamicTree* tree)
 		{
 			int ret = DynamicTreeGetProxyCountNative(tree);
 			return ret;
@@ -3821,7 +3901,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_GetProxyCount")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int DynamicTreeGetProxyCount([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] ref B2DynamicTree tree)
+		public static int DynamicTreeGetProxyCount([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] ref B2DynamicTree tree)
 		{
 			fixed (B2DynamicTree* ptree = &tree)
 			{
@@ -3835,12 +3915,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_Rebuild")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		internal static int DynamicTreeRebuildNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "fullBuild")] [NativeName(NativeNameType.Type, "bool")] byte fullBuild)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static int DynamicTreeRebuildNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "fullBuild")] [NativeName(NativeNameType.Type, "bool")] byte fullBuild)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2DynamicTree*, byte, int>)vt[80])(tree, fullBuild);
+			return ((delegate* unmanaged[Cdecl]<B2DynamicTree*, byte, int>)funcTable[80])(tree, fullBuild);
 			#else
-			return (int)((delegate* unmanaged[Cdecl]<nint, byte, int>)vt[80])((nint)tree, fullBuild);
+			return (int)((delegate* unmanaged[Cdecl]<nint, byte, int>)funcTable[80])((nint)tree, fullBuild);
 			#endif
 		}
 
@@ -3849,7 +3930,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_Rebuild")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int DynamicTreeRebuild([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "fullBuild")] [NativeName(NativeNameType.Type, "bool")] bool fullBuild)
+		public static int DynamicTreeRebuild([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "fullBuild")] [NativeName(NativeNameType.Type, "bool")] bool fullBuild)
 		{
 			int ret = DynamicTreeRebuildNative(tree, fullBuild ? (byte)1 : (byte)0);
 			return ret;
@@ -3860,7 +3941,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_Rebuild")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int DynamicTreeRebuild([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] ref B2DynamicTree tree, [NativeName(NativeNameType.Param, "fullBuild")] [NativeName(NativeNameType.Type, "bool")] bool fullBuild)
+		public static int DynamicTreeRebuild([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] ref B2DynamicTree tree, [NativeName(NativeNameType.Param, "fullBuild")] [NativeName(NativeNameType.Type, "bool")] bool fullBuild)
 		{
 			fixed (B2DynamicTree* ptree = &tree)
 			{
@@ -3876,12 +3957,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_ShiftOrigin")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void DynamicTreeShiftOriginNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "newOrigin")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 newOrigin)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void DynamicTreeShiftOriginNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "newOrigin")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 newOrigin)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2DynamicTree*, Vector2, void>)vt[81])(tree, newOrigin);
+			((delegate* unmanaged[Cdecl]<B2DynamicTree*, Vector2, void>)funcTable[81])(tree, newOrigin);
 			#else
-			((delegate* unmanaged[Cdecl]<nint, Vector2, void>)vt[81])((nint)tree, newOrigin);
+			((delegate* unmanaged[Cdecl]<nint, Vector2, void>)funcTable[81])((nint)tree, newOrigin);
 			#endif
 		}
 
@@ -3892,7 +3974,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_ShiftOrigin")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeShiftOrigin([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "newOrigin")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 newOrigin)
+		public static void DynamicTreeShiftOrigin([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] B2DynamicTree* tree, [NativeName(NativeNameType.Param, "newOrigin")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 newOrigin)
 		{
 			DynamicTreeShiftOriginNative(tree, newOrigin);
 		}
@@ -3904,7 +3986,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_ShiftOrigin")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DynamicTreeShiftOrigin([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree*")] ref B2DynamicTree tree, [NativeName(NativeNameType.Param, "newOrigin")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 newOrigin)
+		public static void DynamicTreeShiftOrigin([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree *")] ref B2DynamicTree tree, [NativeName(NativeNameType.Param, "newOrigin")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 newOrigin)
 		{
 			fixed (B2DynamicTree* ptree = &tree)
 			{
@@ -3917,12 +3999,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_GetByteCount")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		internal static int DynamicTreeGetByteCountNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] B2DynamicTree* tree)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static int DynamicTreeGetByteCountNative([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] B2DynamicTree* tree)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2DynamicTree*, int>)vt[82])(tree);
+			return ((delegate* unmanaged[Cdecl]<B2DynamicTree*, int>)funcTable[82])(tree);
 			#else
-			return (int)((delegate* unmanaged[Cdecl]<nint, int>)vt[82])((nint)tree);
+			return (int)((delegate* unmanaged[Cdecl]<nint, int>)funcTable[82])((nint)tree);
 			#endif
 		}
 
@@ -3931,7 +4014,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_GetByteCount")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int DynamicTreeGetByteCount([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] B2DynamicTree* tree)
+		public static int DynamicTreeGetByteCount([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] B2DynamicTree* tree)
 		{
 			int ret = DynamicTreeGetByteCountNative(tree);
 			return ret;
@@ -3942,7 +4025,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DynamicTree_GetByteCount")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int DynamicTreeGetByteCount([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "const b2DynamicTree*")] ref B2DynamicTree tree)
+		public static int DynamicTreeGetByteCount([NativeName(NativeNameType.Param, "tree")] [NativeName(NativeNameType.Type, "b2DynamicTree const *")] ref B2DynamicTree tree)
 		{
 			fixed (B2DynamicTree* ptree = &tree)
 			{
@@ -3957,12 +4040,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DefaultWorldDef")]
 		[return: NativeName(NativeNameType.Type, "b2WorldDef")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2WorldDef DefaultWorldDefNative()
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2WorldDef>)vt[83])();
+			return ((delegate* unmanaged[Cdecl]<B2WorldDef>)funcTable[83])();
 			#else
-			return (B2WorldDef)((delegate* unmanaged[Cdecl]<B2WorldDef>)vt[83])();
+			return (B2WorldDef)((delegate* unmanaged[Cdecl]<B2WorldDef>)funcTable[83])();
 			#endif
 		}
 
@@ -3984,12 +4068,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DefaultBodyDef")]
 		[return: NativeName(NativeNameType.Type, "b2BodyDef")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2BodyDef DefaultBodyDefNative()
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2BodyDef>)vt[84])();
+			return ((delegate* unmanaged[Cdecl]<B2BodyDef>)funcTable[84])();
 			#else
-			return (B2BodyDef)((delegate* unmanaged[Cdecl]<B2BodyDef>)vt[84])();
+			return (B2BodyDef)((delegate* unmanaged[Cdecl]<B2BodyDef>)funcTable[84])();
 			#endif
 		}
 
@@ -4011,12 +4096,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DefaultFilter")]
 		[return: NativeName(NativeNameType.Type, "b2Filter")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2Filter DefaultFilterNative()
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2Filter>)vt[85])();
+			return ((delegate* unmanaged[Cdecl]<B2Filter>)funcTable[85])();
 			#else
-			return (B2Filter)((delegate* unmanaged[Cdecl]<B2Filter>)vt[85])();
+			return (B2Filter)((delegate* unmanaged[Cdecl]<B2Filter>)funcTable[85])();
 			#endif
 		}
 
@@ -4038,12 +4124,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DefaultQueryFilter")]
 		[return: NativeName(NativeNameType.Type, "b2QueryFilter")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2QueryFilter DefaultQueryFilterNative()
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2QueryFilter>)vt[86])();
+			return ((delegate* unmanaged[Cdecl]<B2QueryFilter>)funcTable[86])();
 			#else
-			return (B2QueryFilter)((delegate* unmanaged[Cdecl]<B2QueryFilter>)vt[86])();
+			return (B2QueryFilter)((delegate* unmanaged[Cdecl]<B2QueryFilter>)funcTable[86])();
 			#endif
 		}
 
@@ -4065,12 +4152,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DefaultShapeDef")]
 		[return: NativeName(NativeNameType.Type, "b2ShapeDef")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2ShapeDef DefaultShapeDefNative()
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ShapeDef>)vt[87])();
+			return ((delegate* unmanaged[Cdecl]<B2ShapeDef>)funcTable[87])();
 			#else
-			return (B2ShapeDef)((delegate* unmanaged[Cdecl]<B2ShapeDef>)vt[87])();
+			return (B2ShapeDef)((delegate* unmanaged[Cdecl]<B2ShapeDef>)funcTable[87])();
 			#endif
 		}
 
@@ -4092,12 +4180,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DefaultChainDef")]
 		[return: NativeName(NativeNameType.Type, "b2ChainDef")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2ChainDef DefaultChainDefNative()
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2ChainDef>)vt[88])();
+			return ((delegate* unmanaged[Cdecl]<B2ChainDef>)funcTable[88])();
 			#else
-			return (B2ChainDef)((delegate* unmanaged[Cdecl]<B2ChainDef>)vt[88])();
+			return (B2ChainDef)((delegate* unmanaged[Cdecl]<B2ChainDef>)funcTable[88])();
 			#endif
 		}
 
@@ -4119,12 +4208,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DefaultDistanceJointDef")]
 		[return: NativeName(NativeNameType.Type, "b2DistanceJointDef")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2DistanceJointDef DefaultDistanceJointDefNative()
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2DistanceJointDef>)vt[89])();
+			return ((delegate* unmanaged[Cdecl]<B2DistanceJointDef>)funcTable[89])();
 			#else
-			return (B2DistanceJointDef)((delegate* unmanaged[Cdecl]<B2DistanceJointDef>)vt[89])();
+			return (B2DistanceJointDef)((delegate* unmanaged[Cdecl]<B2DistanceJointDef>)funcTable[89])();
 			#endif
 		}
 
@@ -4146,12 +4236,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DefaultMotorJointDef")]
 		[return: NativeName(NativeNameType.Type, "b2MotorJointDef")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2MotorJointDef DefaultMotorJointDefNative()
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2MotorJointDef>)vt[90])();
+			return ((delegate* unmanaged[Cdecl]<B2MotorJointDef>)funcTable[90])();
 			#else
-			return (B2MotorJointDef)((delegate* unmanaged[Cdecl]<B2MotorJointDef>)vt[90])();
+			return (B2MotorJointDef)((delegate* unmanaged[Cdecl]<B2MotorJointDef>)funcTable[90])();
 			#endif
 		}
 
@@ -4173,12 +4264,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DefaultMouseJointDef")]
 		[return: NativeName(NativeNameType.Type, "b2MouseJointDef")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2MouseJointDef DefaultMouseJointDefNative()
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2MouseJointDef>)vt[91])();
+			return ((delegate* unmanaged[Cdecl]<B2MouseJointDef>)funcTable[91])();
 			#else
-			return (B2MouseJointDef)((delegate* unmanaged[Cdecl]<B2MouseJointDef>)vt[91])();
+			return (B2MouseJointDef)((delegate* unmanaged[Cdecl]<B2MouseJointDef>)funcTable[91])();
 			#endif
 		}
 
@@ -4200,12 +4292,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DefaultPrismaticJointDef")]
 		[return: NativeName(NativeNameType.Type, "b2PrismaticJointDef")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2PrismaticJointDef DefaultPrismaticJointDefNative()
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2PrismaticJointDef>)vt[92])();
+			return ((delegate* unmanaged[Cdecl]<B2PrismaticJointDef>)funcTable[92])();
 			#else
-			return (B2PrismaticJointDef)((delegate* unmanaged[Cdecl]<B2PrismaticJointDef>)vt[92])();
+			return (B2PrismaticJointDef)((delegate* unmanaged[Cdecl]<B2PrismaticJointDef>)funcTable[92])();
 			#endif
 		}
 
@@ -4227,12 +4320,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DefaultRevoluteJointDef")]
 		[return: NativeName(NativeNameType.Type, "b2RevoluteJointDef")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2RevoluteJointDef DefaultRevoluteJointDefNative()
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2RevoluteJointDef>)vt[93])();
+			return ((delegate* unmanaged[Cdecl]<B2RevoluteJointDef>)funcTable[93])();
 			#else
-			return (B2RevoluteJointDef)((delegate* unmanaged[Cdecl]<B2RevoluteJointDef>)vt[93])();
+			return (B2RevoluteJointDef)((delegate* unmanaged[Cdecl]<B2RevoluteJointDef>)funcTable[93])();
 			#endif
 		}
 
@@ -4254,12 +4348,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DefaultWeldJointDef")]
 		[return: NativeName(NativeNameType.Type, "b2WeldJointDef")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2WeldJointDef DefaultWeldJointDefNative()
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2WeldJointDef>)vt[94])();
+			return ((delegate* unmanaged[Cdecl]<B2WeldJointDef>)funcTable[94])();
 			#else
-			return (B2WeldJointDef)((delegate* unmanaged[Cdecl]<B2WeldJointDef>)vt[94])();
+			return (B2WeldJointDef)((delegate* unmanaged[Cdecl]<B2WeldJointDef>)funcTable[94])();
 			#endif
 		}
 
@@ -4281,12 +4376,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DefaultWheelJointDef")]
 		[return: NativeName(NativeNameType.Type, "b2WheelJointDef")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2WheelJointDef DefaultWheelJointDefNative()
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2WheelJointDef>)vt[95])();
+			return ((delegate* unmanaged[Cdecl]<B2WheelJointDef>)funcTable[95])();
 			#else
-			return (B2WheelJointDef)((delegate* unmanaged[Cdecl]<B2WheelJointDef>)vt[95])();
+			return (B2WheelJointDef)((delegate* unmanaged[Cdecl]<B2WheelJointDef>)funcTable[95])();
 			#endif
 		}
 
@@ -4309,12 +4405,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateWorld")]
 		[return: NativeName(NativeNameType.Type, "b2WorldId")]
-		internal static B2WorldId CreateWorldNative([NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2WorldDef*")] B2WorldDef* def)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2WorldId CreateWorldNative([NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2WorldDef const *")] B2WorldDef* def)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2WorldDef*, B2WorldId>)vt[96])(def);
+			return ((delegate* unmanaged[Cdecl]<B2WorldDef*, B2WorldId>)funcTable[96])(def);
 			#else
-			return (B2WorldId)((delegate* unmanaged[Cdecl]<nint, B2WorldId>)vt[96])((nint)def);
+			return (B2WorldId)((delegate* unmanaged[Cdecl]<nint, B2WorldId>)funcTable[96])((nint)def);
 			#endif
 		}
 
@@ -4325,7 +4422,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateWorld")]
 		[return: NativeName(NativeNameType.Type, "b2WorldId")]
-		public static B2WorldId CreateWorld([NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2WorldDef*")] B2WorldDef* def)
+		public static B2WorldId CreateWorld([NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2WorldDef const *")] B2WorldDef* def)
 		{
 			B2WorldId ret = CreateWorldNative(def);
 			return ret;
@@ -4338,7 +4435,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateWorld")]
 		[return: NativeName(NativeNameType.Type, "b2WorldId")]
-		public static B2WorldId CreateWorld([NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2WorldDef*")] ref B2WorldDef def)
+		public static B2WorldId CreateWorld([NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2WorldDef const *")] ref B2WorldDef def)
 		{
 			fixed (B2WorldDef* pdef = &def)
 			{
@@ -4352,12 +4449,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2DestroyWorld")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void DestroyWorldNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2WorldId, void>)vt[97])(worldId);
+			((delegate* unmanaged[Cdecl]<B2WorldId, void>)funcTable[97])(worldId);
 			#else
-			((delegate* unmanaged[Cdecl]<B2WorldId, void>)vt[97])(worldId);
+			((delegate* unmanaged[Cdecl]<B2WorldId, void>)funcTable[97])(worldId);
 			#endif
 		}
 
@@ -4376,12 +4474,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_IsValid")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte WorldIsValidNative([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId id)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2WorldId, byte>)vt[98])(id);
+			return ((delegate* unmanaged[Cdecl]<B2WorldId, byte>)funcTable[98])(id);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2WorldId, byte>)vt[98])(id);
+			return (byte)((delegate* unmanaged[Cdecl]<B2WorldId, byte>)funcTable[98])(id);
 			#endif
 		}
 
@@ -4402,12 +4501,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_Step")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void WorldStepNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "timeStep")] [NativeName(NativeNameType.Type, "float")] float timeStep, [NativeName(NativeNameType.Param, "subStepCount")] [NativeName(NativeNameType.Type, "int")] int subStepCount)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2WorldId, float, int, void>)vt[99])(worldId, timeStep, subStepCount);
+			((delegate* unmanaged[Cdecl]<B2WorldId, float, int, void>)funcTable[99])(worldId, timeStep, subStepCount);
 			#else
-			((delegate* unmanaged[Cdecl]<B2WorldId, float, int, void>)vt[99])(worldId, timeStep, subStepCount);
+			((delegate* unmanaged[Cdecl]<B2WorldId, float, int, void>)funcTable[99])(worldId, timeStep, subStepCount);
 			#endif
 		}
 
@@ -4427,12 +4527,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_Draw")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void WorldDrawNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "draw")] [NativeName(NativeNameType.Type, "b2DebugDraw*")] B2DebugDraw* draw)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void WorldDrawNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "draw")] [NativeName(NativeNameType.Type, "b2DebugDraw *")] B2DebugDraw* draw)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2WorldId, B2DebugDraw*, void>)vt[100])(worldId, draw);
+			((delegate* unmanaged[Cdecl]<B2WorldId, B2DebugDraw*, void>)funcTable[100])(worldId, draw);
 			#else
-			((delegate* unmanaged[Cdecl]<B2WorldId, nint, void>)vt[100])(worldId, (nint)draw);
+			((delegate* unmanaged[Cdecl]<B2WorldId, nint, void>)funcTable[100])(worldId, (nint)draw);
 			#endif
 		}
 
@@ -4441,7 +4542,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_Draw")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void WorldDraw([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "draw")] [NativeName(NativeNameType.Type, "b2DebugDraw*")] B2DebugDraw* draw)
+		public static void WorldDraw([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "draw")] [NativeName(NativeNameType.Type, "b2DebugDraw *")] B2DebugDraw* draw)
 		{
 			WorldDrawNative(worldId, draw);
 		}
@@ -4451,7 +4552,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_Draw")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void WorldDraw([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "draw")] [NativeName(NativeNameType.Type, "b2DebugDraw*")] ref B2DebugDraw draw)
+		public static void WorldDraw([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "draw")] [NativeName(NativeNameType.Type, "b2DebugDraw *")] ref B2DebugDraw draw)
 		{
 			fixed (B2DebugDraw* pdraw = &draw)
 			{
@@ -4464,12 +4565,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_GetBodyEvents")]
 		[return: NativeName(NativeNameType.Type, "b2BodyEvents")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2BodyEvents WorldGetBodyEventsNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2BodyEvents>)vt[101])(worldId);
+			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2BodyEvents>)funcTable[101])(worldId);
 			#else
-			return (B2BodyEvents)((delegate* unmanaged[Cdecl]<B2WorldId, B2BodyEvents>)vt[101])(worldId);
+			return (B2BodyEvents)((delegate* unmanaged[Cdecl]<B2WorldId, B2BodyEvents>)funcTable[101])(worldId);
 			#endif
 		}
 
@@ -4489,12 +4591,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_GetSensorEvents")]
 		[return: NativeName(NativeNameType.Type, "b2SensorEvents")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2SensorEvents WorldGetSensorEventsNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2SensorEvents>)vt[102])(worldId);
+			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2SensorEvents>)funcTable[102])(worldId);
 			#else
-			return (B2SensorEvents)((delegate* unmanaged[Cdecl]<B2WorldId, B2SensorEvents>)vt[102])(worldId);
+			return (B2SensorEvents)((delegate* unmanaged[Cdecl]<B2WorldId, B2SensorEvents>)funcTable[102])(worldId);
 			#endif
 		}
 
@@ -4514,12 +4617,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_GetContactEvents")]
 		[return: NativeName(NativeNameType.Type, "b2ContactEvents")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2ContactEvents WorldGetContactEventsNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2ContactEvents>)vt[103])(worldId);
+			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2ContactEvents>)funcTable[103])(worldId);
 			#else
-			return (B2ContactEvents)((delegate* unmanaged[Cdecl]<B2WorldId, B2ContactEvents>)vt[103])(worldId);
+			return (B2ContactEvents)((delegate* unmanaged[Cdecl]<B2WorldId, B2ContactEvents>)funcTable[103])(worldId);
 			#endif
 		}
 
@@ -4539,12 +4643,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_OverlapAABB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void WorldOverlapAABBNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2OverlapResultFcn*")] delegate*<B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void WorldOverlapAABBNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2OverlapResultFcn *")] delegate*<B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2WorldId, B2AABB, B2QueryFilter, delegate*<B2ShapeId, void*, bool>*, void*, void>)vt[104])(worldId, aabb, filter, fcn, context);
+			((delegate* unmanaged[Cdecl]<B2WorldId, B2AABB, B2QueryFilter, delegate*<B2ShapeId, void*, bool>*, void*, void>)funcTable[104])(worldId, aabb, filter, fcn, context);
 			#else
-			((delegate* unmanaged[Cdecl]<B2WorldId, B2AABB, B2QueryFilter, nint, nint, void>)vt[104])(worldId, aabb, filter, (nint)fcn, (nint)context);
+			((delegate* unmanaged[Cdecl]<B2WorldId, B2AABB, B2QueryFilter, nint, nint, void>)funcTable[104])(worldId, aabb, filter, (nint)fcn, (nint)context);
 			#endif
 		}
 
@@ -4553,7 +4658,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_OverlapAABB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void WorldOverlapAABB([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2OverlapResultFcn*")] delegate*<B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void WorldOverlapAABB([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "aabb")] [NativeName(NativeNameType.Type, "b2AABB")] B2AABB aabb, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2OverlapResultFcn *")] delegate*<B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			WorldOverlapAABBNative(worldId, aabb, filter, fcn, context);
 		}
@@ -4563,12 +4668,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_OverlapCircle")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void WorldOverlapCircleNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circle, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2OverlapResultFcn*")] delegate*<B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void WorldOverlapCircleNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circle, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2OverlapResultFcn *")] delegate*<B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2WorldId, B2Circle*, B2Transform, B2QueryFilter, delegate*<B2ShapeId, void*, bool>*, void*, void>)vt[105])(worldId, circle, transform, filter, fcn, context);
+			((delegate* unmanaged[Cdecl]<B2WorldId, B2Circle*, B2Transform, B2QueryFilter, delegate*<B2ShapeId, void*, bool>*, void*, void>)funcTable[105])(worldId, circle, transform, filter, fcn, context);
 			#else
-			((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2Transform, B2QueryFilter, nint, nint, void>)vt[105])(worldId, (nint)circle, transform, filter, (nint)fcn, (nint)context);
+			((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2Transform, B2QueryFilter, nint, nint, void>)funcTable[105])(worldId, (nint)circle, transform, filter, (nint)fcn, (nint)context);
 			#endif
 		}
 
@@ -4577,7 +4683,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_OverlapCircle")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void WorldOverlapCircle([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circle, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2OverlapResultFcn*")] delegate*<B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void WorldOverlapCircle([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circle, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2OverlapResultFcn *")] delegate*<B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			WorldOverlapCircleNative(worldId, circle, transform, filter, fcn, context);
 		}
@@ -4587,7 +4693,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_OverlapCircle")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void WorldOverlapCircle([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle circle, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2OverlapResultFcn*")] delegate*<B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void WorldOverlapCircle([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle circle, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2OverlapResultFcn *")] delegate*<B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			fixed (B2Circle* pcircle = &circle)
 			{
@@ -4600,12 +4706,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_OverlapCapsule")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void WorldOverlapCapsuleNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsule, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2OverlapResultFcn*")] delegate*<B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void WorldOverlapCapsuleNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsule, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2OverlapResultFcn *")] delegate*<B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2WorldId, B2Capsule*, B2Transform, B2QueryFilter, delegate*<B2ShapeId, void*, bool>*, void*, void>)vt[106])(worldId, capsule, transform, filter, fcn, context);
+			((delegate* unmanaged[Cdecl]<B2WorldId, B2Capsule*, B2Transform, B2QueryFilter, delegate*<B2ShapeId, void*, bool>*, void*, void>)funcTable[106])(worldId, capsule, transform, filter, fcn, context);
 			#else
-			((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2Transform, B2QueryFilter, nint, nint, void>)vt[106])(worldId, (nint)capsule, transform, filter, (nint)fcn, (nint)context);
+			((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2Transform, B2QueryFilter, nint, nint, void>)funcTable[106])(worldId, (nint)capsule, transform, filter, (nint)fcn, (nint)context);
 			#endif
 		}
 
@@ -4614,7 +4721,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_OverlapCapsule")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void WorldOverlapCapsule([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsule, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2OverlapResultFcn*")] delegate*<B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void WorldOverlapCapsule([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsule, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2OverlapResultFcn *")] delegate*<B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			WorldOverlapCapsuleNative(worldId, capsule, transform, filter, fcn, context);
 		}
@@ -4624,7 +4731,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_OverlapCapsule")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void WorldOverlapCapsule([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule capsule, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2OverlapResultFcn*")] delegate*<B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void WorldOverlapCapsule([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule capsule, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2OverlapResultFcn *")] delegate*<B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			fixed (B2Capsule* pcapsule = &capsule)
 			{
@@ -4637,12 +4744,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_OverlapPolygon")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void WorldOverlapPolygonNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygon, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2OverlapResultFcn*")] delegate*<B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void WorldOverlapPolygonNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygon, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2OverlapResultFcn *")] delegate*<B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2WorldId, B2Polygon*, B2Transform, B2QueryFilter, delegate*<B2ShapeId, void*, bool>*, void*, void>)vt[107])(worldId, polygon, transform, filter, fcn, context);
+			((delegate* unmanaged[Cdecl]<B2WorldId, B2Polygon*, B2Transform, B2QueryFilter, delegate*<B2ShapeId, void*, bool>*, void*, void>)funcTable[107])(worldId, polygon, transform, filter, fcn, context);
 			#else
-			((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2Transform, B2QueryFilter, nint, nint, void>)vt[107])(worldId, (nint)polygon, transform, filter, (nint)fcn, (nint)context);
+			((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2Transform, B2QueryFilter, nint, nint, void>)funcTable[107])(worldId, (nint)polygon, transform, filter, (nint)fcn, (nint)context);
 			#endif
 		}
 
@@ -4651,7 +4759,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_OverlapPolygon")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void WorldOverlapPolygon([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygon, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2OverlapResultFcn*")] delegate*<B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void WorldOverlapPolygon([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygon, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2OverlapResultFcn *")] delegate*<B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			WorldOverlapPolygonNative(worldId, polygon, transform, filter, fcn, context);
 		}
@@ -4661,7 +4769,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_OverlapPolygon")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void WorldOverlapPolygon([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon polygon, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2OverlapResultFcn*")] delegate*<B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void WorldOverlapPolygon([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon polygon, [NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2OverlapResultFcn *")] delegate*<B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			fixed (B2Polygon* ppolygon = &polygon)
 			{
@@ -4677,12 +4785,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_CastRay")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void WorldCastRayNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "origin")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 origin, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CastResultFcn*")] delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void WorldCastRayNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "origin")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 origin, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CastResultFcn *")] delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2WorldId, Vector2, Vector2, B2QueryFilter, delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>*, void*, void>)vt[108])(worldId, origin, translation, filter, fcn, context);
+			((delegate* unmanaged[Cdecl]<B2WorldId, Vector2, Vector2, B2QueryFilter, delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>*, void*, void>)funcTable[108])(worldId, origin, translation, filter, fcn, context);
 			#else
-			((delegate* unmanaged[Cdecl]<B2WorldId, Vector2, Vector2, B2QueryFilter, nint, nint, void>)vt[108])(worldId, origin, translation, filter, (nint)fcn, (nint)context);
+			((delegate* unmanaged[Cdecl]<B2WorldId, Vector2, Vector2, B2QueryFilter, nint, nint, void>)funcTable[108])(worldId, origin, translation, filter, (nint)fcn, (nint)context);
 			#endif
 		}
 
@@ -4694,7 +4803,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_CastRay")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void WorldCastRay([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "origin")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 origin, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CastResultFcn*")] delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void WorldCastRay([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "origin")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 origin, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CastResultFcn *")] delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			WorldCastRayNative(worldId, origin, translation, filter, fcn, context);
 		}
@@ -4705,12 +4814,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_CastRayClosest")]
 		[return: NativeName(NativeNameType.Type, "b2RayResult")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static B2RayResult WorldCastRayClosestNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "origin")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 origin, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2WorldId, Vector2, Vector2, B2QueryFilter, B2RayResult>)vt[109])(worldId, origin, translation, filter);
+			return ((delegate* unmanaged[Cdecl]<B2WorldId, Vector2, Vector2, B2QueryFilter, B2RayResult>)funcTable[109])(worldId, origin, translation, filter);
 			#else
-			return (B2RayResult)((delegate* unmanaged[Cdecl]<B2WorldId, Vector2, Vector2, B2QueryFilter, B2RayResult>)vt[109])(worldId, origin, translation, filter);
+			return (B2RayResult)((delegate* unmanaged[Cdecl]<B2WorldId, Vector2, Vector2, B2QueryFilter, B2RayResult>)funcTable[109])(worldId, origin, translation, filter);
 			#endif
 		}
 
@@ -4731,12 +4841,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_CastCircle")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void WorldCastCircleNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circle, [NativeName(NativeNameType.Param, "originTransform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform originTransform, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CastResultFcn*")] delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void WorldCastCircleNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circle, [NativeName(NativeNameType.Param, "originTransform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform originTransform, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CastResultFcn *")] delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2WorldId, B2Circle*, B2Transform, Vector2, B2QueryFilter, delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>*, void*, void>)vt[110])(worldId, circle, originTransform, translation, filter, fcn, context);
+			((delegate* unmanaged[Cdecl]<B2WorldId, B2Circle*, B2Transform, Vector2, B2QueryFilter, delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>*, void*, void>)funcTable[110])(worldId, circle, originTransform, translation, filter, fcn, context);
 			#else
-			((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2Transform, Vector2, B2QueryFilter, nint, nint, void>)vt[110])(worldId, (nint)circle, originTransform, translation, filter, (nint)fcn, (nint)context);
+			((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2Transform, Vector2, B2QueryFilter, nint, nint, void>)funcTable[110])(worldId, (nint)circle, originTransform, translation, filter, (nint)fcn, (nint)context);
 			#endif
 		}
 
@@ -4745,7 +4856,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_CastCircle")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void WorldCastCircle([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "const b2Circle*")] B2Circle* circle, [NativeName(NativeNameType.Param, "originTransform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform originTransform, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CastResultFcn*")] delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void WorldCastCircle([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "b2Circle const *")] B2Circle* circle, [NativeName(NativeNameType.Param, "originTransform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform originTransform, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CastResultFcn *")] delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			WorldCastCircleNative(worldId, circle, originTransform, translation, filter, fcn, context);
 		}
@@ -4755,7 +4866,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_CastCircle")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void WorldCastCircle([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "const b2Circle*")] ref B2Circle circle, [NativeName(NativeNameType.Param, "originTransform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform originTransform, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CastResultFcn*")] delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void WorldCastCircle([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "circle")] [NativeName(NativeNameType.Type, "b2Circle const *")] ref B2Circle circle, [NativeName(NativeNameType.Param, "originTransform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform originTransform, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CastResultFcn *")] delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			fixed (B2Circle* pcircle = &circle)
 			{
@@ -4768,12 +4879,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_CastCapsule")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void WorldCastCapsuleNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsule, [NativeName(NativeNameType.Param, "originTransform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform originTransform, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CastResultFcn*")] delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void WorldCastCapsuleNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsule, [NativeName(NativeNameType.Param, "originTransform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform originTransform, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CastResultFcn *")] delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2WorldId, B2Capsule*, B2Transform, Vector2, B2QueryFilter, delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>*, void*, void>)vt[111])(worldId, capsule, originTransform, translation, filter, fcn, context);
+			((delegate* unmanaged[Cdecl]<B2WorldId, B2Capsule*, B2Transform, Vector2, B2QueryFilter, delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>*, void*, void>)funcTable[111])(worldId, capsule, originTransform, translation, filter, fcn, context);
 			#else
-			((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2Transform, Vector2, B2QueryFilter, nint, nint, void>)vt[111])(worldId, (nint)capsule, originTransform, translation, filter, (nint)fcn, (nint)context);
+			((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2Transform, Vector2, B2QueryFilter, nint, nint, void>)funcTable[111])(worldId, (nint)capsule, originTransform, translation, filter, (nint)fcn, (nint)context);
 			#endif
 		}
 
@@ -4782,7 +4894,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_CastCapsule")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void WorldCastCapsule([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "const b2Capsule*")] B2Capsule* capsule, [NativeName(NativeNameType.Param, "originTransform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform originTransform, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CastResultFcn*")] delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void WorldCastCapsule([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "b2Capsule const *")] B2Capsule* capsule, [NativeName(NativeNameType.Param, "originTransform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform originTransform, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CastResultFcn *")] delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			WorldCastCapsuleNative(worldId, capsule, originTransform, translation, filter, fcn, context);
 		}
@@ -4792,7 +4904,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_CastCapsule")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void WorldCastCapsule([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "const b2Capsule*")] ref B2Capsule capsule, [NativeName(NativeNameType.Param, "originTransform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform originTransform, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CastResultFcn*")] delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void WorldCastCapsule([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "capsule")] [NativeName(NativeNameType.Type, "b2Capsule const *")] ref B2Capsule capsule, [NativeName(NativeNameType.Param, "originTransform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform originTransform, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CastResultFcn *")] delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			fixed (B2Capsule* pcapsule = &capsule)
 			{
@@ -4805,12 +4917,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_CastPolygon")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void WorldCastPolygonNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygon, [NativeName(NativeNameType.Param, "originTransform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform originTransform, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CastResultFcn*")] delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void WorldCastPolygonNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygon, [NativeName(NativeNameType.Param, "originTransform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform originTransform, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CastResultFcn *")] delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2WorldId, B2Polygon*, B2Transform, Vector2, B2QueryFilter, delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>*, void*, void>)vt[112])(worldId, polygon, originTransform, translation, filter, fcn, context);
+			((delegate* unmanaged[Cdecl]<B2WorldId, B2Polygon*, B2Transform, Vector2, B2QueryFilter, delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>*, void*, void>)funcTable[112])(worldId, polygon, originTransform, translation, filter, fcn, context);
 			#else
-			((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2Transform, Vector2, B2QueryFilter, nint, nint, void>)vt[112])(worldId, (nint)polygon, originTransform, translation, filter, (nint)fcn, (nint)context);
+			((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2Transform, Vector2, B2QueryFilter, nint, nint, void>)funcTable[112])(worldId, (nint)polygon, originTransform, translation, filter, (nint)fcn, (nint)context);
 			#endif
 		}
 
@@ -4819,7 +4932,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_CastPolygon")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void WorldCastPolygon([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "const b2Polygon*")] B2Polygon* polygon, [NativeName(NativeNameType.Param, "originTransform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform originTransform, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CastResultFcn*")] delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void WorldCastPolygon([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "b2Polygon const *")] B2Polygon* polygon, [NativeName(NativeNameType.Param, "originTransform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform originTransform, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CastResultFcn *")] delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			WorldCastPolygonNative(worldId, polygon, originTransform, translation, filter, fcn, context);
 		}
@@ -4829,7 +4942,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_CastPolygon")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void WorldCastPolygon([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "const b2Polygon*")] ref B2Polygon polygon, [NativeName(NativeNameType.Param, "originTransform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform originTransform, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CastResultFcn*")] delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
+		public static void WorldCastPolygon([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "polygon")] [NativeName(NativeNameType.Type, "b2Polygon const *")] ref B2Polygon polygon, [NativeName(NativeNameType.Param, "originTransform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform originTransform, [NativeName(NativeNameType.Param, "translation")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 translation, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "b2QueryFilter")] B2QueryFilter filter, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CastResultFcn *")] delegate*<B2ShapeId, Vector2, Vector2, float, void*, float>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context)
 		{
 			fixed (B2Polygon* ppolygon = &polygon)
 			{
@@ -4844,12 +4957,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_EnableSleeping")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void WorldEnableSleepingNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "flag")] [NativeName(NativeNameType.Type, "bool")] byte flag)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2WorldId, byte, void>)vt[113])(worldId, flag);
+			((delegate* unmanaged[Cdecl]<B2WorldId, byte, void>)funcTable[113])(worldId, flag);
 			#else
-			((delegate* unmanaged[Cdecl]<B2WorldId, byte, void>)vt[113])(worldId, flag);
+			((delegate* unmanaged[Cdecl]<B2WorldId, byte, void>)funcTable[113])(worldId, flag);
 			#endif
 		}
 
@@ -4873,12 +4987,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_EnableContinuous")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void WorldEnableContinuousNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "flag")] [NativeName(NativeNameType.Type, "bool")] byte flag)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2WorldId, byte, void>)vt[114])(worldId, flag);
+			((delegate* unmanaged[Cdecl]<B2WorldId, byte, void>)funcTable[114])(worldId, flag);
 			#else
-			((delegate* unmanaged[Cdecl]<B2WorldId, byte, void>)vt[114])(worldId, flag);
+			((delegate* unmanaged[Cdecl]<B2WorldId, byte, void>)funcTable[114])(worldId, flag);
 			#endif
 		}
 
@@ -4902,116 +5017,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2World_SetRestitutionThreshold")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void WorldSetRestitutionThresholdNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "float")] float value)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2WorldId, float, void>)vt[115])(worldId, value);
+			((delegate* unmanaged[Cdecl]<B2WorldId, float, void>)funcTable[115])(worldId, value);
 			#else
-			((delegate* unmanaged[Cdecl]<B2WorldId, float, void>)vt[115])(worldId, value);
-			#endif
-		}
-
-		/// <summary>
-		/// Adjust the restitution threshold. It is recommended not to make this value very small<br/>
-		/// because it will prevent bodies from sleeping. Typically in meters per second.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2World_SetRestitutionThreshold")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void WorldSetRestitutionThreshold([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "float")] float value)
-		{
-			WorldSetRestitutionThresholdNative(worldId, value);
-		}
-
-		/// <summary>
-		/// Adjust the hit event threshold. This controls the collision velocity needed to generate a b2ContactHitEvent.<br/>
-		/// Typically in meters per second.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2World_SetHitEventThreshold")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void WorldSetHitEventThresholdNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "float")] float value)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2WorldId, float, void>)vt[116])(worldId, value);
-			#else
-			((delegate* unmanaged[Cdecl]<B2WorldId, float, void>)vt[116])(worldId, value);
-			#endif
-		}
-
-		/// <summary>
-		/// Adjust the hit event threshold. This controls the collision velocity needed to generate a b2ContactHitEvent.<br/>
-		/// Typically in meters per second.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2World_SetHitEventThreshold")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void WorldSetHitEventThreshold([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "float")] float value)
-		{
-			WorldSetHitEventThresholdNative(worldId, value);
-		}
-
-		/// <summary>
-		/// Register the custom filter callback. This is optional.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2World_SetCustomFilterCallback")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void WorldSetCustomFilterCallbackNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CustomFilterFcn*")] delegate*<B2ShapeId, B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2WorldId, delegate*<B2ShapeId, B2ShapeId, void*, bool>*, void*, void>)vt[117])(worldId, fcn, context);
-			#else
-			((delegate* unmanaged[Cdecl]<B2WorldId, nint, nint, void>)vt[117])(worldId, (nint)fcn, (nint)context);
-			#endif
-		}
-
-		/// <summary>
-		/// Register the custom filter callback. This is optional.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2World_SetCustomFilterCallback")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void WorldSetCustomFilterCallback([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2CustomFilterFcn*")] delegate*<B2ShapeId, B2ShapeId, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
-		{
-			WorldSetCustomFilterCallbackNative(worldId, fcn, context);
-		}
-
-		/// <summary>
-		/// Register the pre-solve callback. This is optional.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2World_SetPreSolveCallback")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void WorldSetPreSolveCallbackNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2PreSolveFcn*")] delegate*<B2ShapeId, B2ShapeId, B2Manifold*, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2WorldId, delegate*<B2ShapeId, B2ShapeId, B2Manifold*, void*, bool>*, void*, void>)vt[118])(worldId, fcn, context);
-			#else
-			((delegate* unmanaged[Cdecl]<B2WorldId, nint, nint, void>)vt[118])(worldId, (nint)fcn, (nint)context);
-			#endif
-		}
-
-		/// <summary>
-		/// Register the pre-solve callback. This is optional.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2World_SetPreSolveCallback")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void WorldSetPreSolveCallback([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "fcn")] [NativeName(NativeNameType.Type, "b2PreSolveFcn*")] delegate*<B2ShapeId, B2ShapeId, B2Manifold*, void*, bool>* fcn, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context)
-		{
-			WorldSetPreSolveCallbackNative(worldId, fcn, context);
-		}
-
-		/// <summary>
-		/// Set the gravity vector for the entire world. Box2D has no concept of an up direction and this<br/>
-		/// is left as a decision for the application. Typically in m/s^2.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "b2World_SetGravity")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void WorldSetGravityNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "gravity")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 gravity)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2WorldId, Vector2, void>)vt[119])(worldId, gravity);
-			#else
-			((delegate* unmanaged[Cdecl]<B2WorldId, Vector2, void>)vt[119])(worldId, gravity);
+			((delegate* unmanaged[Cdecl]<B2WorldId, float, void>)funcTable[115])(worldId, value);
 			#endif
 		}
 	}

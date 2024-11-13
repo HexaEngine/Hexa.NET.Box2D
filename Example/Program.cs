@@ -39,13 +39,12 @@ Box2D.CreatePolygonShape(boxBody, ref boxShapeDef, ref boxShape2);
 
 // Simulation parameters
 float timeStep = 1.0f / 60.0f; // 60 frames per second
-int substepCount = 60;
 
 // Step 7: Run the simulation loop
 for (int step = 0; step < 1000; ++step)
 {
     // Step the physics world
-    Box2D.WorldStep(world, timeStep, substepCount);
+    Box2D.WorldStep(world, timeStep, 1);
 
     // Get the position and angle of the dynamic body (falling box)
     B2Transform transform = Box2D.BodyGetTransform(boxBody);

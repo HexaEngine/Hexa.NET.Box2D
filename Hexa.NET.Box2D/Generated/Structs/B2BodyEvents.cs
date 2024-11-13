@@ -29,7 +29,7 @@ namespace Hexa.NET.Box2D
 		/// Array of move events<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "moveEvents")]
-		[NativeName(NativeNameType.Type, "b2BodyMoveEvent*")]
+		[NativeName(NativeNameType.Type, "b2BodyMoveEvent *")]
 		public unsafe B2BodyMoveEvent* MoveEvents;
 
 		/// <summary>

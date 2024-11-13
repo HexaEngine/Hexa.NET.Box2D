@@ -22,7 +22,7 @@ namespace Hexa.NET.Box2D
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "DrawPolygon")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void DrawPolygon([NativeName(NativeNameType.Param, "vertices")] [NativeName(NativeNameType.Type, "const b2Vec2*")] Vector2* vertices, [NativeName(NativeNameType.Param, "vertexCount")] [NativeName(NativeNameType.Type, "int")] int vertexCount, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context);
+	public unsafe delegate void DrawPolygon([NativeName(NativeNameType.Param, "vertices")] [NativeName(NativeNameType.Type, "b2Vec2 const *")] Vector2* vertices, [NativeName(NativeNameType.Param, "vertexCount")] [NativeName(NativeNameType.Type, "int")] int vertexCount, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context);
 
 	#else
 	/// <summary>
@@ -30,7 +30,7 @@ namespace Hexa.NET.Box2D
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "DrawPolygon")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void DrawPolygon([NativeName(NativeNameType.Param, "vertices")] [NativeName(NativeNameType.Type, "const b2Vec2*")] nint vertices, [NativeName(NativeNameType.Param, "vertexCount")] [NativeName(NativeNameType.Type, "int")] int vertexCount, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] nint context);
+	public unsafe delegate void DrawPolygon([NativeName(NativeNameType.Param, "vertices")] [NativeName(NativeNameType.Type, "b2Vec2 const *")] nint vertices, [NativeName(NativeNameType.Param, "vertexCount")] [NativeName(NativeNameType.Type, "int")] int vertexCount, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] nint context);
 
 	#endif
 
@@ -40,7 +40,7 @@ namespace Hexa.NET.Box2D
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "DrawSolidPolygon")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void DrawSolidPolygon([NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "vertices")] [NativeName(NativeNameType.Type, "const b2Vec2*")] Vector2* vertices, [NativeName(NativeNameType.Param, "vertexCount")] [NativeName(NativeNameType.Type, "int")] int vertexCount, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context);
+	public unsafe delegate void DrawSolidPolygon([NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "vertices")] [NativeName(NativeNameType.Type, "b2Vec2 const *")] Vector2* vertices, [NativeName(NativeNameType.Param, "vertexCount")] [NativeName(NativeNameType.Type, "int")] int vertexCount, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context);
 
 	#else
 	/// <summary>
@@ -48,7 +48,7 @@ namespace Hexa.NET.Box2D
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "DrawSolidPolygon")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void DrawSolidPolygon([NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "vertices")] [NativeName(NativeNameType.Type, "const b2Vec2*")] nint vertices, [NativeName(NativeNameType.Param, "vertexCount")] [NativeName(NativeNameType.Type, "int")] int vertexCount, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] nint context);
+	public unsafe delegate void DrawSolidPolygon([NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "vertices")] [NativeName(NativeNameType.Type, "b2Vec2 const *")] nint vertices, [NativeName(NativeNameType.Param, "vertexCount")] [NativeName(NativeNameType.Type, "int")] int vertexCount, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] nint context);
 
 	#endif
 
@@ -58,7 +58,7 @@ namespace Hexa.NET.Box2D
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "DrawCircle")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void DrawCircle([NativeName(NativeNameType.Param, "center")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 center, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context);
+	public unsafe delegate void DrawCircle([NativeName(NativeNameType.Param, "center")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 center, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context);
 
 	#else
 	/// <summary>
@@ -66,7 +66,7 @@ namespace Hexa.NET.Box2D
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "DrawCircle")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void DrawCircle([NativeName(NativeNameType.Param, "center")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 center, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] nint context);
+	public unsafe delegate void DrawCircle([NativeName(NativeNameType.Param, "center")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 center, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] nint context);
 
 	#endif
 
@@ -76,7 +76,7 @@ namespace Hexa.NET.Box2D
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "DrawSolidCircle")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void DrawSolidCircle([NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context);
+	public unsafe delegate void DrawSolidCircle([NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context);
 
 	#else
 	/// <summary>
@@ -84,7 +84,7 @@ namespace Hexa.NET.Box2D
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "DrawSolidCircle")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void DrawSolidCircle([NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] nint context);
+	public unsafe delegate void DrawSolidCircle([NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] nint context);
 
 	#endif
 
@@ -94,7 +94,7 @@ namespace Hexa.NET.Box2D
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "DrawCapsule")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void DrawCapsule([NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p2, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context);
+	public unsafe delegate void DrawCapsule([NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p2, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context);
 
 	#else
 	/// <summary>
@@ -102,7 +102,7 @@ namespace Hexa.NET.Box2D
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "DrawCapsule")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void DrawCapsule([NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p2, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] nint context);
+	public unsafe delegate void DrawCapsule([NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p2, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] nint context);
 
 	#endif
 
@@ -112,7 +112,7 @@ namespace Hexa.NET.Box2D
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "DrawSolidCapsule")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void DrawSolidCapsule([NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p2, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context);
+	public unsafe delegate void DrawSolidCapsule([NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p2, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context);
 
 	#else
 	/// <summary>
@@ -120,7 +120,7 @@ namespace Hexa.NET.Box2D
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "DrawSolidCapsule")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void DrawSolidCapsule([NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p2, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] nint context);
+	public unsafe delegate void DrawSolidCapsule([NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p2, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] nint context);
 
 	#endif
 
@@ -130,7 +130,7 @@ namespace Hexa.NET.Box2D
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "DrawSegment")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void DrawSegment([NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p2, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context);
+	public unsafe delegate void DrawSegment([NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p2, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context);
 
 	#else
 	/// <summary>
@@ -138,7 +138,7 @@ namespace Hexa.NET.Box2D
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "DrawSegment")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void DrawSegment([NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p2, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] nint context);
+	public unsafe delegate void DrawSegment([NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p2, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] nint context);
 
 	#endif
 
@@ -148,7 +148,7 @@ namespace Hexa.NET.Box2D
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "DrawTransform")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void DrawTransform([NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context);
+	public unsafe delegate void DrawTransform([NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context);
 
 	#else
 	/// <summary>
@@ -156,7 +156,7 @@ namespace Hexa.NET.Box2D
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "DrawTransform")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void DrawTransform([NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] nint context);
+	public unsafe delegate void DrawTransform([NativeName(NativeNameType.Param, "transform")] [NativeName(NativeNameType.Type, "b2Transform")] B2Transform transform, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] nint context);
 
 	#endif
 
@@ -166,7 +166,7 @@ namespace Hexa.NET.Box2D
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "DrawPoint")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void DrawPoint([NativeName(NativeNameType.Param, "p")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context);
+	public unsafe delegate void DrawPoint([NativeName(NativeNameType.Param, "p")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context);
 
 	#else
 	/// <summary>
@@ -174,7 +174,7 @@ namespace Hexa.NET.Box2D
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "DrawPoint")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void DrawPoint([NativeName(NativeNameType.Param, "p")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] nint context);
+	public unsafe delegate void DrawPoint([NativeName(NativeNameType.Param, "p")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "b2HexColor")] B2HexColor color, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] nint context);
 
 	#endif
 
@@ -184,7 +184,7 @@ namespace Hexa.NET.Box2D
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "DrawString")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void DrawString([NativeName(NativeNameType.Param, "p")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "const char*")] byte* s, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] void* context);
+	public unsafe delegate void DrawString([NativeName(NativeNameType.Param, "p")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "char const *")] byte* s, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] void* context);
 
 	#else
 	/// <summary>
@@ -192,7 +192,7 @@ namespace Hexa.NET.Box2D
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "DrawString")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void DrawString([NativeName(NativeNameType.Param, "p")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "const char*")] nint s, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void*")] nint context);
+	public unsafe delegate void DrawString([NativeName(NativeNameType.Param, "p")] [NativeName(NativeNameType.Type, "b2Vec2")] Vector2 p, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "char const *")] nint s, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "void *")] nint context);
 
 	#endif
 

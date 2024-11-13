@@ -19,16 +19,304 @@ namespace Hexa.NET.Box2D
 	{
 
 		/// <summary>
+		/// Get the mouse joint damping ratio, non-dimensional<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2MouseJoint_GetSpringDampingRatio")]
+		[return: NativeName(NativeNameType.Type, "float")]
+		public static float MouseJointGetSpringDampingRatio([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
+		{
+			float ret = MouseJointGetSpringDampingRatioNative(jointId);
+			return ret;
+		}
+
+		/// <summary>
+		/// Set the mouse joint maximum force, typically in newtons<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2MouseJoint_SetMaxForce")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void MouseJointSetMaxForceNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "maxForce")] [NativeName(NativeNameType.Type, "float")] float maxForce)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[290])(jointId, maxForce);
+			#else
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[290])(jointId, maxForce);
+			#endif
+		}
+
+		/// <summary>
+		/// Set the mouse joint maximum force, typically in newtons<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2MouseJoint_SetMaxForce")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void MouseJointSetMaxForce([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "maxForce")] [NativeName(NativeNameType.Type, "float")] float maxForce)
+		{
+			MouseJointSetMaxForceNative(jointId, maxForce);
+		}
+
+		/// <summary>
+		/// Get the mouse joint maximum force, typically in newtons<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2MouseJoint_GetMaxForce")]
+		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static float MouseJointGetMaxForceNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[291])(jointId);
+			#else
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[291])(jointId);
+			#endif
+		}
+
+		/// <summary>
+		/// Get the mouse joint maximum force, typically in newtons<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2MouseJoint_GetMaxForce")]
+		[return: NativeName(NativeNameType.Type, "float")]
+		public static float MouseJointGetMaxForce([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
+		{
+			float ret = MouseJointGetMaxForceNative(jointId);
+			return ret;
+		}
+
+		/// <summary>
+		/// Create a prismatic (slider) joint.<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2CreatePrismaticJoint")]
+		[return: NativeName(NativeNameType.Type, "b2JointId")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2JointId CreatePrismaticJointNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2PrismaticJointDef const *")] B2PrismaticJointDef* def)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2PrismaticJointDef*, B2JointId>)funcTable[292])(worldId, def);
+			#else
+			return (B2JointId)((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2JointId>)funcTable[292])(worldId, (nint)def);
+			#endif
+		}
+
+		/// <summary>
+		/// Create a prismatic (slider) joint.<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2CreatePrismaticJoint")]
+		[return: NativeName(NativeNameType.Type, "b2JointId")]
+		public static B2JointId CreatePrismaticJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2PrismaticJointDef const *")] B2PrismaticJointDef* def)
+		{
+			B2JointId ret = CreatePrismaticJointNative(worldId, def);
+			return ret;
+		}
+
+		/// <summary>
+		/// Create a prismatic (slider) joint.<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2CreatePrismaticJoint")]
+		[return: NativeName(NativeNameType.Type, "b2JointId")]
+		public static B2JointId CreatePrismaticJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2PrismaticJointDef const *")] ref B2PrismaticJointDef def)
+		{
+			fixed (B2PrismaticJointDef* pdef = &def)
+			{
+				B2JointId ret = CreatePrismaticJointNative(worldId, (B2PrismaticJointDef*)pdef);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Enable/disable the joint spring.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2PrismaticJoint_EnableSpring")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void PrismaticJointEnableSpringNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "enableSpring")] [NativeName(NativeNameType.Type, "bool")] byte enableSpring)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[293])(jointId, enableSpring);
+			#else
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[293])(jointId, enableSpring);
+			#endif
+		}
+
+		/// <summary>
+		/// Enable/disable the joint spring.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2PrismaticJoint_EnableSpring")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PrismaticJointEnableSpring([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "enableSpring")] [NativeName(NativeNameType.Type, "bool")] bool enableSpring)
+		{
+			PrismaticJointEnableSpringNative(jointId, enableSpring ? (byte)1 : (byte)0);
+		}
+
+		/// <summary>
+		/// Is the prismatic joint spring enabled or not?<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2PrismaticJoint_IsSpringEnabled")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static byte PrismaticJointIsSpringEnabledNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[294])(jointId);
+			#else
+			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[294])(jointId);
+			#endif
+		}
+
+		/// <summary>
+		/// Is the prismatic joint spring enabled or not?<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2PrismaticJoint_IsSpringEnabled")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool PrismaticJointIsSpringEnabled([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
+		{
+			byte ret = PrismaticJointIsSpringEnabledNative(jointId);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// Set the prismatic joint stiffness in Hertz.<br/>
+		/// This should usually be less than a quarter of the simulation rate. For example, if the simulation<br/>
+		/// runs at 60Hz then the joint stiffness should be 15Hz or less.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2PrismaticJoint_SetSpringHertz")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void PrismaticJointSetSpringHertzNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "hertz")] [NativeName(NativeNameType.Type, "float")] float hertz)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[295])(jointId, hertz);
+			#else
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[295])(jointId, hertz);
+			#endif
+		}
+
+		/// <summary>
+		/// Set the prismatic joint stiffness in Hertz.<br/>
+		/// This should usually be less than a quarter of the simulation rate. For example, if the simulation<br/>
+		/// runs at 60Hz then the joint stiffness should be 15Hz or less.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2PrismaticJoint_SetSpringHertz")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PrismaticJointSetSpringHertz([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "hertz")] [NativeName(NativeNameType.Type, "float")] float hertz)
+		{
+			PrismaticJointSetSpringHertzNative(jointId, hertz);
+		}
+
+		/// <summary>
+		/// Get the prismatic joint stiffness in Hertz<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2PrismaticJoint_GetSpringHertz")]
+		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static float PrismaticJointGetSpringHertzNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[296])(jointId);
+			#else
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[296])(jointId);
+			#endif
+		}
+
+		/// <summary>
+		/// Get the prismatic joint stiffness in Hertz<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2PrismaticJoint_GetSpringHertz")]
+		[return: NativeName(NativeNameType.Type, "float")]
+		public static float PrismaticJointGetSpringHertz([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
+		{
+			float ret = PrismaticJointGetSpringHertzNative(jointId);
+			return ret;
+		}
+
+		/// <summary>
+		/// Set the prismatic joint damping ratio (non-dimensional)<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2PrismaticJoint_SetSpringDampingRatio")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void PrismaticJointSetSpringDampingRatioNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "dampingRatio")] [NativeName(NativeNameType.Type, "float")] float dampingRatio)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[297])(jointId, dampingRatio);
+			#else
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[297])(jointId, dampingRatio);
+			#endif
+		}
+
+		/// <summary>
+		/// Set the prismatic joint damping ratio (non-dimensional)<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2PrismaticJoint_SetSpringDampingRatio")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PrismaticJointSetSpringDampingRatio([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "dampingRatio")] [NativeName(NativeNameType.Type, "float")] float dampingRatio)
+		{
+			PrismaticJointSetSpringDampingRatioNative(jointId, dampingRatio);
+		}
+
+		/// <summary>
+		/// Get the prismatic spring damping ratio (non-dimensional)<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2PrismaticJoint_GetSpringDampingRatio")]
+		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static float PrismaticJointGetSpringDampingRatioNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[298])(jointId);
+			#else
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[298])(jointId);
+			#endif
+		}
+
+		/// <summary>
+		/// Get the prismatic spring damping ratio (non-dimensional)<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2PrismaticJoint_GetSpringDampingRatio")]
+		[return: NativeName(NativeNameType.Type, "float")]
+		public static float PrismaticJointGetSpringDampingRatio([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
+		{
+			float ret = PrismaticJointGetSpringDampingRatioNative(jointId);
+			return ret;
+		}
+
+		/// <summary>
+		/// Enable/disable a prismatic joint limit<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2PrismaticJoint_EnableLimit")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void PrismaticJointEnableLimitNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "enableLimit")] [NativeName(NativeNameType.Type, "bool")] byte enableLimit)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[299])(jointId, enableLimit);
+			#else
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[299])(jointId, enableLimit);
+			#endif
+		}
+
+		/// <summary>
+		/// Enable/disable a prismatic joint limit<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "b2PrismaticJoint_EnableLimit")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PrismaticJointEnableLimit([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "enableLimit")] [NativeName(NativeNameType.Type, "bool")] bool enableLimit)
+		{
+			PrismaticJointEnableLimitNative(jointId, enableLimit ? (byte)1 : (byte)0);
+		}
+
+		/// <summary>
 		/// Is the prismatic joint limit enabled?<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2PrismaticJoint_IsLimitEnabled")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte PrismaticJointIsLimitEnabledNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[300])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[300])(jointId);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[300])(jointId);
+			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[300])(jointId);
 			#endif
 		}
 
@@ -48,12 +336,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2PrismaticJoint_GetLowerLimit")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float PrismaticJointGetLowerLimitNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[301])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[301])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[301])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[301])(jointId);
 			#endif
 		}
 
@@ -73,12 +362,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2PrismaticJoint_GetUpperLimit")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float PrismaticJointGetUpperLimitNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[302])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[302])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[302])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[302])(jointId);
 			#endif
 		}
 
@@ -98,12 +388,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2PrismaticJoint_SetLimits")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void PrismaticJointSetLimitsNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "lower")] [NativeName(NativeNameType.Type, "float")] float lower, [NativeName(NativeNameType.Param, "upper")] [NativeName(NativeNameType.Type, "float")] float upper)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, float, void>)vt[303])(jointId, lower, upper);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, float, void>)funcTable[303])(jointId, lower, upper);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, float, void>)vt[303])(jointId, lower, upper);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, float, void>)funcTable[303])(jointId, lower, upper);
 			#endif
 		}
 
@@ -122,12 +413,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2PrismaticJoint_EnableMotor")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void PrismaticJointEnableMotorNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "enableMotor")] [NativeName(NativeNameType.Type, "bool")] byte enableMotor)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[304])(jointId, enableMotor);
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[304])(jointId, enableMotor);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[304])(jointId, enableMotor);
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[304])(jointId, enableMotor);
 			#endif
 		}
 
@@ -146,12 +438,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2PrismaticJoint_IsMotorEnabled")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte PrismaticJointIsMotorEnabledNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[305])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[305])(jointId);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[305])(jointId);
+			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[305])(jointId);
 			#endif
 		}
 
@@ -171,12 +464,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2PrismaticJoint_SetMotorSpeed")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void PrismaticJointSetMotorSpeedNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "motorSpeed")] [NativeName(NativeNameType.Type, "float")] float motorSpeed)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[306])(jointId, motorSpeed);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[306])(jointId, motorSpeed);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[306])(jointId, motorSpeed);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[306])(jointId, motorSpeed);
 			#endif
 		}
 
@@ -195,12 +489,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2PrismaticJoint_GetMotorSpeed")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float PrismaticJointGetMotorSpeedNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[307])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[307])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[307])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[307])(jointId);
 			#endif
 		}
 
@@ -220,12 +515,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2PrismaticJoint_SetMaxMotorForce")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void PrismaticJointSetMaxMotorForceNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "force")] [NativeName(NativeNameType.Type, "float")] float force)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[308])(jointId, force);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[308])(jointId, force);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[308])(jointId, force);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[308])(jointId, force);
 			#endif
 		}
 
@@ -244,12 +540,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2PrismaticJoint_GetMaxMotorForce")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float PrismaticJointGetMaxMotorForceNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[309])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[309])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[309])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[309])(jointId);
 			#endif
 		}
 
@@ -269,12 +566,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2PrismaticJoint_GetMotorForce")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float PrismaticJointGetMotorForceNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[310])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[310])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[310])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[310])(jointId);
 			#endif
 		}
 
@@ -295,12 +593,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateRevoluteJoint")]
 		[return: NativeName(NativeNameType.Type, "b2JointId")]
-		internal static B2JointId CreateRevoluteJointNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2RevoluteJointDef*")] B2RevoluteJointDef* def)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2JointId CreateRevoluteJointNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2RevoluteJointDef const *")] B2RevoluteJointDef* def)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2RevoluteJointDef*, B2JointId>)vt[311])(worldId, def);
+			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2RevoluteJointDef*, B2JointId>)funcTable[311])(worldId, def);
 			#else
-			return (B2JointId)((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2JointId>)vt[311])(worldId, (nint)def);
+			return (B2JointId)((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2JointId>)funcTable[311])(worldId, (nint)def);
 			#endif
 		}
 
@@ -310,7 +609,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateRevoluteJoint")]
 		[return: NativeName(NativeNameType.Type, "b2JointId")]
-		public static B2JointId CreateRevoluteJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2RevoluteJointDef*")] B2RevoluteJointDef* def)
+		public static B2JointId CreateRevoluteJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2RevoluteJointDef const *")] B2RevoluteJointDef* def)
 		{
 			B2JointId ret = CreateRevoluteJointNative(worldId, def);
 			return ret;
@@ -322,7 +621,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateRevoluteJoint")]
 		[return: NativeName(NativeNameType.Type, "b2JointId")]
-		public static B2JointId CreateRevoluteJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2RevoluteJointDef*")] ref B2RevoluteJointDef def)
+		public static B2JointId CreateRevoluteJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2RevoluteJointDef const *")] ref B2RevoluteJointDef def)
 		{
 			fixed (B2RevoluteJointDef* pdef = &def)
 			{
@@ -336,12 +635,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RevoluteJoint_EnableSpring")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void RevoluteJointEnableSpringNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "enableSpring")] [NativeName(NativeNameType.Type, "bool")] byte enableSpring)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[312])(jointId, enableSpring);
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[312])(jointId, enableSpring);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[312])(jointId, enableSpring);
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[312])(jointId, enableSpring);
 			#endif
 		}
 
@@ -360,12 +660,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RevoluteJoint_SetSpringHertz")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void RevoluteJointSetSpringHertzNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "hertz")] [NativeName(NativeNameType.Type, "float")] float hertz)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[313])(jointId, hertz);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[313])(jointId, hertz);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[313])(jointId, hertz);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[313])(jointId, hertz);
 			#endif
 		}
 
@@ -384,12 +685,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RevoluteJoint_GetSpringHertz")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float RevoluteJointGetSpringHertzNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[314])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[314])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[314])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[314])(jointId);
 			#endif
 		}
 
@@ -409,12 +711,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RevoluteJoint_SetSpringDampingRatio")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void RevoluteJointSetSpringDampingRatioNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "dampingRatio")] [NativeName(NativeNameType.Type, "float")] float dampingRatio)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[315])(jointId, dampingRatio);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[315])(jointId, dampingRatio);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[315])(jointId, dampingRatio);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[315])(jointId, dampingRatio);
 			#endif
 		}
 
@@ -433,12 +736,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RevoluteJoint_GetSpringDampingRatio")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float RevoluteJointGetSpringDampingRatioNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[316])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[316])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[316])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[316])(jointId);
 			#endif
 		}
 
@@ -459,12 +763,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RevoluteJoint_GetAngle")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float RevoluteJointGetAngleNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[317])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[317])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[317])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[317])(jointId);
 			#endif
 		}
 
@@ -485,12 +790,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RevoluteJoint_EnableLimit")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void RevoluteJointEnableLimitNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "enableLimit")] [NativeName(NativeNameType.Type, "bool")] byte enableLimit)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[318])(jointId, enableLimit);
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[318])(jointId, enableLimit);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[318])(jointId, enableLimit);
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[318])(jointId, enableLimit);
 			#endif
 		}
 
@@ -509,12 +815,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RevoluteJoint_IsLimitEnabled")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte RevoluteJointIsLimitEnabledNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[319])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[319])(jointId);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[319])(jointId);
+			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[319])(jointId);
 			#endif
 		}
 
@@ -534,12 +841,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RevoluteJoint_GetLowerLimit")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float RevoluteJointGetLowerLimitNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[320])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[320])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[320])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[320])(jointId);
 			#endif
 		}
 
@@ -559,12 +867,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RevoluteJoint_GetUpperLimit")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float RevoluteJointGetUpperLimitNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[321])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[321])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[321])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[321])(jointId);
 			#endif
 		}
 
@@ -584,12 +893,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RevoluteJoint_SetLimits")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void RevoluteJointSetLimitsNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "lower")] [NativeName(NativeNameType.Type, "float")] float lower, [NativeName(NativeNameType.Param, "upper")] [NativeName(NativeNameType.Type, "float")] float upper)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, float, void>)vt[322])(jointId, lower, upper);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, float, void>)funcTable[322])(jointId, lower, upper);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, float, void>)vt[322])(jointId, lower, upper);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, float, void>)funcTable[322])(jointId, lower, upper);
 			#endif
 		}
 
@@ -608,12 +918,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RevoluteJoint_EnableMotor")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void RevoluteJointEnableMotorNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "enableMotor")] [NativeName(NativeNameType.Type, "bool")] byte enableMotor)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[323])(jointId, enableMotor);
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[323])(jointId, enableMotor);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[323])(jointId, enableMotor);
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[323])(jointId, enableMotor);
 			#endif
 		}
 
@@ -632,12 +943,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RevoluteJoint_IsMotorEnabled")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte RevoluteJointIsMotorEnabledNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[324])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[324])(jointId);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[324])(jointId);
+			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[324])(jointId);
 			#endif
 		}
 
@@ -657,12 +969,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RevoluteJoint_SetMotorSpeed")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void RevoluteJointSetMotorSpeedNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "motorSpeed")] [NativeName(NativeNameType.Type, "float")] float motorSpeed)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[325])(jointId, motorSpeed);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[325])(jointId, motorSpeed);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[325])(jointId, motorSpeed);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[325])(jointId, motorSpeed);
 			#endif
 		}
 
@@ -681,12 +994,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RevoluteJoint_GetMotorSpeed")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float RevoluteJointGetMotorSpeedNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[326])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[326])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[326])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[326])(jointId);
 			#endif
 		}
 
@@ -706,12 +1020,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RevoluteJoint_GetMotorTorque")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float RevoluteJointGetMotorTorqueNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[327])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[327])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[327])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[327])(jointId);
 			#endif
 		}
 
@@ -731,12 +1046,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RevoluteJoint_SetMaxMotorTorque")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void RevoluteJointSetMaxMotorTorqueNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "torque")] [NativeName(NativeNameType.Type, "float")] float torque)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[328])(jointId, torque);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[328])(jointId, torque);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[328])(jointId, torque);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[328])(jointId, torque);
 			#endif
 		}
 
@@ -755,12 +1071,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2RevoluteJoint_GetMaxMotorTorque")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float RevoluteJointGetMaxMotorTorqueNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[329])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[329])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[329])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[329])(jointId);
 			#endif
 		}
 
@@ -781,12 +1098,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateWeldJoint")]
 		[return: NativeName(NativeNameType.Type, "b2JointId")]
-		internal static B2JointId CreateWeldJointNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2WeldJointDef*")] B2WeldJointDef* def)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2JointId CreateWeldJointNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2WeldJointDef const *")] B2WeldJointDef* def)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2WeldJointDef*, B2JointId>)vt[330])(worldId, def);
+			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2WeldJointDef*, B2JointId>)funcTable[330])(worldId, def);
 			#else
-			return (B2JointId)((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2JointId>)vt[330])(worldId, (nint)def);
+			return (B2JointId)((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2JointId>)funcTable[330])(worldId, (nint)def);
 			#endif
 		}
 
@@ -796,7 +1114,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateWeldJoint")]
 		[return: NativeName(NativeNameType.Type, "b2JointId")]
-		public static B2JointId CreateWeldJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2WeldJointDef*")] B2WeldJointDef* def)
+		public static B2JointId CreateWeldJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2WeldJointDef const *")] B2WeldJointDef* def)
 		{
 			B2JointId ret = CreateWeldJointNative(worldId, def);
 			return ret;
@@ -808,7 +1126,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateWeldJoint")]
 		[return: NativeName(NativeNameType.Type, "b2JointId")]
-		public static B2JointId CreateWeldJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2WeldJointDef*")] ref B2WeldJointDef def)
+		public static B2JointId CreateWeldJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2WeldJointDef const *")] ref B2WeldJointDef def)
 		{
 			fixed (B2WeldJointDef* pdef = &def)
 			{
@@ -822,12 +1140,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WeldJoint_SetLinearHertz")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void WeldJointSetLinearHertzNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "hertz")] [NativeName(NativeNameType.Type, "float")] float hertz)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[331])(jointId, hertz);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[331])(jointId, hertz);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[331])(jointId, hertz);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[331])(jointId, hertz);
 			#endif
 		}
 
@@ -846,12 +1165,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WeldJoint_GetLinearHertz")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float WeldJointGetLinearHertzNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[332])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[332])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[332])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[332])(jointId);
 			#endif
 		}
 
@@ -871,12 +1191,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WeldJoint_SetLinearDampingRatio")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void WeldJointSetLinearDampingRatioNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "dampingRatio")] [NativeName(NativeNameType.Type, "float")] float dampingRatio)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[333])(jointId, dampingRatio);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[333])(jointId, dampingRatio);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[333])(jointId, dampingRatio);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[333])(jointId, dampingRatio);
 			#endif
 		}
 
@@ -895,12 +1216,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WeldJoint_GetLinearDampingRatio")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float WeldJointGetLinearDampingRatioNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[334])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[334])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[334])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[334])(jointId);
 			#endif
 		}
 
@@ -920,12 +1242,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WeldJoint_SetAngularHertz")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void WeldJointSetAngularHertzNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "hertz")] [NativeName(NativeNameType.Type, "float")] float hertz)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[335])(jointId, hertz);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[335])(jointId, hertz);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[335])(jointId, hertz);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[335])(jointId, hertz);
 			#endif
 		}
 
@@ -944,12 +1267,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WeldJoint_GetAngularHertz")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float WeldJointGetAngularHertzNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[336])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[336])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[336])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[336])(jointId);
 			#endif
 		}
 
@@ -969,12 +1293,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WeldJoint_SetAngularDampingRatio")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void WeldJointSetAngularDampingRatioNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "dampingRatio")] [NativeName(NativeNameType.Type, "float")] float dampingRatio)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[337])(jointId, dampingRatio);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[337])(jointId, dampingRatio);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[337])(jointId, dampingRatio);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[337])(jointId, dampingRatio);
 			#endif
 		}
 
@@ -993,12 +1318,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WeldJoint_GetAngularDampingRatio")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float WeldJointGetAngularDampingRatioNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[338])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[338])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[338])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[338])(jointId);
 			#endif
 		}
 
@@ -1019,12 +1345,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateWheelJoint")]
 		[return: NativeName(NativeNameType.Type, "b2JointId")]
-		internal static B2JointId CreateWheelJointNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2WheelJointDef*")] B2WheelJointDef* def)
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static B2JointId CreateWheelJointNative([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2WheelJointDef const *")] B2WheelJointDef* def)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2WheelJointDef*, B2JointId>)vt[339])(worldId, def);
+			return ((delegate* unmanaged[Cdecl]<B2WorldId, B2WheelJointDef*, B2JointId>)funcTable[339])(worldId, def);
 			#else
-			return (B2JointId)((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2JointId>)vt[339])(worldId, (nint)def);
+			return (B2JointId)((delegate* unmanaged[Cdecl]<B2WorldId, nint, B2JointId>)funcTable[339])(worldId, (nint)def);
 			#endif
 		}
 
@@ -1034,7 +1361,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateWheelJoint")]
 		[return: NativeName(NativeNameType.Type, "b2JointId")]
-		public static B2JointId CreateWheelJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2WheelJointDef*")] B2WheelJointDef* def)
+		public static B2JointId CreateWheelJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2WheelJointDef const *")] B2WheelJointDef* def)
 		{
 			B2JointId ret = CreateWheelJointNative(worldId, def);
 			return ret;
@@ -1046,7 +1373,7 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2CreateWheelJoint")]
 		[return: NativeName(NativeNameType.Type, "b2JointId")]
-		public static B2JointId CreateWheelJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "const b2WheelJointDef*")] ref B2WheelJointDef def)
+		public static B2JointId CreateWheelJoint([NativeName(NativeNameType.Param, "worldId")] [NativeName(NativeNameType.Type, "b2WorldId")] B2WorldId worldId, [NativeName(NativeNameType.Param, "def")] [NativeName(NativeNameType.Type, "b2WheelJointDef const *")] ref B2WheelJointDef def)
 		{
 			fixed (B2WheelJointDef* pdef = &def)
 			{
@@ -1060,12 +1387,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WheelJoint_EnableSpring")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void WheelJointEnableSpringNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "enableSpring")] [NativeName(NativeNameType.Type, "bool")] byte enableSpring)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[340])(jointId, enableSpring);
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[340])(jointId, enableSpring);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[340])(jointId, enableSpring);
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[340])(jointId, enableSpring);
 			#endif
 		}
 
@@ -1084,12 +1412,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WheelJoint_IsSpringEnabled")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte WheelJointIsSpringEnabledNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[341])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[341])(jointId);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[341])(jointId);
+			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[341])(jointId);
 			#endif
 		}
 
@@ -1109,12 +1438,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WheelJoint_SetSpringHertz")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void WheelJointSetSpringHertzNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "hertz")] [NativeName(NativeNameType.Type, "float")] float hertz)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[342])(jointId, hertz);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[342])(jointId, hertz);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[342])(jointId, hertz);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[342])(jointId, hertz);
 			#endif
 		}
 
@@ -1133,12 +1463,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WheelJoint_GetSpringHertz")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float WheelJointGetSpringHertzNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[343])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[343])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[343])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[343])(jointId);
 			#endif
 		}
 
@@ -1158,12 +1489,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WheelJoint_SetSpringDampingRatio")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void WheelJointSetSpringDampingRatioNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "dampingRatio")] [NativeName(NativeNameType.Type, "float")] float dampingRatio)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[344])(jointId, dampingRatio);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[344])(jointId, dampingRatio);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[344])(jointId, dampingRatio);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[344])(jointId, dampingRatio);
 			#endif
 		}
 
@@ -1182,12 +1514,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WheelJoint_GetSpringDampingRatio")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float WheelJointGetSpringDampingRatioNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[345])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[345])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[345])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[345])(jointId);
 			#endif
 		}
 
@@ -1207,12 +1540,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WheelJoint_EnableLimit")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void WheelJointEnableLimitNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "enableLimit")] [NativeName(NativeNameType.Type, "bool")] byte enableLimit)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[346])(jointId, enableLimit);
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[346])(jointId, enableLimit);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[346])(jointId, enableLimit);
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[346])(jointId, enableLimit);
 			#endif
 		}
 
@@ -1231,12 +1565,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WheelJoint_IsLimitEnabled")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte WheelJointIsLimitEnabledNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[347])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[347])(jointId);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[347])(jointId);
+			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[347])(jointId);
 			#endif
 		}
 
@@ -1256,12 +1591,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WheelJoint_GetLowerLimit")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float WheelJointGetLowerLimitNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[348])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[348])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[348])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[348])(jointId);
 			#endif
 		}
 
@@ -1281,12 +1617,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WheelJoint_GetUpperLimit")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float WheelJointGetUpperLimitNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[349])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[349])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[349])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[349])(jointId);
 			#endif
 		}
 
@@ -1306,12 +1643,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WheelJoint_SetLimits")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void WheelJointSetLimitsNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "lower")] [NativeName(NativeNameType.Type, "float")] float lower, [NativeName(NativeNameType.Param, "upper")] [NativeName(NativeNameType.Type, "float")] float upper)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, float, void>)vt[350])(jointId, lower, upper);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, float, void>)funcTable[350])(jointId, lower, upper);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, float, void>)vt[350])(jointId, lower, upper);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, float, void>)funcTable[350])(jointId, lower, upper);
 			#endif
 		}
 
@@ -1330,12 +1668,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WheelJoint_EnableMotor")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void WheelJointEnableMotorNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "enableMotor")] [NativeName(NativeNameType.Type, "bool")] byte enableMotor)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[351])(jointId, enableMotor);
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[351])(jointId, enableMotor);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)vt[351])(jointId, enableMotor);
+			((delegate* unmanaged[Cdecl]<B2JointId, byte, void>)funcTable[351])(jointId, enableMotor);
 			#endif
 		}
 
@@ -1354,12 +1693,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WheelJoint_IsMotorEnabled")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static byte WheelJointIsMotorEnabledNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[352])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[352])(jointId);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)vt[352])(jointId);
+			return (byte)((delegate* unmanaged[Cdecl]<B2JointId, byte>)funcTable[352])(jointId);
 			#endif
 		}
 
@@ -1379,12 +1719,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WheelJoint_SetMotorSpeed")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void WheelJointSetMotorSpeedNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "motorSpeed")] [NativeName(NativeNameType.Type, "float")] float motorSpeed)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[353])(jointId, motorSpeed);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[353])(jointId, motorSpeed);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[353])(jointId, motorSpeed);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[353])(jointId, motorSpeed);
 			#endif
 		}
 
@@ -1403,12 +1744,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WheelJoint_GetMotorSpeed")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float WheelJointGetMotorSpeedNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[354])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[354])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[354])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[354])(jointId);
 			#endif
 		}
 
@@ -1428,12 +1770,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WheelJoint_SetMaxMotorTorque")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void WheelJointSetMaxMotorTorqueNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId, [NativeName(NativeNameType.Param, "torque")] [NativeName(NativeNameType.Type, "float")] float torque)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[355])(jointId, torque);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[355])(jointId, torque);
 			#else
-			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)vt[355])(jointId, torque);
+			((delegate* unmanaged[Cdecl]<B2JointId, float, void>)funcTable[355])(jointId, torque);
 			#endif
 		}
 
@@ -1452,12 +1795,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WheelJoint_GetMaxMotorTorque")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float WheelJointGetMaxMotorTorqueNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[356])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[356])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[356])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[356])(jointId);
 			#endif
 		}
 
@@ -1477,12 +1821,13 @@ namespace Hexa.NET.Box2D
 		/// </summary>
 		[NativeName(NativeNameType.Func, "b2WheelJoint_GetMotorTorque")]
 		[return: NativeName(NativeNameType.Type, "float")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static float WheelJointGetMotorTorqueNative([NativeName(NativeNameType.Param, "jointId")] [NativeName(NativeNameType.Type, "b2JointId")] B2JointId jointId)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[357])(jointId);
+			return ((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[357])(jointId);
 			#else
-			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)vt[357])(jointId);
+			return (float)((delegate* unmanaged[Cdecl]<B2JointId, float>)funcTable[357])(jointId);
 			#endif
 		}
 

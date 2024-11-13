@@ -28,70 +28,70 @@ namespace Hexa.NET.Box2D
 		/// Draw a closed polygon provided in CCW order.<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "DrawPolygon")]
-		[NativeName(NativeNameType.Type, "void (*)(const b2Vec2* vertices, int vertexCount, b2HexColor color, void* context)*")]
+		[NativeName(NativeNameType.Type, "void (*)(b2Vec2 const * vertices, int vertexCount, b2HexColor color, void * context) *")]
 		public unsafe void* DrawPolygon;
 
 		/// <summary>
 		/// Draw a solid closed polygon provided in CCW order.<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "DrawSolidPolygon")]
-		[NativeName(NativeNameType.Type, "void (*)(b2Transform transform, const b2Vec2* vertices, int vertexCount, float radius, b2HexColor color, void* context)*")]
+		[NativeName(NativeNameType.Type, "void (*)(b2Transform transform, b2Vec2 const * vertices, int vertexCount, float radius, b2HexColor color, void * context) *")]
 		public unsafe void* DrawSolidPolygon;
 
 		/// <summary>
 		/// Draw a circle.<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "DrawCircle")]
-		[NativeName(NativeNameType.Type, "void (*)(b2Vec2 center, float radius, b2HexColor color, void* context)*")]
+		[NativeName(NativeNameType.Type, "void (*)(b2Vec2 center, float radius, b2HexColor color, void * context) *")]
 		public unsafe void* DrawCircle;
 
 		/// <summary>
 		/// Draw a solid circle.<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "DrawSolidCircle")]
-		[NativeName(NativeNameType.Type, "void (*)(b2Transform transform, float radius, b2HexColor color, void* context)*")]
+		[NativeName(NativeNameType.Type, "void (*)(b2Transform transform, float radius, b2HexColor color, void * context) *")]
 		public unsafe void* DrawSolidCircle;
 
 		/// <summary>
 		/// Draw a capsule.<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "DrawCapsule")]
-		[NativeName(NativeNameType.Type, "void (*)(b2Vec2 p1, b2Vec2 p2, float radius, b2HexColor color, void* context)*")]
+		[NativeName(NativeNameType.Type, "void (*)(b2Vec2 p1, b2Vec2 p2, float radius, b2HexColor color, void * context) *")]
 		public unsafe void* DrawCapsule;
 
 		/// <summary>
 		/// Draw a solid capsule.<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "DrawSolidCapsule")]
-		[NativeName(NativeNameType.Type, "void (*)(b2Vec2 p1, b2Vec2 p2, float radius, b2HexColor color, void* context)*")]
+		[NativeName(NativeNameType.Type, "void (*)(b2Vec2 p1, b2Vec2 p2, float radius, b2HexColor color, void * context) *")]
 		public unsafe void* DrawSolidCapsule;
 
 		/// <summary>
 		/// Draw a line segment.<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "DrawSegment")]
-		[NativeName(NativeNameType.Type, "void (*)(b2Vec2 p1, b2Vec2 p2, b2HexColor color, void* context)*")]
+		[NativeName(NativeNameType.Type, "void (*)(b2Vec2 p1, b2Vec2 p2, b2HexColor color, void * context) *")]
 		public unsafe void* DrawSegment;
 
 		/// <summary>
 		/// Draw a transform. Choose your own length scale.<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "DrawTransform")]
-		[NativeName(NativeNameType.Type, "void (*)(b2Transform transform, void* context)*")]
+		[NativeName(NativeNameType.Type, "void (*)(b2Transform transform, void * context) *")]
 		public unsafe void* DrawTransform;
 
 		/// <summary>
 		/// Draw a point.<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "DrawPoint")]
-		[NativeName(NativeNameType.Type, "void (*)(b2Vec2 p, float size, b2HexColor color, void* context)*")]
+		[NativeName(NativeNameType.Type, "void (*)(b2Vec2 p, float size, b2HexColor color, void * context) *")]
 		public unsafe void* DrawPoint;
 
 		/// <summary>
 		/// Draw a string.<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "DrawString")]
-		[NativeName(NativeNameType.Type, "void (*)(b2Vec2 p, const char* s, void* context)*")]
+		[NativeName(NativeNameType.Type, "void (*)(b2Vec2 p, char const * s, void * context) *")]
 		public unsafe void* DrawString;
 
 		/// <summary>
@@ -182,22 +182,22 @@ namespace Hexa.NET.Box2D
 		/// User context that is passed as an argument to drawing callback functions<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "context")]
-		[NativeName(NativeNameType.Type, "void*")]
+		[NativeName(NativeNameType.Type, "void *")]
 		public unsafe void* Context;
 
 
 		public unsafe B2DebugDraw(delegate*<Vector2*, int, B2HexColor, void*, void> drawPolygon = default, delegate*<B2Transform, Vector2*, int, float, B2HexColor, void*, void> drawSolidPolygon = default, delegate*<Vector2, float, B2HexColor, void*, void> drawCircle = default, delegate*<B2Transform, float, B2HexColor, void*, void> drawSolidCircle = default, delegate*<Vector2, Vector2, float, B2HexColor, void*, void> drawCapsule = default, delegate*<Vector2, Vector2, float, B2HexColor, void*, void> drawSolidCapsule = default, delegate*<Vector2, Vector2, B2HexColor, void*, void> drawSegment = default, delegate*<B2Transform, void*, void> drawTransform = default, delegate*<Vector2, float, B2HexColor, void*, void> drawPoint = default, delegate*<Vector2, byte*, void*, void> drawString = default, B2AABB drawingBounds = default, bool useDrawingBounds = default, bool drawShapes = default, bool drawJoints = default, bool drawJointExtras = default, bool drawAABBs = default, bool drawMass = default, bool drawContacts = default, bool drawGraphColors = default, bool drawContactNormals = default, bool drawContactImpulses = default, bool drawFrictionImpulses = default, void* context = default)
 		{
-			DrawPolygon = (void*)drawPolygon;
-			DrawSolidPolygon = (void*)drawSolidPolygon;
-			DrawCircle = (void*)drawCircle;
-			DrawSolidCircle = (void*)drawSolidCircle;
-			DrawCapsule = (void*)drawCapsule;
-			DrawSolidCapsule = (void*)drawSolidCapsule;
-			DrawSegment = (void*)drawSegment;
-			DrawTransform = (void*)drawTransform;
-			DrawPoint = (void*)drawPoint;
-			DrawString = (void*)drawString;
+			DrawPolygon = (delegate*<Vector2*, int, B2HexColor, void*, void>*)drawPolygon;
+			DrawSolidPolygon = (delegate*<B2Transform, Vector2*, int, float, B2HexColor, void*, void>*)drawSolidPolygon;
+			DrawCircle = (delegate*<Vector2, float, B2HexColor, void*, void>*)drawCircle;
+			DrawSolidCircle = (delegate*<B2Transform, float, B2HexColor, void*, void>*)drawSolidCircle;
+			DrawCapsule = (delegate*<Vector2, Vector2, float, B2HexColor, void*, void>*)drawCapsule;
+			DrawSolidCapsule = (delegate*<Vector2, Vector2, float, B2HexColor, void*, void>*)drawSolidCapsule;
+			DrawSegment = (delegate*<Vector2, Vector2, B2HexColor, void*, void>*)drawSegment;
+			DrawTransform = (delegate*<B2Transform, void*, void>*)drawTransform;
+			DrawPoint = (delegate*<Vector2, float, B2HexColor, void*, void>*)drawPoint;
+			DrawString = (delegate*<Vector2, byte*, void*, void>*)drawString;
 			DrawingBounds = drawingBounds;
 			UseDrawingBounds = useDrawingBounds ? (byte)1 : (byte)0;
 			DrawShapes = drawShapes ? (byte)1 : (byte)0;

@@ -39,7 +39,7 @@ namespace Hexa.NET.Box2D
 		[NativeName(NativeNameType.Type, "b2BodyId")]
 		public B2BodyId BodyId;
 		[NativeName(NativeNameType.Field, "userData")]
-		[NativeName(NativeNameType.Type, "void*")]
+		[NativeName(NativeNameType.Type, "void *")]
 		public unsafe void* UserData;
 		[NativeName(NativeNameType.Field, "fellAsleep")]
 		[NativeName(NativeNameType.Type, "bool")]

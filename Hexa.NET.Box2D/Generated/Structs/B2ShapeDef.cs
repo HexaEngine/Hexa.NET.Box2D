@@ -31,7 +31,7 @@ namespace Hexa.NET.Box2D
 		/// Use this to store application specific shape data.<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "userData")]
-		[NativeName(NativeNameType.Type, "void*")]
+		[NativeName(NativeNameType.Type, "void *")]
 		public unsafe void* UserData;
 
 		/// <summary>
